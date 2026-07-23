@@ -153,7 +153,7 @@ export function Navbar() {
               <Link href="/portal">Client portal</Link>
             </Button>
             <Button size={scrolled ? "sm" : "default"} asChild>
-              <Link href="/contact">
+              <Link href="/book">
                 Book a growth audit
                 <ArrowUpRight className="size-4" />
               </Link>
@@ -267,7 +267,7 @@ export function Navbar() {
                   </Link>
                 </Button>
                 <Button asChild>
-                  <Link href="/contact" tabIndex={mobileOpen ? 0 : -1}>
+                  <Link href="/book" tabIndex={mobileOpen ? 0 : -1}>
                     Book a growth audit
                     <ArrowUpRight className="size-4" />
                   </Link>

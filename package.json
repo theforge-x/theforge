@@ -11,7 +11,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:studio": "drizzle-kit studio",
-    "db:bootstrap": "tsx scripts/bootstrap.ts"
+    "db:bootstrap": "tsx scripts/bootstrap.ts",
+    "db:seed-case-studies": "tsx scripts/seed-case-studies.ts"
   },
   "dependencies": {
     "@better-auth/drizzle-adapter": "^1.6.24",

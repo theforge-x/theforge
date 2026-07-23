@@ -70,26 +70,40 @@ const schemas = {
     type: z.string().trim().min(1).max(80),
     fileUrl: optionalUrl,
   }),
-  content: z.object({
-    id: z.string().trim().min(1).optional(),
-    title: z.string().trim().min(1).max(220),
-    slug: z
-      .string()
-      .trim()
-      .min(1)
-      .max(220)
-      .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
-    kind: z.enum(["article", "case-study"]),
-    status: z.enum(["draft", "published"]),
-    excerpt: z.string().trim().max(500),
-    body: z.string().trim(),
-    category: z.string().trim().min(1).max(100),
-    featuredImage: z
-      .union([z.literal(""), z.string().max(2_000_000)])
-      .transform((v) => v || null),
-    seoTitle: z.string().trim().max(70),
-    seoDescription: z.string().trim().max(170),
-  }),
+  content: z
+    .object({
+      id: z.string().trim().min(1).optional(),
+      title: z.string().trim().min(1).max(220),
+      slug: z
+        .string()
+        .trim()
+        .min(1)
+        .max(220)
+        .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+      kind: z.enum(["article", "case-study"]),
+      projectId: z.preprocess(
+        (value) => (value === "" ? null : value),
+        z.string().trim().min(1).nullable().optional(),
+      ),
+      status: z.enum(["draft", "published"]),
+      excerpt: z.string().trim().max(500),
+      body: z.string().trim(),
+      category: z.string().trim().min(1).max(100),
+      featuredImage: z
+        .union([z.literal(""), z.string().max(2_000_000)])
+        .transform((v) => v || null),
+      seoTitle: z.string().trim().max(70),
+      seoDescription: z.string().trim().max(170),
+    })
+    .superRefine((value, ctx) => {
+      if (value.kind === "case-study" && !value.projectId) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["projectId"],
+          message: "Case studies must be associated with a project",
+        });
+      }
+    }),
   enquiries: z.object({
     id: z.string().trim().min(1),
     name: z.string().trim().min(1).max(160),
@@ -232,6 +246,7 @@ export async function POST(
         const value = body as z.infer<typeof schemas.content>;
         await db.insert(contentPosts).values({
           ...value,
+          projectId: value.kind === "case-study" ? value.projectId : null,
           id: value.id ?? randomUUID(),
           publishedAt: value.status === "published" ? new Date() : null,
         });
@@ -378,6 +393,7 @@ export async function PUT(
             excerpt: value.excerpt,
             body: value.body,
             category: value.category,
+            projectId: value.kind === "case-study" ? value.projectId : null,
             featuredImage: value.featuredImage,
             seoTitle: value.seoTitle,
             seoDescription: value.seoDescription,

@@ -2,7 +2,7 @@ const phases = [
   {
     number: "01",
     name: "Diagnose the ore",
-    duration: "60-minute audit",
+    duration: "30-minute audit",
     description:
       "We map every constraint across acquisition, conversion, retention, and pricing. Not a general review — a ranked diagnosis with an estimated growth impact attached to each finding.",
     output: "A written growth audit with a prioritized action plan.",

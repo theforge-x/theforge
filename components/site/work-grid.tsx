@@ -1,22 +1,24 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { caseStudies } from "@/lib/data";
+import type { CaseStudy } from "@/lib/data";
 
 const ALL = "All work";
 
-export function WorkGrid() {
+export function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
   const tags = useMemo(() => {
     const set = new Set<string>();
     for (const c of caseStudies) {
       for (const t of c.tags) set.add(t);
     }
     return [ALL, ...Array.from(set)];
-  }, []);
+  }, [caseStudies]);
 
   const [active, setActive] = useState(ALL);
 
@@ -39,38 +41,57 @@ export function WorkGrid() {
 
       <div className="grid gap-6 md:grid-cols-2">
         {items.map((c) => (
-          <div
+          <Link
             key={c.slug}
-            className="border-border hover:border-accent/50 group flex flex-col gap-5 rounded-lg border p-8 transition-colors"
+            href={`/work/${c.slug}`}
+            className="border-border hover:border-accent/50 group flex flex-col overflow-hidden rounded-lg border transition-colors"
           >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <div className="font-mono-eyebrow text-muted-foreground text-[10px] uppercase">
-                  {c.industry}
+            {c.featuredImage ? (
+              <div className="relative aspect-video overflow-hidden bg-secondary">
+                <Image
+                  src={c.featuredImage}
+                  alt=""
+                  fill
+                  unoptimized
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025] motion-reduce:transition-none"
+                />
+              </div>
+            ) : null}
+            <div className="flex flex-1 flex-col gap-5 p-8">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <div className="font-mono-eyebrow text-muted-foreground text-[10px] uppercase">
+                    {c.client} · {c.industry}
+                  </div>
+                  <h3 className="mt-1 text-xl font-semibold">{c.title}</h3>
                 </div>
-                <h3 className="mt-1 text-xl font-semibold">{c.client}</h3>
+                <ArrowUpRight className="text-muted-foreground group-hover:text-accent size-5 shrink-0 transition-colors" />
               </div>
-              <ArrowUpRight className="text-muted-foreground group-hover:text-accent size-5 shrink-0 transition-colors" />
-            </div>
 
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {c.summary}
-            </p>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {c.summary}
+              </p>
 
-            <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-2">
-              <div className="flex flex-wrap gap-1.5">
-                {c.tags.map((t) => (
-                  <Badge key={t} variant="secondary">
-                    {t}
-                  </Badge>
-                ))}
-              </div>
-              <div className="font-display text-accent text-xl">
-                {c.metric.value}
+              <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-2">
+                <div className="flex flex-wrap gap-1.5">
+                  {c.tags.map((t) => (
+                    <Badge key={t} variant="secondary">
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
+                <div className="font-display text-accent text-xl">
+                  {c.metric.value}
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
+        {!items.length ? (
+          <p className="text-muted-foreground col-span-full text-center text-sm">
+            No published work in this category yet.
+          </p>
+        ) : null}
       </div>
     </div>
   );

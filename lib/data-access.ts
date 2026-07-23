@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, isNull } from "drizzle-orm";
-import type { Client, Invoice, Project } from "@/lib/data";
+import type { CaseStudy, Client, Invoice, Project } from "@/lib/data";
 import { db } from "@/lib/db";
 import {
   appointments,
@@ -216,8 +216,70 @@ export async function getPublishedPosts() {
   return db
     .select()
     .from(contentPosts)
-    .where(eq(contentPosts.status, "published"))
+    .where(
+      and(
+        eq(contentPosts.status, "published"),
+        eq(contentPosts.kind, "article"),
+      ),
+    )
     .orderBy(desc(contentPosts.publishedAt));
+}
+
+export async function getPublishedCaseStudies(): Promise<CaseStudy[]> {
+  const rows = await db
+    .select({
+      post: contentPosts,
+      project: projects,
+      clientName: clients.name,
+      industry: clients.industry,
+    })
+    .from(contentPosts)
+    .innerJoin(projects, eq(contentPosts.projectId, projects.id))
+    .innerJoin(clients, eq(projects.clientId, clients.id))
+    .where(
+      and(
+        eq(contentPosts.status, "published"),
+        eq(contentPosts.kind, "case-study"),
+      ),
+    )
+    .orderBy(desc(contentPosts.publishedAt));
+
+  return rows.map(({ post, project, clientName, industry }) => ({
+    slug: post.slug,
+    projectId: project.id,
+    title: post.title,
+    client: clientName,
+    industry,
+    summary: post.excerpt,
+    featuredImage: post.featuredImage,
+    metric: {
+      label: "Project progress",
+      value: `${project.progress}%`,
+    },
+    tags: [post.category, project.phase],
+  }));
+}
+
+export async function getPublishedCaseStudy(slug: string) {
+  const [row] = await db
+    .select({
+      post: contentPosts,
+      project: projects,
+      client: clients,
+    })
+    .from(contentPosts)
+    .innerJoin(projects, eq(contentPosts.projectId, projects.id))
+    .innerJoin(clients, eq(projects.clientId, clients.id))
+    .where(
+      and(
+        eq(contentPosts.slug, slug),
+        eq(contentPosts.status, "published"),
+        eq(contentPosts.kind, "case-study"),
+      ),
+    )
+    .limit(1);
+
+  return row ?? null;
 }
 
 export async function getPublishedPost(slug: string) {
@@ -225,7 +287,11 @@ export async function getPublishedPost(slug: string) {
     .select()
     .from(contentPosts)
     .where(
-      and(eq(contentPosts.slug, slug), eq(contentPosts.status, "published")),
+      and(
+        eq(contentPosts.slug, slug),
+        eq(contentPosts.status, "published"),
+        eq(contentPosts.kind, "article"),
+      ),
     )
     .limit(1);
   return post ?? null;

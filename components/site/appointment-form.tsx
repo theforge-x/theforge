@@ -6,6 +6,13 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
 export function AppointmentForm({ duration }: { duration: number }) {
@@ -80,30 +87,34 @@ export function AppointmentForm({ duration }: { duration: number }) {
       </div>
       <div className="flex flex-col gap-2">
         <Label htmlFor="booking-time">Available time</Label>
-        <select
-          id="booking-time"
+        <Select
           name="startsAt"
           required
           disabled={loadingSlots || !slots.length}
-          className="border-input bg-background h-9 rounded-md border px-3 text-sm"
         >
-          <option value="">
-            {loadingSlots
-              ? "Loading availability…"
-              : slots.length
-                ? "Choose a time"
-                : "No times currently available"}
-          </option>
-          {slots.map((slot) => (
-            <option key={slot.startsAt} value={slot.startsAt}>
-              {new Date(slot.startsAt).toLocaleString([], {
-                dateStyle: "medium",
-                timeStyle: "short",
-              })}{" "}
-              ({slot.timezone})
-            </option>
-          ))}
-        </select>
+          <SelectTrigger id="booking-time" className="w-full">
+            <SelectValue
+              placeholder={
+                loadingSlots
+                  ? "Loading availability…"
+                  : slots.length
+                    ? "Choose a time"
+                    : "No times currently available"
+              }
+            />
+          </SelectTrigger>
+          <SelectContent>
+            {slots.map((slot) => (
+              <SelectItem key={slot.startsAt} value={slot.startsAt}>
+                {new Date(slot.startsAt).toLocaleString([], {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                })}{" "}
+                ({slot.timezone})
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
       </div>
       <div className="flex flex-col gap-2 sm:col-span-2">
         <Label htmlFor="booking-notes">What would you like to discuss?</Label>

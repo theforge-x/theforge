@@ -40,17 +40,27 @@ type ContentItem = {
   excerpt: string;
   body: string;
   category: string;
+  projectId: string | null;
   featuredImage: string | null;
   seoTitle: string;
   seoDescription: string;
   updatedAt: string;
 };
 
-export function ContentManager({ posts }: { posts: ContentItem[] }) {
+type ProjectOption = { id: string; name: string; clientName: string };
+
+export function ContentManager({
+  posts,
+  projects,
+}: {
+  posts: ContentItem[];
+  projects: ProjectOption[];
+}) {
   const router = useRouter();
   const [editing, setEditing] = useState<ContentItem | "new" | null>(null);
   const [pending, setPending] = useState(false);
   const [featuredImage, setFeaturedImage] = useState<string>("");
+  const [kind, setKind] = useState("article");
   const current = editing === "new" ? null : editing;
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
@@ -96,6 +106,7 @@ export function ContentManager({ posts }: { posts: ContentItem[] }) {
           variant="ember"
           onClick={() => {
             setFeaturedImage("");
+            setKind("article");
             setEditing("new");
           }}
         >
@@ -119,6 +130,9 @@ export function ContentManager({ posts }: { posts: ContentItem[] }) {
                   </div>
                   <div className="text-muted-foreground mt-0.5 text-xs">
                     {post.kind === "case-study" ? "Case study" : "Article"} ·
+                    {post.projectId
+                      ? ` ${projects.find((project) => project.id === post.projectId)?.name ?? "Linked project"} ·`
+                      : ""}
                     Updated {post.updatedAt}
                   </div>
                 </div>
@@ -136,6 +150,7 @@ export function ContentManager({ posts }: { posts: ContentItem[] }) {
                   aria-label={`Edit ${post.title}`}
                   onClick={() => {
                     setFeaturedImage(post.featuredImage ?? "");
+                    setKind(post.kind);
                     setEditing(post);
                   }}
                 >
@@ -231,7 +246,7 @@ export function ContentManager({ posts }: { posts: ContentItem[] }) {
             </div>
             <div className="flex flex-col gap-2">
               <Label>Type</Label>
-              <Select name="kind" defaultValue={current?.kind ?? "article"}>
+              <Select name="kind" value={kind} onValueChange={setKind}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -241,6 +256,30 @@ export function ContentManager({ posts }: { posts: ContentItem[] }) {
                 </SelectContent>
               </Select>
             </div>
+            {kind === "case-study" ? (
+              <div className="flex flex-col gap-2">
+                <Label>Related work</Label>
+                <Select
+                  name="projectId"
+                  defaultValue={current?.projectId ?? undefined}
+                  required
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a project" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {projects.map((project) => (
+                      <SelectItem key={project.id} value={project.id}>
+                        {project.clientName} — {project.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-muted-foreground text-xs">
+                  Public work is coined from this admin-managed project.
+                </p>
+              </div>
+            ) : null}
             <div className="flex flex-col gap-2">
               <Label>Status</Label>
               <Select name="status" defaultValue={current?.status ?? "draft"}>

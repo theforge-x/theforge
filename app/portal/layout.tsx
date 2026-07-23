@@ -8,7 +8,7 @@ import { getClientAccountForUser } from "@/lib/data-access";
 export const metadata: Metadata = {
   title: {
     default: "Client Portal",
-    template: "%s · Client Portal · The Forge",
+    template: "%s · Client Portal · theForge",
   },
 };
 

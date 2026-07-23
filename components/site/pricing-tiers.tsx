@@ -10,7 +10,7 @@ const tiers = [
     name: "The Spark",
     subtitle: "The diagnostic entry point",
     price: "From $0",
-    period: "60-minute audit",
+    period: "30-minute audit",
     description:
       "A structured session that maps every constraint across your growth system. You leave with a ranked action plan.",
     features: [
@@ -117,7 +117,9 @@ export function PricingTiers() {
               className="mt-auto"
               asChild
             >
-              <Link href="/contact">{tier.cta}</Link>
+              <Link href={tier.id === "audit" ? "/book" : "/contact"}>
+                {tier.cta}
+              </Link>
             </Button>
           </div>
         ))}

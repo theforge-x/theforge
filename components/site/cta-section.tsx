@@ -20,12 +20,12 @@ export function CTASection() {
           Ready to find your constraint?
         </h2>
         <p className="text-muted-foreground mt-4 max-w-xl text-base leading-relaxed">
-          Book a 60-minute growth audit. You'll leave with a ranked list of
+          Book a 30-minute growth audit. You'll leave with a ranked list of
           what's actually stalling growth — whether or not you ever work with
           us.
         </p>
         <Button size="lg" variant="ember" className="mt-8" asChild>
-          <Link href="/contact">
+          <Link href="/book">
             Book a Growth Audit <ArrowUpRight className="size-4" />
           </Link>
         </Button>

@@ -7,7 +7,7 @@ import { requireRole } from "@/lib/auth-session";
 export const metadata: Metadata = {
   title: {
     default: "Admin",
-    template: "%s · Admin · The Forge",
+    template: "%s · Admin · theForge",
   },
 };
 

@@ -79,13 +79,38 @@ export const clients: Client[] = [
     startDate: "2026-02-18",
     health: 81,
   },
+  {
+    id: "6fab7a09-a0ce-466a-81db-96d29791c23e",
+    name: "Josren Fashion",
+    contact: "Prince Joshua",
+    industry: "Fashion",
+    plan: "Spark Audit",
+    status: "onboarding",
+    mrr: 0,
+    startDate: "2026-07-23",
+    health: 40,
+  },
+  {
+    id: "083126ea-aaa2-47a9-87e8-189e18079113",
+    name: "Right Mind Homes",
+    contact: "Samson Ocholi",
+    industry: "Healthcare",
+    plan: "Spark Audit",
+    status: "onboarding",
+    mrr: 0,
+    startDate: "2026-07-23",
+    health: 50,
+  },
 ];
 
 export type CaseStudy = {
   slug: string;
+  projectId: string;
+  title: string;
   client: string;
   industry: string;
   summary: string;
+  featuredImage?: string | null;
   metric: { label: string; value: string };
   tags: string[];
 };
@@ -93,37 +118,49 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "onyx-legal-group",
+    projectId: "p-1",
+    title: "Q3 referral engine rebuild",
     client: "Onyx Legal Group",
     industry: "Legal Services",
     summary:
       "A single-partner referral pipeline was rebuilt into a four-channel intake system with a retention model for repeat corporate clients.",
+    featuredImage: "/work/onyx-referral-dashboard.webp",
     metric: { label: "Qualified intake", value: "+164%" },
     tags: ["Acquisition", "Retention", "Pricing"],
   },
   {
     slug: "ferrous-kin-construction",
+    projectId: "p-2",
+    title: "Multi-channel bid pipeline",
     client: "Ferrous & Kin Construction",
     industry: "Contracting",
     summary:
       "Replaced a single lead-gen channel prone to seasonal collapse with a bid-and-referral engine, plus a repositioned commercial offer.",
+    featuredImage: "/work/fabrica-bid-dashboard.webp",
     metric: { label: "Booked bids", value: "+118%" },
     tags: ["Acquisition", "Offer design"],
   },
   {
     slug: "lumen-dental-collective",
+    projectId: "p-3",
+    title: "Patient retention system v2",
     client: "Lumen Dental Collective",
     industry: "Healthcare",
     summary:
       "Fixed a leaky patient-retention system and layered a referral framework on top of a rebuilt local visibility engine.",
+    featuredImage: "/work/lumen-retention-dashboard.webp",
     metric: { label: "12-month revenue", value: "+91%" },
     tags: ["Retention", "Referral system"],
   },
   {
     slug: "marrow-coffee-roasters",
+    projectId: "p-5",
+    title: "Wholesale growth system",
     client: "Marrow Coffee Roasters",
     industry: "Food & Beverage",
     summary:
       "Wholesale accounts were won by feel; we mapped a repeatable acquisition sequence and a margin-aware pricing structure.",
+    featuredImage: "/work/marrow-wholesale-dashboard.webp",
     metric: { label: "Wholesale accounts", value: "+37 in 90 days" },
     tags: ["Acquisition", "Pricing"],
   },
@@ -190,6 +227,26 @@ export const projects: Project[] = [
     progress: 61,
     owner: "Theo L.",
     dueDate: "2026-09-02",
+  },
+  {
+    id: "p-josren-fashion",
+    clientId: "6fab7a09-a0ce-466a-81db-96d29791c23e",
+    clientName: "Josren Fashion",
+    name: "Fashion commerce growth system",
+    phase: "Forge",
+    progress: 65,
+    owner: "Prince Joshua",
+    dueDate: "2026-09-30",
+  },
+  {
+    id: "p-right-mind-homes",
+    clientId: "083126ea-aaa2-47a9-87e8-189e18079113",
+    clientName: "Right Mind Homes",
+    name: "Enquiry and admissions growth system",
+    phase: "Forge",
+    progress: 60,
+    owner: "Samson Ocholi",
+    dueDate: "2026-10-15",
   },
 ];
 

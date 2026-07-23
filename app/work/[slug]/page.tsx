@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import { ContentBody } from "@/components/site/content-body";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
-import { getPublishedPost } from "@/lib/data-access";
+import { Badge } from "@/components/ui/badge";
+import { getPublishedCaseStudy } from "@/lib/data-access";
 
 export async function generateMetadata({
   params,
@@ -12,47 +13,51 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPublishedPost(slug);
-  if (!post) return {};
+  const result = await getPublishedCaseStudy(slug);
+  if (!result) return {};
+
   return {
-    title: post.seoTitle || post.title,
-    description: post.seoDescription || post.excerpt,
-    openGraph: post.featuredImage
-      ? { images: [post.featuredImage] }
+    title: result.post.seoTitle || result.post.title,
+    description: result.post.seoDescription || result.post.excerpt,
+    openGraph: result.post.featuredImage
+      ? { images: [result.post.featuredImage] }
       : undefined,
   };
 }
-export default async function BlogPostPage({
+
+export default async function WorkDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await getPublishedPost(slug);
-  if (!post) notFound();
+  const result = await getPublishedCaseStudy(slug);
+  if (!result) notFound();
+
+  const { post, project, client } = result;
+
   return (
     <>
       <Navbar />
       <main className="pt-16">
         <article>
-          <header className="mx-auto max-w-4xl px-6 py-20 text-center">
+          <header className="mx-auto max-w-5xl px-6 py-20">
             <div className="font-mono-eyebrow text-accent text-[11px] uppercase">
-              {post.category}
+              {client.industry} · Case study
             </div>
-            <h1 className="font-display mt-4 text-4xl leading-tight sm:text-6xl">
+            <h1 className="font-display mt-4 max-w-4xl text-4xl leading-tight sm:text-6xl">
               {post.title}
             </h1>
-            <p className="text-muted-foreground mx-auto mt-5 max-w-2xl leading-relaxed">
+            <p className="text-muted-foreground mt-5 max-w-2xl leading-relaxed">
               {post.excerpt}
             </p>
-            <time className="text-muted-foreground mt-5 block text-xs">
-              {post.publishedAt?.toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </time>
+            <div className="mt-8 flex flex-wrap gap-2">
+              <Badge variant="secondary">{client.name}</Badge>
+              <Badge variant="secondary">{project.name}</Badge>
+              <Badge variant="secondary">{project.phase}</Badge>
+            </div>
           </header>
+
           {post.featuredImage ? (
             <div className="relative mx-auto aspect-[16/7] max-w-6xl">
               <Image
@@ -65,6 +70,7 @@ export default async function BlogPostPage({
               />
             </div>
           ) : null}
+
           <ContentBody body={post.body} />
         </article>
       </main>

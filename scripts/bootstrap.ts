@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { hashPassword } from "better-auth/crypto";
 import { eq } from "drizzle-orm";
-
+import { caseStudySeeds } from "../lib/case-study-seeds";
 import {
   clientGrowth,
   monthlyRevenue,
@@ -189,16 +189,12 @@ async function main() {
           "A draft guide to building retention into delivery from day one.",
         body: "Continue drafting this article in the admin content editor.",
       },
-      {
-        id: "content-onyx-case-study",
-        title: "Case study: Onyx Legal Group's referral rebuild",
-        slug: "onyx-legal-referral-rebuild",
+      ...caseStudySeeds.map((caseStudy) => ({
+        ...caseStudy,
         kind: "case-study",
-        status: "draft",
-        excerpt:
-          "How Onyx rebuilt its referral engine into a repeatable growth system.",
-        body: "Continue drafting this case study in the admin content editor.",
-      },
+        status: "published",
+        publishedAt: new Date("2026-07-01T00:00:00Z"),
+      })),
     ])
     .onConflictDoNothing();
 

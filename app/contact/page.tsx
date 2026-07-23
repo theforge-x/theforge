@@ -1,7 +1,7 @@
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { connection } from "next/server";
-import { AppointmentForm } from "@/components/site/appointment-form";
+import { ContactFaq } from "@/components/site/contact-faq";
 import { ContactForm } from "@/components/site/contact-form";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
@@ -39,7 +39,7 @@ export default async function ContactPage() {
                 <h2 className="font-display text-2xl">What happens next</h2>
                 <ol className="text-muted-foreground mt-4 flex flex-col gap-3 text-sm leading-relaxed">
                   <li>1. We review your note and confirm fit within a day.</li>
-                  <li>2. We schedule your 60-minute growth audit.</li>
+                  <li>2. We schedule your 30-minute growth audit.</li>
                   <li>3. You leave with a ranked, written action plan.</li>
                 </ol>
               </div>
@@ -59,23 +59,7 @@ export default async function ContactPage() {
             <ContactForm />
           </div>
         </section>
-        <section id="book" className="border-border border-t">
-          <div className="mx-auto max-w-5xl px-6 py-24">
-            <div className="mb-10 max-w-2xl">
-              <div className="font-mono-eyebrow text-accent text-[11px] uppercase">
-                Book a call
-              </div>
-              <h2 className="font-display mt-3 text-3xl sm:text-4xl">
-                Choose a time that works.
-              </h2>
-              <p className="text-muted-foreground mt-3 text-sm">
-                Request a conversation. Once approved, your meeting link will be
-                shared with you.
-              </p>
-            </div>
-            <AppointmentForm duration={settings.appointmentDuration} />
-          </div>
-        </section>
+        <ContactFaq />
       </main>
       <Footer />
     </>

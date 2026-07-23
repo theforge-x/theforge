@@ -1,6 +1,7 @@
 import { relations, sql } from "drizzle-orm";
 import {
   boolean,
+  check,
   date,
   index,
   integer,
@@ -247,13 +248,21 @@ export const contentPosts = pgTable(
     excerpt: text("excerpt").default("").notNull(),
     body: text("body").default("").notNull(),
     category: text("category").default("Strategy").notNull(),
+    projectId: text("project_id").references(() => projects.id),
     featuredImage: text("featured_image"),
     seoTitle: text("seo_title").default("").notNull(),
     seoDescription: text("seo_description").default("").notNull(),
     publishedAt: timestamp("published_at", { withTimezone: true }),
     ...timestamps,
   },
-  (table) => [uniqueIndex("content_posts_slug_idx").on(table.slug)],
+  (table) => [
+    uniqueIndex("content_posts_slug_idx").on(table.slug),
+    index("content_posts_project_id_idx").on(table.projectId),
+    check(
+      "case_study_requires_project",
+      sql`${table.kind} <> 'case-study' OR ${table.projectId} IS NOT NULL`,
+    ),
+  ],
 );
 
 export const studioSettings = pgTable("studio_settings", {
@@ -516,6 +525,21 @@ export const clientRelations = relations(clients, ({ many }) => ({
   metrics: many(monthlyMetrics),
 }));
 
+export const projectRelations = relations(projects, ({ one, many }) => ({
+  client: one(clients, {
+    fields: [projects.clientId],
+    references: [clients.id],
+  }),
+  caseStudies: many(contentPosts),
+}));
+
+export const contentPostRelations = relations(contentPosts, ({ one }) => ({
+  project: one(projects, {
+    fields: [contentPosts.projectId],
+    references: [projects.id],
+  }),
+}));
+
 export const clientMemberRelations = relations(clientMembers, ({ one }) => ({
   client: one(clients, {
     fields: [clientMembers.clientId],
@@ -566,6 +590,8 @@ export const schema = {
   accountRelations,
   clientRelations,
   clientMemberRelations,
+  projectRelations,
+  contentPostRelations,
   invoiceRelations,
   paymentRelations,
 };

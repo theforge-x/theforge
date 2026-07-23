@@ -36,7 +36,7 @@ export function Hero() {
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <Button size="lg" variant="ember" asChild>
-            <Link href="/contact">
+            <Link href="/book">
               Book a Growth Audit <ArrowUpRight className="size-4" />
             </Link>
           </Button>
