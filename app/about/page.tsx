@@ -1,0 +1,276 @@
+import { ArrowUpRight, Flame, ShieldCheck, Target, Zap } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+
+import { Footer } from "@/components/site/footer";
+import { Navbar } from "@/components/site/navbar";
+import { PageHeader } from "@/components/site/page-header";
+import { TeamMemberCard } from "@/components/site/team-member-card";
+import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Meet the team behind theForge and discover how we build growth systems that compound.",
+};
+
+const values = [
+  {
+    icon: Target,
+    title: "Diagnosis before prescription",
+    description:
+      "We don't sell the service that pays best. We sell the fix for the constraint we actually find.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "You own what we build",
+    description:
+      "Every system is documented and handed over. If we disappeared tomorrow, it would keep running.",
+  },
+  {
+    icon: Zap,
+    title: "Speed with a floor",
+    description:
+      "We move fast, but never faster than the system can be built correctly. Rushed systems break first.",
+  },
+  {
+    icon: Flame,
+    title: "Numbers, not vibes",
+    description:
+      "Every recommendation ships with an estimated impact. Every result gets reported against it.",
+  },
+];
+
+const team = [
+  {
+    name: "Kelechi Egbuta",
+    role: "Founder",
+    image: "/about/kelechi-egbuta-3d.webp",
+    strength: "Turning ambiguity into systems",
+    summary:
+      "Kelechi sees the whole machine. He connects positioning, product, technology and revenue into one operating system—then finds the single constraint keeping it from moving. His standard is simple: strategy should survive contact with reality, and every bold idea should eventually become something a team can run, measure and own.",
+  },
+  {
+    name: "John Christopher",
+    role: "Sales & Partnerships Lead",
+    image: "/about/john-christopher-3d.webp",
+    strength: "Making value unmistakable",
+    summary:
+      "John turns conversations into clarity and relationships into momentum. He is at his best where commercial instinct meets genuine curiosity—listening beyond the brief, uncovering the real buying problem and building partnerships that make both sides stronger. For John, a great sale is never pressure; it is a well-designed decision.",
+  },
+  {
+    name: "Marvelous Miracle",
+    role: "Creative Director",
+    image: "/about/marvelous-miracle-3d.webp",
+    strength: "Giving strategy a pulse",
+    summary:
+      "Marvelous gives complex ideas a form people can feel immediately. She leads with taste, but never decoration for decoration's sake: every word, frame and interaction has a job to do. Her work turns sharp strategy into distinctive brands and digital experiences that earn attention, build trust and stay remembered.",
+  },
+];
+
+const journey = [
+  {
+    period: "Jun 2024",
+    title: "The first spark",
+    description:
+      "theForge begins with one conviction: good businesses do not need more disconnected tactics—they need a growth engine designed as a system.",
+  },
+  {
+    period: "Foundation",
+    title: "From pages to pathways",
+    description:
+      "The work moves beyond simply making websites. Brand, product, data and conversion are treated as one connected customer journey.",
+  },
+  {
+    period: "Expansion",
+    title: "The system gets wider",
+    description:
+      "Automation, CRM, sales enablement and AI become part of the build, closing the distance between attention, opportunity and revenue.",
+  },
+  {
+    period: "Today",
+    title: "Built for compounding growth",
+    description:
+      "A focused multidisciplinary team now helps ambitious companies find the constraint, forge the solution and create an engine they can own.",
+  },
+];
+
+export default function AboutPage() {
+  return (
+    <>
+      <Navbar />
+      <main className="overflow-hidden">
+        <PageHeader
+          eyebrow="About"
+          title="Growth agencies sell tactics. We build systems."
+          description="theForge was started after watching too many good businesses stall—not from a lack of effort, but from a growth engine that was never actually engineered."
+        />
+
+        <section className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div className="lg:sticky lg:top-28">
+            <div className="font-mono-eyebrow mb-4 text-[11px] uppercase text-accent">
+              The belief behind the build
+            </div>
+            <h2 className="max-w-xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+              Growth should become an asset, not a monthly emergency.
+            </h2>
+          </div>
+
+          <div className="space-y-7 text-lg leading-8 text-muted-foreground">
+            <p>
+              Most growth work is a bet on one channel and a hope that it keeps
+              working. It does, until it doesn&apos;t—an algorithm shifts, a
+              referral source dries up or a competitor changes the economics.
+              The business that built a system survives that day. The business
+              that built a tactic starts over.
+            </p>
+            <p>
+              That is why our work starts before the deliverable. We study the
+              offer, the audience, the buying journey, the handoffs and the
+              numbers. A website may be part of the answer; so might a sharper
+              narrative, a better sales process, an automated workflow or an AI
+              layer that gives a small team extraordinary leverage.
+            </p>
+            <p>
+              We work with a deliberately small number of clients. Every
+              engagement begins with a diagnostic audit and ends with something
+              useful: a clearer decision, a stronger system and a team more
+              capable than when we arrived. No borrowed playbook. No black box.
+              No dependency disguised as a retainer.
+            </p>
+          </div>
+        </section>
+
+        <section className="border-y border-border bg-secondary/25">
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+            <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <div className="max-w-3xl">
+                <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
+                  The people at the anvil
+                </div>
+                <h2 className="font-display text-4xl tracking-tight sm:text-6xl">
+                  Small team. Serious range.
+                </h2>
+              </div>
+              <p className="max-w-md text-sm leading-6 text-muted-foreground">
+                Strategy, commercial instinct and creative direction sit at the
+                same table. The result is work that is desirable, viable and
+                built to perform.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {team.map((member, index) => (
+                <TeamMemberCard
+                  key={member.name}
+                  {...member}
+                  index={String(index + 1).padStart(2, "0")}
+                />
+              ))}
+            </div>
+
+            <p className="mt-5 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">
+              Portraits are conceptual 3D interpretations created for theForge.
+            </p>
+          </div>
+        </section>
+
+        <section className="relative">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in_srgb,var(--primary)_10%,transparent),transparent_38%)]" />
+          <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
+              <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
+                Forged over time
+              </div>
+              <h2 className="font-display text-4xl tracking-tight sm:text-6xl">
+                From one conviction to a connected growth practice.
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl leading-7 text-muted-foreground">
+                The tools have expanded. The principle has not: identify the
+                constraint, build the right system and leave the business
+                stronger.
+              </p>
+            </div>
+
+            <div className="relative">
+              <div className="absolute bottom-0 left-[19px] top-0 w-px bg-gradient-to-b from-primary via-primary/50 to-border md:bottom-auto md:left-0 md:right-0 md:top-[19px] md:h-px md:w-auto" />
+              <div className="grid gap-10 md:grid-cols-4 md:gap-5">
+                {journey.map((milestone, index) => (
+                  <article
+                    key={milestone.title}
+                    className="group relative grid grid-cols-[40px_1fr] gap-5 md:block"
+                  >
+                    <div className="relative z-10 grid size-10 place-items-center rounded-full border border-primary/40 bg-background shadow-[0_0_0_7px_var(--background)] transition-[border-color,box-shadow] duration-300 group-hover:border-primary group-hover:shadow-[0_0_0_7px_var(--background),0_0_30px_var(--primary)]">
+                      <div className="size-2.5 rounded-full bg-primary" />
+                    </div>
+                    <div className="pt-0.5 md:mt-8 md:pt-0">
+                      <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+                        {String(index + 1).padStart(2, "0")} /{" "}
+                        {milestone.period}
+                      </div>
+                      <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">
+                        {milestone.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                        {milestone.description}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 py-24">
+            <div className="mb-16 max-w-2xl">
+              <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
+                How we operate
+              </div>
+              <h2 className="font-display text-4xl sm:text-5xl">
+                Four working principles.
+              </h2>
+            </div>
+
+            <div className="grid gap-8 sm:grid-cols-2">
+              {values.map((value) => (
+                <div key={value.title} className="flex gap-5">
+                  <div className="flex size-11 shrink-0 items-center justify-center rounded-md bg-secondary">
+                    <value.icon className="size-5 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold">{value.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                      {value.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-border bg-primary text-primary-foreground">
+          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-6 py-20 md:flex-row md:items-center">
+            <div className="max-w-3xl">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
+                Bring us the constraint
+              </div>
+              <h2 className="mt-4 font-display text-4xl tracking-tight sm:text-5xl">
+                Let&apos;s build the system that makes the next stage possible.
+              </h2>
+            </div>
+            <Button variant="secondary" size="lg" asChild className="shrink-0">
+              <Link href="/contact">
+                Start a conversation
+                <ArrowUpRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}

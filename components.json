@@ -1,0 +1,31 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "mira",
+  "base": "radix",
+  "baseColor": "mist",
+  "theme": "yellow",
+  "chartColor": "amber",
+  "font": "manrope",
+  "iconLibrary": "lucide",
+  "radius": "default",
+  "menuAccent": "subtle",
+  "menuColor": "default",
+  "rtl": false,
+  "preset": "b1GfWWtiS",
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "app/globals.css",
+    "baseColor": "mist",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui",
+    "lib": "@/lib",
+    "hooks": "@/hooks"
+  },
+  "iconLibraryPkg": "lucide-react"
+}
