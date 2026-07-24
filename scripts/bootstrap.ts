@@ -74,129 +74,248 @@ async function main() {
     .values({ id: "default" })
     .onConflictDoNothing();
 
-  await db
-    .insert(clients)
-    .values(
-      seedClients.map((client) => ({
-        id: client.id,
-        name: client.name,
-        contact: client.contact,
-        industry: client.industry,
-        plan: client.plan,
-        status: client.status,
-        mrrCents: client.mrr * 100,
-        currency: "USD",
-        startDate: client.startDate,
-        health: client.health,
-      })),
-    )
-    .onConflictDoNothing();
+  for (const client of seedClients) {
+    const value = {
+      id: client.id,
+      name: client.name,
+      contact: client.contact,
+      industry: client.industry,
+      plan: client.plan,
+      status: client.status,
+      mrrCents: client.mrr * 100,
+      currency: "USD",
+      startDate: client.startDate,
+      health: client.health,
+    };
+    await db
+      .insert(clients)
+      .values(value)
+      .onConflictDoUpdate({
+        target: clients.id,
+        set: {
+          name: value.name,
+          contact: value.contact,
+          industry: value.industry,
+          plan: value.plan,
+          status: value.status,
+          mrrCents: value.mrrCents,
+          currency: value.currency,
+          startDate: value.startDate,
+          health: value.health,
+        },
+      });
+  }
 
-  await db
-    .insert(projects)
-    .values(
-      seedProjects.map((project) => ({
-        id: project.id,
-        clientId: project.clientId,
-        name: project.name,
-        phase: project.phase,
-        progress: project.progress,
-        owner: project.owner,
-        dueDate: project.dueDate,
-      })),
-    )
-    .onConflictDoNothing();
+  for (const project of seedProjects) {
+    const value = {
+      id: project.id,
+      clientId: project.clientId,
+      name: project.name,
+      phase: project.phase,
+      progress: project.progress,
+      owner: project.owner,
+      dueDate: project.dueDate,
+    };
+    await db
+      .insert(projects)
+      .values(value)
+      .onConflictDoUpdate({
+        target: projects.id,
+        set: {
+          clientId: value.clientId,
+          name: value.name,
+          phase: value.phase,
+          progress: value.progress,
+          owner: value.owner,
+          dueDate: value.dueDate,
+        },
+      });
+  }
 
-  await db
-    .insert(invoices)
-    .values(
-      seedInvoices.map((invoice) => ({
-        id: invoice.id,
-        clientId: invoice.clientId,
-        amountCents: invoice.amount * 100,
-        currency: "USD",
-        status: invoice.status,
-        issued: invoice.issued,
-        due: invoice.due,
-      })),
-    )
-    .onConflictDoNothing();
+  for (const invoice of seedInvoices) {
+    const value = {
+      id: invoice.id,
+      clientId: invoice.clientId,
+      amountCents: invoice.amount * 100,
+      currency: "USD",
+      status: invoice.status,
+      issued: invoice.issued,
+      due: invoice.due,
+    };
+    await db
+      .insert(invoices)
+      .values(value)
+      .onConflictDoUpdate({
+        target: invoices.id,
+        set: {
+          clientId: value.clientId,
+          amountCents: value.amountCents,
+          currency: value.currency,
+          status: value.status,
+          issued: value.issued,
+          due: value.due,
+        },
+      });
+  }
 
-  await db
-    .insert(reports)
-    .values(
-      seedReports.map((report) => ({
-        id: report.id,
-        clientId: report.clientId,
-        title: report.title,
-        reportDate: report.date,
-        type: report.type,
-      })),
-    )
-    .onConflictDoNothing();
+  for (const report of seedReports) {
+    const value = {
+      id: report.id,
+      clientId: report.clientId,
+      title: report.title,
+      reportDate: report.date,
+      type: report.type,
+    };
+    await db
+      .insert(reports)
+      .values(value)
+      .onConflictDoUpdate({
+        target: reports.id,
+        set: {
+          clientId: value.clientId,
+          title: value.title,
+          reportDate: value.reportDate,
+          type: value.type,
+        },
+      });
+  }
 
-  await db
-    .insert(monthlyMetrics)
-    .values([
-      ...monthlyRevenue.map((metric, index) => ({
-        id: `studio-2026-${String(index + 2).padStart(2, "0")}`,
-        month: `2026-${String(index + 2).padStart(2, "0")}-01`,
-        mrrCents: metric.mrr * 100,
-        addedRevenueCents: metric.addedRevenue * 100,
-      })),
-      ...clientGrowth.map((metric, index) => ({
-        id: `onyx-2026-${String(index + 2).padStart(2, "0")}`,
-        clientId: "c-onyx",
-        month: `2026-${String(index + 2).padStart(2, "0")}-01`,
-        leads: metric.leads,
-        conversions: metric.conversions,
-      })),
-    ])
-    .onConflictDoNothing();
+  const metricValues: Array<{
+    id: string;
+    clientId: string | null;
+    month: string;
+    mrrCents: number;
+    addedRevenueCents: number;
+    leads: number;
+    conversions: number;
+  }> = [
+    ...monthlyRevenue.map((metric, index) => ({
+      id: `studio-2026-${String(index + 2).padStart(2, "0")}`,
+      clientId: null,
+      month: `2026-${String(index + 2).padStart(2, "0")}-01`,
+      mrrCents: metric.mrr * 100,
+      addedRevenueCents: metric.addedRevenue * 100,
+      leads: 0,
+      conversions: 0,
+    })),
+    ...clientGrowth.map((metric, index) => ({
+      id: `onyx-2026-${String(index + 2).padStart(2, "0")}`,
+      clientId: "c-onyx",
+      month: `2026-${String(index + 2).padStart(2, "0")}-01`,
+      mrrCents: 0,
+      addedRevenueCents: 0,
+      leads: metric.leads,
+      conversions: metric.conversions,
+    })),
+  ];
+  for (const value of metricValues) {
+    await db
+      .insert(monthlyMetrics)
+      .values(value)
+      .onConflictDoUpdate({
+        target: monthlyMetrics.id,
+        set: {
+          clientId: value.clientId,
+          month: value.month,
+          mrrCents: value.mrrCents,
+          addedRevenueCents: value.addedRevenueCents,
+          leads: value.leads,
+          conversions: value.conversions,
+        },
+      });
+  }
 
-  await db
-    .insert(contentPosts)
-    .values([
-      {
-        id: "content-acquisition-channel",
-        title: "Why one acquisition channel always fails eventually",
-        slug: "why-one-acquisition-channel-fails",
-        kind: "article",
-        status: "published",
-        excerpt:
-          "Build a resilient acquisition system before a single channel becomes a constraint.",
-        body: "Use this editor to replace this starter copy with the complete article.",
-        publishedAt: new Date("2026-07-10T00:00:00Z"),
-      },
-      {
-        id: "content-value-pricing",
-        title: "Pricing by value, not by hour: a framework",
-        slug: "pricing-by-value-framework",
-        kind: "article",
-        status: "published",
-        excerpt:
-          "A practical framework for connecting price to outcomes instead of effort.",
-        body: "Use this editor to replace this starter copy with the complete article.",
-        publishedAt: new Date("2026-06-22T00:00:00Z"),
-      },
-      {
-        id: "content-retention-system",
-        title: "The retention system most agencies skip",
-        slug: "retention-system-agencies-skip",
-        kind: "article",
-        status: "draft",
-        excerpt:
-          "A draft guide to building retention into delivery from day one.",
-        body: "Continue drafting this article in the admin content editor.",
-      },
-      ...caseStudySeeds.map((caseStudy) => ({
-        ...caseStudy,
-        kind: "case-study",
-        status: "published",
-        publishedAt: new Date("2026-07-01T00:00:00Z"),
-      })),
-    ])
-    .onConflictDoNothing();
+  const contentValues: Array<{
+    id: string;
+    title: string;
+    slug: string;
+    kind: string;
+    status: string;
+    excerpt: string;
+    body: string;
+    category: string;
+    projectId: string | null;
+    featuredImage: string | null;
+    seoTitle: string;
+    seoDescription: string;
+    publishedAt?: Date;
+  }> = [
+    {
+      id: "content-acquisition-channel",
+      title: "Why one acquisition channel always fails eventually",
+      slug: "why-one-acquisition-channel-fails",
+      kind: "article",
+      status: "published",
+      excerpt:
+        "Build a resilient acquisition system before a single channel becomes a constraint.",
+      body: "Use this editor to replace this starter copy with the complete article.",
+      category: "Strategy",
+      projectId: null,
+      featuredImage: null,
+      seoTitle: "",
+      seoDescription: "",
+      publishedAt: new Date("2026-07-10T00:00:00Z"),
+    },
+    {
+      id: "content-value-pricing",
+      title: "Pricing by value, not by hour: a framework",
+      slug: "pricing-by-value-framework",
+      kind: "article",
+      status: "published",
+      excerpt:
+        "A practical framework for connecting price to outcomes instead of effort.",
+      body: "Use this editor to replace this starter copy with the complete article.",
+      category: "Strategy",
+      projectId: null,
+      featuredImage: null,
+      seoTitle: "",
+      seoDescription: "",
+      publishedAt: new Date("2026-06-22T00:00:00Z"),
+    },
+    {
+      id: "content-retention-system",
+      title: "The retention system most agencies skip",
+      slug: "retention-system-agencies-skip",
+      kind: "article",
+      status: "draft",
+      excerpt:
+        "A draft guide to building retention into delivery from day one.",
+      body: "Continue drafting this article in the admin content editor.",
+      category: "Strategy",
+      projectId: null,
+      featuredImage: null,
+      seoTitle: "",
+      seoDescription: "",
+    },
+    ...caseStudySeeds.map((caseStudy) => ({
+      ...caseStudy,
+      kind: "case-study",
+      status: "published",
+      publishedAt: new Date("2026-07-01T00:00:00Z"),
+    })),
+  ];
+  for (const value of contentValues) {
+    await db
+      .insert(contentPosts)
+      .values(value)
+      .onConflictDoUpdate({
+        target: contentPosts.id,
+        set: {
+          title: value.title,
+          slug: value.slug,
+          kind: value.kind,
+          status: value.status,
+          excerpt: value.excerpt,
+          body: value.body,
+          category: value.category,
+          projectId: value.projectId,
+          featuredImage: value.featuredImage,
+          seoTitle: value.seoTitle,
+          seoDescription: value.seoDescription,
+          publishedAt: value.publishedAt,
+        },
+      });
+  }
 
   await ensureUser({
     name: required("BOOTSTRAP_ADMIN_NAME"),

@@ -45,20 +45,29 @@ export function Hero() {
           </Button>
         </div>
 
-        <dl className="mt-16 grid w-full max-w-2xl grid-cols-3 gap-6 border-t border-border/60 pt-8">
+        <dl className="mt-16 grid w-full max-w-3xl grid-cols-4 gap-6 border-t border-border/60 pt-8">
           <div>
-            <dt className="sr-only">Businesses forged</dt>
+            <dt className="sr-only">Clients onboarded</dt>
+            <dd className="font-display text-3xl text-foreground sm:text-4xl">
+              20+
+            </dd>
+            <dd className="text-muted-foreground mt-1 text-xs">
+              clients onboarded
+            </dd>
+          </div>
+          <div>
+            <dt className="sr-only">Projects forged</dt>
             <dd className="font-display text-3xl text-foreground sm:text-4xl">
               120+
             </dd>
             <dd className="text-muted-foreground mt-1 text-xs">
-              businesses forged
+              projects forged
             </dd>
           </div>
           <div>
             <dt className="sr-only">Revenue added</dt>
             <dd className="font-display text-3xl text-foreground sm:text-4xl">
-              $6.4M+
+              $1.2M+
             </dd>
             <dd className="text-muted-foreground mt-1 text-xs">
               added to client revenue
@@ -67,7 +76,7 @@ export function Hero() {
           <div>
             <dt className="sr-only">Weeks to breakthrough</dt>
             <dd className="font-display text-3xl text-foreground sm:text-4xl">
-              9
+              10
             </dd>
             <dd className="text-muted-foreground mt-1 text-xs">
               avg. weeks to breakthrough

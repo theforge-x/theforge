@@ -1,8 +1,28 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
+import { Bricolage_Grotesque, DM_Mono, Manrope } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const dm = DM_Mono({
+  variable: "--font-dm",
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const bric = Bricolage_Grotesque({
+  variable: "--font-bric",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const siteUrl =
   process.env.NEXT_PUBLIC_APP_URL ??
@@ -67,7 +87,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className="h-full"
+      className={`${manrope.variable} ${dm.variable} ${bric.variable} h-full`}
     >
       <body className="min-h-full flex flex-col antialiased">
         <ThemeProvider

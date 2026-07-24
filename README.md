@@ -1,7 +1,9 @@
 # The Forge
 
-The Forge is a full-stack growth studio application with a public marketing
-site, an authenticated client portal, and a role-protected admin workspace.
+The Forge is a full-stack growth studio application with a conversion-focused
+public marketing site, an authenticated client portal, and a role-protected
+admin workspace. The public site includes growth-audit booking, broad contact
+enquiries, case studies, field notes, and an interactive website prompt builder.
 
 ## Stack
 
@@ -11,6 +13,7 @@ site, an authenticated client portal, and a role-protected admin workspace.
 - Stripe Checkout and Paystack Redirect Checkout
 - Tailwind CSS 4, Radix UI, Recharts, Lucide, and Sonner
 - Biome for linting and formatting
+- Vercel Analytics, dynamic metadata, `robots.txt`, and `sitemap.xml` support
 
 ## Local setup
 
@@ -68,6 +71,29 @@ Open [http://localhost:3000](http://localhost:3000).
 | `BOOTSTRAP_*` | One-time initial admin/client names, emails, and passwords |
 
 Never expose provider secret keys through `NEXT_PUBLIC_*` variables.
+
+## Public marketing experience
+
+The public marketing site includes:
+
+- A homepage hero, client logo carousel, predictable-growth narrative, process, services, case studies, pricing, testimonials, and CTA sections;
+- a multi-step website prompt builder at `/services` that generates a copyable HTML-site brief for Claude, ChatGPT, or another AI coding agent;
+- recent published blog posts displayed on the homepage and linked to `/blog/[slug]`;
+- team, values, and studio-history sections on `/about`;
+- a broad enquiry flow at `/contact` with service categories, fit guidance, and FAQs; and
+- a dedicated growth-audit booking flow at `/book` with audit-specific preparation guidance and FAQs.
+
+The contact form does not automatically promise a growth audit. General enquiries are reviewed and routed to the most useful next conversation, while `/book` is reserved for growth-audit requests.
+
+## Search engine optimization
+
+The root metadata defines the site URL, title template, descriptions, Open Graph and Twitter cards, keywords, and crawler directives. The App Router exposes:
+
+- `/robots.txt`, which allows public pages and blocks private application, API, sales, proposal, and demo routes;
+- `/sitemap.xml`, which includes the public marketing routes plus published blog posts and case studies; and
+- article and case-study metadata generated from their SEO title, description, and featured image fields.
+
+Set `NEXT_PUBLIC_APP_URL` to the production origin so metadata, robots, sitemap, and provider return URLs use the correct domain.
 
 ## Authentication and roles
 
@@ -155,13 +181,25 @@ processed transactionally so retries do not fulfill an invoice twice.
 
 | Area | Routes |
 | --- | --- |
-| Marketing | `/`, `/services`, `/work`, `/about`, `/contact`, `/blog`, `/blog/[slug]` |
+| Marketing | `/`, `/services`, `/work`, `/about`, `/contact`, `/book`, `/blog`, `/blog/[slug]`, `/work/[slug]` |
+| SEO | `/robots.txt`, `/sitemap.xml` |
 | Authentication | `/login`, `/api/auth/[...all]` |
 | Client | `/portal`, `/portal/projects`, `/portal/reports`, `/portal/invoices`, `/portal/settings` |
 | Admin | `/admin`, `/admin/clients`, `/admin/clients/[id]`, `/admin/enquiries`, `/admin/appointments`, `/admin/users`, `/admin/projects`, `/admin/content`, `/admin/settings` |
 | Sales | `/sales`, `/sales/leads`, `/sales/quotes`, `/sales/demos` |
 | Shared sales assets | `/proposal/[token]`, `/demo/[token]` |
 | Billing API | `/api/billing/checkout`, `/api/billing/stripe/webhook`, `/api/billing/paystack/webhook`, `/api/billing/paystack/callback` |
+
+## Deployment
+
+The app is compatible with Vercel and Neon PostgreSQL. Vercel detects the Next.js application automatically. Configure `DATABASE_URL` with the Neon pooled connection string, then apply the checked-in migrations before serving production traffic:
+
+```bash
+npm run db:migrate
+npx vercel --prod
+```
+
+Set `BETTER_AUTH_URL` and `NEXT_PUBLIC_APP_URL` to the deployed origin. Provider webhook URLs must also use that origin. Remove one-time `BOOTSTRAP_*` passwords from the deployed environment after initial setup.
 
 ## Sidebar behavior
 

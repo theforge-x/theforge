@@ -1,18 +1,19 @@
 import { logos } from "@/lib/data";
 
-export function LogoTicker() {
-  const doubled = [...logos, ...logos];
+export function LogoTicker({ items = logos }: { items?: string[] }) {
+  const displayItems = items.length ? items : logos;
+  const doubled = [...displayItems, ...displayItems];
 
   return (
     <section className="border-border bg-forge-black overflow-hidden border-y py-6">
       <div className="flex w-max animate-marquee items-center gap-12">
-        {doubled.map((logo, i) => (
+        {doubled.map((item, i) => (
           <span
             // biome-ignore lint/suspicious/noArrayIndexKey: duplicated static list for seamless loop
-            key={`${logo}-${i}`}
+            key={`${item}-${i}`}
             className="font-display text-muted-foreground/70 shrink-0 text-xl tracking-wide whitespace-nowrap"
           >
-            {logo}
+            {item}
           </span>
         ))}
       </div>
