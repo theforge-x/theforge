@@ -34,9 +34,13 @@ export function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
           className="-mx-6 overflow-x-auto px-6 pb-2 [overscroll-behavior-inline:contain] lg:mx-0 lg:overflow-visible lg:px-0"
           aria-label="Filter work by category"
         >
-          <TabsList className="mx-auto h-auto min-w-max flex-nowrap lg:min-w-0 lg:max-w-full lg:flex-wrap lg:justify-center">
+          <TabsList className="mx-auto h-auto min-w-max flex-nowrap bg-transparent lg:min-w-0 lg:max-w-auto lg:flex-wrap lg:justify-center">
             {tags.map((tag) => (
-              <TabsTrigger key={tag} value={tag} className="h-8 flex-none">
+              <TabsTrigger
+                key={tag}
+                value={tag}
+                className="h-8 flex-none data-[state=active]:bg-primary/10 data-[state=active]:text-primary"
+              >
                 {tag}
               </TabsTrigger>
             ))}

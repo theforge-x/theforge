@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { ConstraintCTA } from "@/components/site/constraint-cta";
 import { ContentBody } from "@/components/site/content-body";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
@@ -67,6 +68,7 @@ export default async function BlogPostPage({
           ) : null}
           <ContentBody body={post.body} />
         </article>
+        <ConstraintCTA />
       </main>
       <Footer />
     </>

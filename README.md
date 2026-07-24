@@ -1,6 +1,6 @@
-# The Forge
+# theForge
 
-The Forge is a full-stack growth studio application with a conversion-focused
+theForge is a full-stack growth studio application with a conversion-focused
 public marketing site, an authenticated client portal, and a role-protected
 admin workspace. The public site includes growth-audit booking, broad contact
 enquiries, case studies, field notes, and an interactive website prompt builder.

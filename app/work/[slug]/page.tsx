@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ContentBody } from "@/components/site/content-body";
+import { CTASection } from "@/components/site/cta-section";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { Badge } from "@/components/ui/badge";
@@ -73,6 +74,7 @@ export default async function WorkDetailPage({
 
           <ContentBody body={post.body} />
         </article>
+        <CTASection />
       </main>
       <Footer />
     </>
