@@ -26,8 +26,8 @@ const tiers = [
     id: "build",
     name: "The Forge Build",
     subtitle: "The complete growth transformation",
-    price: "From $4,500",
-    period: "6–10 week build",
+    price: "From $499",
+    period: "2–10 week build",
     description:
       "Every constraint from the audit gets an engineered fix — acquisition, offer, pricing, retention, referral.",
     features: [
@@ -43,7 +43,7 @@ const tiers = [
     id: "partner",
     name: "The Temper",
     subtitle: "Monthly growth partnership",
-    price: "From $1,800/mo",
+    price: "From $99/mo",
     period: "ongoing",
     description:
       "The systems are live. This keeps them compounding — new channels, iteration, and priority access.",

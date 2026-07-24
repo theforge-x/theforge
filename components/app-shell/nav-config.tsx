@@ -2,6 +2,7 @@ import {
   CalendarClock,
   FileText,
   FolderKanban,
+  GraduationCap,
   LayoutDashboard,
   MessagesSquare,
   Newspaper,
@@ -46,6 +47,11 @@ export const adminNav: NavItem[] = [
 
 export const salesNav: NavItem[] = [
   { title: "Sales dashboard", href: "/sales", icon: <LayoutDashboard /> },
+  {
+    title: "Certification",
+    href: "/sales/onboarding",
+    icon: <GraduationCap />,
+  },
   { title: "Leads", href: "/sales/leads", icon: <Users /> },
   { title: "Quotes", href: "/sales/quotes", icon: <ScrollText /> },
   { title: "Website demos", href: "/sales/demos", icon: <Presentation /> },

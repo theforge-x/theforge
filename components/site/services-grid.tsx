@@ -223,7 +223,7 @@ function ProductVisual() {
             ))}
           </div>
           <div className="relative overflow-hidden rounded-md bg-gradient-to-br from-gold/25 to-ember/10">
-            <div className="capability-scan absolute inset-x-0 h-px bg-gold shadow-[0_0_14px_var(--gold)]" />
+            <div className="capability-scan absolute inset-x-0 top-1/2 h-px bg-gold shadow-[0_0_14px_var(--gold)]" />
             <div className="absolute bottom-3 left-3 right-3 grid grid-cols-3 gap-2">
               <span className="h-8 rounded bg-black/25" />
               <span className="h-12 -translate-y-4 rounded bg-gold/30" />
