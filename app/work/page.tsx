@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
 
+import { ConstraintCTA } from "@/components/site/constraint-cta";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { PageHeader } from "@/components/site/page-header";
@@ -25,6 +26,7 @@ export default async function WorkPage() {
           description="Every engagement below started with the same audit process and ended with a documented, owned system."
         />
         <WorkGrid caseStudies={caseStudies} />
+        <ConstraintCTA />
       </main>
       <Footer />
     </>

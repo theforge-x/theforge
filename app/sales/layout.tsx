@@ -1,7 +1,8 @@
+import { LayoutDashboard } from "lucide-react";
 import type { Metadata } from "next";
 import { AppShell } from "@/components/app-shell/app-shell";
 import { salesNav } from "@/components/app-shell/nav-config";
-import { requireAnyRole } from "@/lib/auth-session";
+import { hasRole, requireAnyRole } from "@/lib/auth-session";
 
 export const metadata: Metadata = {
   title: { default: "Sales", template: "%s · Sales · The Forge" },
@@ -18,11 +19,21 @@ export default async function SalesLayout({
     .join("")
     .slice(0, 2)
     .toUpperCase();
+  const navItems = hasRole(session.user.role, "admin")
+    ? [
+        {
+          title: "Main dashboard",
+          href: "/admin",
+          icon: <LayoutDashboard />,
+        },
+        ...salesNav,
+      ]
+    : salesNav;
   return (
     <AppShell
       roleLabel="Sales"
       navLabel="Enablement"
-      navItems={salesNav}
+      navItems={navItems}
       userName={session.user.name}
       userSubtitle="Sales workspace"
       userInitials={initials}

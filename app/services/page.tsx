@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 
+import { ConstraintCTA } from "@/components/site/constraint-cta";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { PageHeader } from "@/components/site/page-header";
 import { PricingTiers } from "@/components/site/pricing-tiers";
 import { ProcessSection } from "@/components/site/process-section";
 import { ServicesGrid } from "@/components/site/services-grid";
+import { WebsitePromptBuilder } from "@/components/site/website-prompt-builder";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -25,7 +27,9 @@ export default function ServicesPage() {
         />
         <ServicesGrid />
         <ProcessSection />
+        <WebsitePromptBuilder />
         <PricingTiers />
+        <ConstraintCTA />
       </main>
       <Footer />
     </>

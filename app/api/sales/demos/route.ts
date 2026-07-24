@@ -8,20 +8,47 @@ import { getSalesApiSession } from "@/lib/sales-auth";
 
 const block = z.object({
   id: z.string(),
-  type: z.enum(["hero", "features", "proof", "cta", "footer"]),
+  type: z.enum([
+    "hero",
+    "features",
+    "proof",
+    "cta",
+    "footer",
+    "stats",
+    "process",
+    "pricing",
+    "faq",
+    "gallery",
+    "html",
+  ]),
+  eyebrow: z.string().max(100).optional(),
   title: z.string().max(300),
   body: z.string().max(2000),
   button: z.string().max(100).optional(),
+  buttonHref: z.string().max(500).optional(),
+  items: z.array(z.string().max(300)).max(12).optional(),
+  meta: z.string().max(160).optional(),
+  html: z.string().max(1_000_000).optional(),
 });
 const brand = z.object({
   primary: z.string().regex(/^#[0-9a-fA-F]{6}$/),
   accent: z.string().regex(/^#[0-9a-fA-F]{6}$/),
   background: z.string().regex(/^#[0-9a-fA-F]{6}$/),
+  text: z
+    .string()
+    .regex(/^#[0-9a-fA-F]{6}$/)
+    .optional(),
+  muted: z
+    .string()
+    .regex(/^#[0-9a-fA-F]{6}$/)
+    .optional(),
   font: z
     .string()
     .max(80)
     .regex(/^[a-zA-Z0-9 ,'-]+$/),
   logo: z.string().max(500000).optional(),
+  radius: z.enum(["0px", "6px", "12px", "18px", "28px"]).optional(),
+  style: z.enum(["minimal", "editorial", "bold", "soft"]).optional(),
 });
 const schema = z.object({
   id: z.string().optional(),

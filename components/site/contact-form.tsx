@@ -51,7 +51,7 @@ export function ContactForm() {
         <h3 className="font-display text-2xl">Message received.</h3>
         <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
           Someone from the studio will follow up within one business day to
-          schedule your audit.
+          understand what you need and recommend the right next step.
         </p>
       </div>
     );

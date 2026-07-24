@@ -29,14 +29,19 @@ export function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-20">
-      <Tabs value={active} onValueChange={setActive} className="mb-12">
-        <TabsList className="flex-wrap">
-          {tags.map((tag) => (
-            <TabsTrigger key={tag} value={tag}>
-              {tag}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+      <Tabs value={active} onValueChange={setActive} className="mb-12 min-w-0">
+        <section
+          className="-mx-6 overflow-x-auto px-6 pb-2 [overscroll-behavior-inline:contain] lg:mx-0 lg:overflow-visible lg:px-0"
+          aria-label="Filter work by category"
+        >
+          <TabsList className="mx-auto h-auto min-w-max flex-nowrap lg:min-w-0 lg:max-w-full lg:flex-wrap lg:justify-center">
+            {tags.map((tag) => (
+              <TabsTrigger key={tag} value={tag} className="h-8 flex-none">
+                {tag}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </section>
       </Tabs>
 
       <div className="grid gap-6 md:grid-cols-2">

@@ -1,31 +1,53 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, DM_Mono, Manrope } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
-//Funnel_Sans,Geist
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const dm = DM_Mono({
-  variable: "--font-dm",
-  weight: "400",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const bric = Bricolage_Grotesque({
-  variable: "--font-bric",
-  subsets: ["latin"],
-  display: "swap",
-});
+const siteUrl =
+  process.env.NEXT_PUBLIC_APP_URL ??
+  process.env.BETTER_AUTH_URL ??
+  "http://localhost:3000";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  applicationName: "theForge",
+  authors: [{ name: "theForge" }],
+  creator: "theForge",
+  publisher: "theForge",
+  keywords: [
+    "growth systems",
+    "growth strategy",
+    "digital product studio",
+    "AI automation",
+    "revenue operations",
+    "conversion optimization",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "theForge",
+    title: "theForge · Growth Systems Studio",
+    description:
+      "Diagnose the constraint stalling your growth, build the system to fix it, and create an engine that compounds.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "theForge · Growth Systems Studio",
+    description:
+      "Diagnose the constraint stalling your growth, build the system to fix it, and create an engine that compounds.",
+  },
   icons: { icon: "/logo_sq_anv.svg" },
   title: {
     default: "theForge · Growth Systems Studio",
@@ -45,7 +67,7 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${manrope.variable} ${dm.variable} ${bric.variable} h-full`}
+      className="h-full"
     >
       <body className="min-h-full flex flex-col antialiased">
         <ThemeProvider
@@ -58,6 +80,7 @@ export default function RootLayout({
           {children}
           <Toaster position="bottom-right" />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

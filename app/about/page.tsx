@@ -1,12 +1,12 @@
-import { ArrowUpRight, Flame, ShieldCheck, Target, Zap } from "lucide-react";
+import { Flame, ShieldCheck, Target, Zap } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 
+import { ConstraintCTA } from "@/components/site/constraint-cta";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { PageHeader } from "@/components/site/page-header";
 import { TeamMemberCard } from "@/components/site/team-member-card";
-import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About",
@@ -65,6 +65,33 @@ const team = [
     strength: "Giving strategy a pulse",
     summary:
       "Marvelous gives complex ideas a form people can feel immediately. She leads with taste, but never decoration for decoration's sake: every word, frame and interaction has a job to do. Her work turns sharp strategy into distinctive brands and digital experiences that earn attention, build trust and stay remembered.",
+  },
+];
+
+const extendedTeam = [
+  {
+    name: "Praise Karachi",
+    role: "Brand & Content Strategist",
+    image: "/about/john-christopher-3d.webp",
+    bio: "Praise turns positioning into a point of view people can recognize, trust and remember. He shapes the stories, editorial systems and content that give every growth move a clear voice.",
+  },
+  {
+    name: "Caleb Onyenaturuchi",
+    role: "Project Operations Lead",
+    image: "/about/marvelous-miracle-3d.webp",
+    bio: "Caleb keeps ambitious work moving with calm precision. He connects people, priorities and timelines so the right work gets done well and every handoff feels intentional.",
+  },
+  {
+    name: "Chioma Favour",
+    role: "Client Success Manager",
+    image: "/about/kelechi-egbuta-3d.webp",
+    bio: "Chioma makes sure the work creates momentum beyond launch. She translates client goals into clear next steps, protects the partnership and keeps outcomes in view.",
+  },
+  {
+    name: "Joshua Prince",
+    role: "Marketing & Conversion Lead",
+    image: "/about/john-christopher-3d.webp",
+    bio: "Joshua bridges attention and action. He finds the friction in the customer journey and turns sharper messaging, journeys and experiments into measurable movement.",
   },
 ];
 
@@ -175,6 +202,64 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <section className="border-b border-border bg-background">
+          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
+            <div className="mb-14 max-w-2xl">
+              <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
+                More hands at the anvil
+              </div>
+              <h2 className="font-display text-4xl tracking-tight sm:text-6xl">
+                The details that make the system hold.
+              </h2>
+              <p className="mt-5 max-w-xl leading-7 text-muted-foreground">
+                Every strong build depends on thoughtful people behind the
+                scenes, turning strategy into consistent momentum for our
+                clients.
+              </p>
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              {extendedTeam.map((member, index) => (
+                <article
+                  key={member.name}
+                  className="group flex aspect-square flex-col justify-between rounded-2xl border border-border/70 bg-card p-6 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_70px_-42px_var(--primary)] motion-reduce:transform-none motion-reduce:transition-none"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="relative size-24 shrink-0 overflow-hidden rounded-full border border-primary/30 bg-secondary shadow-[0_0_0_6px_color-mix(in_srgb,var(--primary)_8%,transparent),0_12px_35px_-16px_var(--primary)]">
+                      <Image
+                        src={member.image}
+                        alt={`Conceptual 3D portrait of ${member.name}`}
+                        fill
+                        sizes="96px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
+                      />
+                    </div>
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/70">
+                      {String(index + 4).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                      {member.role}
+                    </div>
+                    <h3 className="mt-2 font-display text-2xl tracking-tight">
+                      {member.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                      {member.bio}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <p className="mt-5 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">
+              Additional portraits are conceptual 3D interpretations created for
+              theForge.
+            </p>
+          </div>
+        </section>
+
         <section className="relative">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,color-mix(in_srgb,var(--primary)_10%,transparent),transparent_38%)]" />
           <div className="relative mx-auto max-w-7xl px-6 py-24 sm:py-32">
@@ -251,24 +336,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-t border-border bg-primary text-primary-foreground">
-          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-6 py-20 md:flex-row md:items-center">
-            <div className="max-w-3xl">
-              <div className="font-mono text-[10px] uppercase tracking-[0.2em] opacity-70">
-                Bring us the constraint
-              </div>
-              <h2 className="mt-4 font-display text-4xl tracking-tight sm:text-5xl">
-                Let&apos;s build the system that makes the next stage possible.
-              </h2>
-            </div>
-            <Button variant="secondary" size="lg" asChild className="shrink-0">
-              <Link href="/contact">
-                Start a conversation
-                <ArrowUpRight className="size-4" />
-              </Link>
-            </Button>
-          </div>
-        </section>
+        <ConstraintCTA />
       </main>
       <Footer />
     </>

@@ -29,7 +29,7 @@ export default async function ContactPage() {
         <PageHeader
           eyebrow="Contact"
           title="Tell us where growth stalled."
-          description="A quick note is enough to get started — we'll follow up to schedule the audit."
+          description="Tell us what you are working through, and we will help identify the most useful next conversation."
         />
 
         <section className="mx-auto max-w-5xl px-6 py-24">
@@ -38,9 +38,17 @@ export default async function ContactPage() {
               <div>
                 <h2 className="font-display text-2xl">What happens next</h2>
                 <ol className="text-muted-foreground mt-4 flex flex-col gap-3 text-sm leading-relaxed">
-                  <li>1. We review your note and confirm fit within a day.</li>
-                  <li>2. We schedule your 30-minute growth audit.</li>
-                  <li>3. You leave with a ranked, written action plan.</li>
+                  <li>
+                    1. We review your note and reply within one business day.
+                  </li>
+                  <li>
+                    2. We clarify what you need and point you to the right next
+                    conversation.
+                  </li>
+                  <li>
+                    3. If there is a fit, we align on scope, timing and the best
+                    way to move forward.
+                  </li>
                 </ol>
               </div>
               <div className="border-border flex flex-col gap-3 border-t pt-6">

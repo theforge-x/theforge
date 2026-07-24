@@ -33,6 +33,41 @@ const questions = [
     answer:
       "Yes. The Forge is remote-first and works across US and UK time zones, with a documented, asynchronous process that keeps projects moving between live sessions.",
   },
+  {
+    question: "What should I include in my message?",
+    answer:
+      "Share what you are trying to achieve, what feels stuck, any relevant timing, and the kind of help you think you need. A rough note is enough—we can ask for more detail if it is useful.",
+  },
+  {
+    question: "What happens after I send an enquiry?",
+    answer:
+      "We review your note and reply within one business day. We may ask a clarifying question or recommend a conversation based on whether you need strategy, design, engineering, marketing, automation, or a connected system.",
+  },
+  {
+    question: "Do I have to book a growth audit?",
+    answer:
+      "No. The contact form is for a broad range of reasons, including a focused project, a partnership conversation, or a question about how we work. We will recommend an audit only when it is the most useful next step.",
+  },
+  {
+    question: "Can you help if I know the project but not the solution?",
+    answer:
+      "Yes. That is often where we add the most value. We can help clarify the constraint, define the right scope, and identify the smallest useful build before discussing a larger engagement.",
+  },
+  {
+    question: "Can you scope a focused project?",
+    answer:
+      "Yes. We can scope a focused website, product, brand, campaign, automation, AI workflow, or revenue improvement when that is the clearest problem to solve.",
+  },
+  {
+    question: "What happens if we are not the right fit?",
+    answer:
+      "We will say so plainly rather than force a service into the conversation. When possible, we will point you toward a more appropriate next step or type of partner.",
+  },
+  {
+    question: "How soon can a project start?",
+    answer:
+      "Start timing depends on the kind of work, the scope, and current studio capacity. We will give you a realistic view after understanding the problem and the decision timeline.",
+  },
 ];
 
 export function ContactFaq() {

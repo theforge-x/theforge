@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { connection } from "next/server";
 import { AppointmentForm } from "@/components/site/appointment-form";
+import { BookFaq } from "@/components/site/book-faq";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
 import { PageHeader } from "@/components/site/page-header";
@@ -50,6 +51,7 @@ export default async function BookPage() {
 
           <AppointmentForm duration={settings.appointmentDuration} />
         </section>
+        <BookFaq />
       </main>
       <Footer />
     </>
