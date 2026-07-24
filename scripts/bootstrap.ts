@@ -299,7 +299,7 @@ async function main() {
       .insert(contentPosts)
       .values(value)
       .onConflictDoUpdate({
-        target: contentPosts.id,
+        target: contentPosts.slug,
         set: {
           title: value.title,
           slug: value.slug,
