@@ -577,7 +577,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
         <DialogContent className="h-[calc(100dvh-1rem)] max-h-[calc(100dvh-1rem)] w-[calc(100vw-1rem)] grid-rows-[minmax(0,1fr)] gap-0 overflow-hidden p-0 sm:h-[96dvh] sm:max-h-[96dvh] sm:max-w-[1180px]">
           {draft ? (
             <div className="flex h-full min-h-0 flex-col overflow-hidden">
-              <DialogHeader className="border-border shrink-0 border-b px-5 py-4 sm:px-6">
+              <DialogHeader className="border-border/50 shrink-0 border-b px-5 py-4 sm:px-6">
                 <div className="flex flex-col gap-3 pr-7 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pr-0">
                   <div>
                     <DialogTitle>Forge proposal builder</DialogTitle>
@@ -601,7 +601,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                   </div>
                 </div>
               </DialogHeader>
-              <div className="border-border bg-secondary/30 shrink-0 border-b px-5 py-3">
+              <div className="border-border/50 bg-secondary/30 shrink-0 border-b px-5 py-3">
                 <ol
                   className="mx-auto flex max-w-4xl gap-1"
                   aria-label="Quote progress"
@@ -823,7 +823,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                                 onClick={() =>
                                   applyPackage(item.items, item.name)
                                 }
-                                className="border-border hover:border-primary/60 bg-card relative rounded-xl border p-5 text-left transition-all hover:shadow-sm"
+                                className="border-border/50 hover:border-primary/60 bg-card relative rounded-xl border p-5 text-left transition-all hover:shadow-sm"
                               >
                                 {item.popular ? (
                                   <Badge
@@ -866,7 +866,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                             );
                           })}
                         </div>
-                        <div className="border-border rounded-lg border p-4">
+                        <div className="border-border/50 rounded-lg border p-4">
                           <div className="flex items-center justify-between gap-3">
                             <div>
                               <div className="text-sm font-medium">
@@ -939,7 +939,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                           {draft.items.map((item) => (
                             <div
                               key={item.id}
-                              className="border-border bg-card grid gap-3 rounded-lg border p-4 md:grid-cols-[1fr_90px_140px_130px_36px]"
+                              className="border-border/50 bg-card grid gap-3 rounded-lg border p-4 md:grid-cols-[1fr_90px_140px_130px_36px]"
                             >
                               <div className="grid gap-2">
                                 <Input
@@ -1020,7 +1020,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                           ))}
                         </div>
                         {!draft.items.length ? (
-                          <div className="border-border text-muted-foreground rounded-lg border border-dashed p-10 text-center text-sm">
+                          <div className="border-border/50 text-muted-foreground rounded-lg border border-dashed p-10 text-center text-sm">
                             Choose a package, open the catalog, or add a custom
                             item.
                           </div>
@@ -1105,7 +1105,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                             saying yes.
                           </p>
                         </div>
-                        <div className="border-border bg-card overflow-hidden rounded-xl border">
+                        <div className="border-border/50 bg-card overflow-hidden rounded-xl border">
                           <div className="bg-forge-black px-6 py-8 text-white">
                             <div className="text-gold text-[10px] font-semibold uppercase tracking-[.18em]">
                               Prepared for {draft.company || "the prospect"}
@@ -1220,8 +1220,8 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                   </div>
                 </div>
 
-                <aside className="border-border bg-card hidden min-h-0 border-l lg:flex lg:flex-col">
-                  <div className="border-border border-b p-5">
+                <aside className="border-border/50 bg-card hidden min-h-0 border-l lg:flex lg:flex-col">
+                  <div className="border-border/50 border-b p-5">
                     <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-[.15em]">
                       Live quote
                     </div>
@@ -1262,7 +1262,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                       ))}
                     </div>
                   </div>
-                  <div className="border-border space-y-3 border-t p-5">
+                  <div className="border-border/50 space-y-3 border-t p-5">
                     <div className="flex justify-between text-xs">
                       <span className="text-muted-foreground">
                         Project subtotal
@@ -1295,7 +1295,7 @@ export function QuoteBuilder({ quotes }: { quotes: Quote[] }) {
                 </aside>
               </div>
 
-              <div className="border-border bg-background flex shrink-0 flex-col-reverse gap-2 border-t px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="border-border/50 bg-background flex shrink-0 flex-col-reverse gap-2 border-t px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
                 <Button
                   type="button"
                   variant="ghost"
@@ -1383,7 +1383,7 @@ function Choice({
               "rounded-full border px-3 py-1.5 text-xs transition-colors",
               value === option
                 ? "border-primary bg-primary text-primary-foreground"
-                : "border-border hover:border-primary/50",
+                : "border-border/50 hover:border-primary/50",
             )}
           >
             {option}

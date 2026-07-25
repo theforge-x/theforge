@@ -47,7 +47,7 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="border-border bg-card rounded-lg border p-10 text-center">
+      <div className="border-border/50 bg-card rounded-lg border p-10 text-center">
         <h3 className="font-display text-2xl">Message received.</h3>
         <p className="text-muted-foreground mt-3 text-sm leading-relaxed">
           Someone from the studio will follow up within one business day to
@@ -60,7 +60,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="border-border bg-card flex flex-col gap-5 rounded-lg border p-8"
+      className="border-border/50 bg-card flex flex-col gap-5 rounded-lg border p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">

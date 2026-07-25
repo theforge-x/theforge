@@ -60,7 +60,7 @@ const questions = [
 
 export function BookFaq() {
   return (
-    <section className="border-border border-t">
+    <section className="border-border/50 border-t">
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="max-w-md">
           <div className="font-mono-eyebrow text-accent text-[11px] uppercase">
@@ -76,7 +76,7 @@ export function BookFaq() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="border-border border-t">
+        <Accordion type="single" collapsible className="border-border/50 border-t">
           {questions.map((item, index) => (
             <AccordionItem key={item.question} value={`question-${index + 1}`}>
               <AccordionTrigger className="py-5 text-base">

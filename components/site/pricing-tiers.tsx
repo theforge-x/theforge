@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils";
 const tiers = [
   {
     id: "audit",
-    name: "The Spark",
+    name: "Spark Audit",
     subtitle: "The diagnostic entry point",
     price: "From $0",
     period: "30-minute audit",
     description:
-      "A structured session that maps every constraint across your growth system. You leave with a ranked action plan.",
+      "A deep-dive diagnostic session designed to map every bottleneck across your growth architecture. You walk away with a prioritized, high-yield action plan built for immediate execution.",
     features: [
       "Full growth-constraint diagnostic",
       "Acquisition & conversion gap analysis",
@@ -24,12 +24,12 @@ const tiers = [
   },
   {
     id: "build",
-    name: "The Forge Build",
+    name: "Forge Build",
     subtitle: "The complete growth transformation",
     price: "From $499",
     period: "2–10 week build",
     description:
-      "Every constraint from the audit gets an engineered fix — acquisition, offer, pricing, retention, referral.",
+      "From acquisition mechanics and offer architecture to pricing, retention, and referral loops—every bottleneck identified during our audit receives a purpose-built, engineered solution.",
     features: [
       "Multi-channel acquisition system, built",
       "Offer repositioning & pricing restructure",
@@ -41,12 +41,12 @@ const tiers = [
   },
   {
     id: "partner",
-    name: "The Temper",
+    name: "Temper Partner",
     subtitle: "Monthly growth partnership",
     price: "From $99/mo",
     period: "ongoing",
     description:
-      "The systems are live. This keeps them compounding — new channels, iteration, and priority access.",
+      "With your systems live, we focus on continuous compounding—unlocking new growth channels, refining performance through iteration, and providing priority support.",
     features: [
       "Monthly growth architecture review",
       "New channel development",
@@ -79,7 +79,7 @@ export function PricingTiers() {
               "flex flex-col gap-6 rounded-lg border p-8",
               tier.featured
                 ? "border-accent bg-card shadow-accent/10 relative shadow-lg lg:-translate-y-3"
-                : "border-border bg-card",
+                : "border-border/50 bg-card",
             )}
           >
             {tier.featured && (

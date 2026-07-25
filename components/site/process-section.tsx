@@ -41,7 +41,7 @@ export function ProcessSection() {
         </p>
       </div>
 
-      <div className="grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-3">
+      <div className="grid gap-px overflow-hidden rounded-lg border border-border/50 bg-border md:grid-cols-3">
         {phases.map((phase) => (
           <div key={phase.number} className="bg-card flex flex-col gap-4 p-8">
             <div className="flex items-baseline justify-between">
@@ -56,7 +56,7 @@ export function ProcessSection() {
             <p className="text-muted-foreground text-sm leading-relaxed">
               {phase.description}
             </p>
-            <p className="border-border mt-auto border-t pt-4 text-xs font-medium">
+            <p className="border-border/50 mt-auto border-t pt-4 text-xs font-medium">
               {phase.output}
             </p>
           </div>

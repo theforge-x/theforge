@@ -2,7 +2,7 @@ import { testimonials } from "@/lib/data";
 
 export function Testimonials() {
   return (
-    <section className="border-border bg-forge-black border-t">
+    <section className="border-border/50 bg-forge-black border-t">
       <div className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 max-w-2xl">
           <div className="font-mono-eyebrow text-accent mb-3 text-[11px] uppercase">
@@ -17,7 +17,7 @@ export function Testimonials() {
           {testimonials.map((t) => (
             <figure
               key={t.name}
-              className="border-border flex flex-col gap-6 rounded-lg border p-8"
+              className="border-border/50 flex flex-col gap-6 rounded-lg border p-8"
             >
               <blockquote className="text-foreground text-[15px] leading-relaxed">
                 “{t.quote}”

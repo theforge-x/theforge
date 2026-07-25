@@ -145,7 +145,7 @@ export function ClientsTable({ clients }: { clients: ClientView[] }) {
         </div>
       </div>
 
-      <div className="border-border overflow-x-auto rounded-lg border">
+      <div className="border-border/50 overflow-x-auto rounded-lg border">
         <Table>
           <TableHeader>
             <TableRow>

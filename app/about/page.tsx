@@ -168,7 +168,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-y border-border bg-secondary/25">
+        <section className="border-y border-border/50 bg-secondary/25">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
             <div className="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
               <div className="max-w-3xl">
@@ -202,7 +202,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-b border-border bg-background">
+        <section className="border-b border-border/50 bg-background">
           <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
             <div className="mb-14 max-w-2xl">
               <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
@@ -307,7 +307,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section className="border-t border-border">
+        <section className="border-t border-border/50">
           <div className="mx-auto max-w-7xl px-6 py-24">
             <div className="mb-16 max-w-2xl">
               <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">

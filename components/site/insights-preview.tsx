@@ -15,7 +15,7 @@ export async function InsightsPreview({ limit = 3 }: { limit?: number }) {
   const items = posts.slice(0, limit);
 
   return (
-    <section className="border-border border-t">
+    <section className="border-border/50 border-t">
       <div className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
@@ -43,7 +43,7 @@ export async function InsightsPreview({ limit = 3 }: { limit?: number }) {
             <Link
               key={post.id}
               href={`/blog/${post.slug}`}
-              className="group flex flex-col rounded-lg border border-border bg-card p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_24px_70px_-42px_var(--primary)] motion-reduce:transform-none motion-reduce:transition-none"
+              className="group flex flex-col rounded-lg border border-border/50 bg-card p-7 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_24px_70px_-42px_var(--primary)] motion-reduce:transform-none motion-reduce:transition-none"
             >
               <div className="flex items-center justify-between gap-4">
                 <span className="font-mono-eyebrow text-accent text-[10px] uppercase">

@@ -29,7 +29,7 @@ export default async function LoginPage({
         <BrandMark className="size-8" />
         <span className="font-display text-xl tracking-wide">theForge</span>
       </Link>
-      <div className="border-border bg-card w-full max-w-sm rounded-lg border p-8">
+      <div className="border-border/50 bg-card w-full max-w-sm rounded-lg border p-8">
         <div className="mb-6">
           <h1 className="font-display text-2xl">Welcome back</h1>
           <p className="text-muted-foreground mt-1 text-sm">

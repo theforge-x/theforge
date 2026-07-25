@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     description:
       "Diagnose the constraint stalling your growth, build the system to fix it, and create an engine that compounds.",
   },
-  icons: { icon: "/logo_sq_anv.svg" },
+  icons: { icon: "/logo.svg" },
   title: {
     default: "theForge · Growth Systems Studio",
     template: "%s · theForge",

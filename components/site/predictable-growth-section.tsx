@@ -26,7 +26,7 @@ const signals = [
 
 export function PredictableGrowthSection() {
   return (
-    <section className="relative overflow-hidden border-b border-border bg-secondary/20">
+    <section className="relative overflow-hidden border-b border-border/50 bg-secondary/20">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-60"
@@ -98,7 +98,7 @@ export function PredictableGrowthSection() {
           </div>
         </div>
 
-        <div className="mt-16 grid gap-px overflow-hidden rounded-lg border border-border bg-border md:grid-cols-3">
+        <div className="mt-16 grid gap-px overflow-hidden rounded-lg border border-border/50 bg-border md:grid-cols-3">
           {signals.map((signal) => (
             <article
               key={signal.number}

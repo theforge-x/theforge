@@ -34,7 +34,7 @@ export async function Footer() {
   await connection();
   const settings = await getStudioSettings();
   return (
-    <footer className="border-border border-t">
+    <footer className="border-border/50 border-t">
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
           <div className="flex flex-col gap-4">
@@ -69,9 +69,9 @@ export async function Footer() {
           ))}
         </div>
 
-        <div className="border-border mt-12 flex flex-col gap-3 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-border/50 mt-12 flex flex-col gap-3 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p className="text-muted-foreground">
-            © 2026 The Forge Studio. All rights reserved.
+            © {new Date().getFullYear()} theForge. All rights reserved.
           </p>
           <p className="text-muted-foreground font-mono-eyebrow uppercase">
             {settings.tagline}

@@ -1,5 +1,13 @@
 import { and, asc, desc, eq, isNull } from "drizzle-orm";
-import type { CaseStudy, Client, Invoice, Project } from "@/lib/data";
+import {
+  type CaseStudy,
+  type Client,
+  caseStudies as fallbackCaseStudies,
+  clients as fallbackClients,
+  projects as fallbackProjects,
+  type Invoice,
+  type Project,
+} from "@/lib/data";
 import { db } from "@/lib/db";
 import {
   appointments,
@@ -30,6 +38,81 @@ export type ReportView = {
   type: string;
   fileUrl: string | null;
 };
+
+function getFallbackPublishedCaseStudy(slug: string) {
+  const caseStudy = fallbackCaseStudies.find((item) => item.slug === slug);
+  if (!caseStudy) return null;
+
+  const project = fallbackProjects.find(
+    (item) => item.id === caseStudy.projectId,
+  );
+  const client = fallbackClients.find((item) => item.name === caseStudy.client);
+  if (!project || !client) return null;
+
+  const now = new Date();
+
+  return {
+    post: {
+      id: `fallback-${caseStudy.slug}`,
+      title: caseStudy.title,
+      slug: caseStudy.slug,
+      kind: "case-study",
+      status: "published",
+      excerpt: caseStudy.summary,
+      body: caseStudy.summary,
+      category: caseStudy.tags[0] ?? "Case Study",
+      projectId: project.id,
+      featuredImage: caseStudy.featuredImage ?? null,
+      seoTitle: caseStudy.title,
+      seoDescription: caseStudy.summary,
+      publishedAt: now,
+      createdAt: now,
+      updatedAt: now,
+    },
+    project: {
+      id: project.id,
+      clientId: project.clientId,
+      name: project.name,
+      phase: project.phase,
+      progress: project.progress,
+      owner: project.owner,
+      dueDate: project.dueDate,
+      createdAt: now,
+      updatedAt: now,
+    },
+    client: {
+      id: client.id,
+      name: client.name,
+      contact: client.contact,
+      industry: client.industry,
+      plan: client.plan,
+      status: client.status,
+      mrrCents: client.mrr * 100,
+      currency: "USD",
+      startDate: client.startDate,
+      health: client.health,
+      createdAt: now,
+      updatedAt: now,
+    },
+  };
+}
+
+function getFallbackStudioSettings() {
+  return {
+    id: "default",
+    studioName: "theForge",
+    billingEmail: "support@theforge.ng",
+    publicEmail: "hello@theforge.ng",
+    phone: "+1 (888) 449-8124",
+    tagline: "Growth, forged — not guessed.",
+    appointmentDuration: 30,
+    notifyNewClient: true,
+    notifyOverdueInvoice: true,
+    notifyWeeklyDigest: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+}
 
 function toClient(row: typeof clients.$inferSelect): ClientView {
   return {
@@ -226,60 +309,74 @@ export async function getPublishedPosts() {
 }
 
 export async function getPublishedCaseStudies(): Promise<CaseStudy[]> {
-  const rows = await db
-    .select({
-      post: contentPosts,
-      project: projects,
-      clientName: clients.name,
-      industry: clients.industry,
-    })
-    .from(contentPosts)
-    .innerJoin(projects, eq(contentPosts.projectId, projects.id))
-    .innerJoin(clients, eq(projects.clientId, clients.id))
-    .where(
-      and(
-        eq(contentPosts.status, "published"),
-        eq(contentPosts.kind, "case-study"),
-      ),
-    )
-    .orderBy(desc(contentPosts.publishedAt));
+  try {
+    const rows = await db
+      .select({
+        post: contentPosts,
+        project: projects,
+        clientName: clients.name,
+        industry: clients.industry,
+      })
+      .from(contentPosts)
+      .innerJoin(projects, eq(contentPosts.projectId, projects.id))
+      .innerJoin(clients, eq(projects.clientId, clients.id))
+      .where(
+        and(
+          eq(contentPosts.status, "published"),
+          eq(contentPosts.kind, "case-study"),
+        ),
+      )
+      .orderBy(desc(contentPosts.publishedAt));
 
-  return rows.map(({ post, project, clientName, industry }) => ({
-    slug: post.slug,
-    projectId: project.id,
-    title: post.title,
-    client: clientName,
-    industry,
-    summary: post.excerpt,
-    featuredImage: post.featuredImage,
-    metric: {
-      label: "Project progress",
-      value: `${project.progress}%`,
-    },
-    tags: [post.category, project.phase],
-  }));
+    const publishedCaseStudies = rows.map(
+      ({ post, project, clientName, industry }) => ({
+        slug: post.slug,
+        projectId: project.id,
+        title: post.title,
+        client: clientName,
+        industry,
+        summary: post.excerpt,
+        featuredImage: post.featuredImage,
+        metric: {
+          label: "Project progress",
+          value: `${project.progress}%`,
+        },
+        tags: [post.category, project.phase],
+      }),
+    );
+
+    return publishedCaseStudies.length
+      ? publishedCaseStudies
+      : fallbackCaseStudies;
+  } catch {
+    return fallbackCaseStudies;
+  }
 }
 
 export async function getPublishedCaseStudy(slug: string) {
-  const [row] = await db
-    .select({
-      post: contentPosts,
-      project: projects,
-      client: clients,
-    })
-    .from(contentPosts)
-    .innerJoin(projects, eq(contentPosts.projectId, projects.id))
-    .innerJoin(clients, eq(projects.clientId, clients.id))
-    .where(
-      and(
-        eq(contentPosts.slug, slug),
-        eq(contentPosts.status, "published"),
-        eq(contentPosts.kind, "case-study"),
-      ),
-    )
-    .limit(1);
+  try {
+    const [row] = await db
+      .select({
+        post: contentPosts,
+        project: projects,
+        client: clients,
+      })
+      .from(contentPosts)
+      .innerJoin(projects, eq(contentPosts.projectId, projects.id))
+      .innerJoin(clients, eq(projects.clientId, clients.id))
+      .where(
+        and(
+          eq(contentPosts.slug, slug),
+          eq(contentPosts.status, "published"),
+          eq(contentPosts.kind, "case-study"),
+        ),
+      )
+      .limit(1);
 
-  return row ?? null;
+    return row ?? getFallbackPublishedCaseStudy(slug);
+  } catch {
+    return getFallbackPublishedCaseStudy(slug);
+  }
 }
 
 export async function getPublishedPost(slug: string) {
@@ -332,25 +429,14 @@ export async function getWebsiteDemos() {
 }
 
 export async function getStudioSettings() {
-  const [settings] = await db
-    .select()
-    .from(studioSettings)
-    .where(eq(studioSettings.id, "default"))
-    .limit(1);
-  return (
-    settings ?? {
-      id: "default",
-      studioName: "theForge",
-      billingEmail: "support@theforge.ng",
-      publicEmail: "hello@theforge.ng",
-      phone: "+1 (888) 449-8124",
-      tagline: "Growth, forged — not guessed.",
-      appointmentDuration: 30,
-      notifyNewClient: true,
-      notifyOverdueInvoice: true,
-      notifyWeeklyDigest: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }
-  );
+  try {
+    const [settings] = await db
+      .select()
+      .from(studioSettings)
+      .where(eq(studioSettings.id, "default"))
+      .limit(1);
+    return settings ?? getFallbackStudioSettings();
+  } catch {
+    return getFallbackStudioSettings();
+  }
 }

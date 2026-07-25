@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  color-scheme: light;
   --radius: 0.625rem;
   --font-manrope:
     Manrope, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -12,196 +13,406 @@
     "Bricolage Grotesque", Manrope, Inter, ui-sans-serif, system-ui, sans-serif;
   --font-dm:
     "DM Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  /*────────────────────────────────────────────
-     THE FORGE — LIGHT MODE
-     Warm ivory, forge black, ember and gold
-  ───────────────────────────────────────────── */
 
-  --background: #f8f6f1;
-  --foreground: #171512;
+  /* Brand roots */
+  --forge-pumpkin: #fe7f2d;
+  --forge-charcoal: #233d4d;
+  --forge-pumpkin-rgb: 254 127 45;
+  --forge-charcoal-rgb: 35 61 77;
+  --color-white: #ffffff;
+  --color-black: #000000;
 
-  --card: #fffdf9;
-  --card-foreground: #171512;
+  /* Pumpkin */
+  --forge-pumpkin-50: #fff9f5;
+  --forge-pumpkin-100: #fff1e8;
+  --forge-pumpkin-200: #ffe2d1;
+  --forge-pumpkin-300: #ffceb3;
+  --forge-pumpkin-400: #ffaf82;
+  --forge-pumpkin-500: #fe7f2d;
+  --forge-pumpkin-600: #d06723;
+  --forge-pumpkin-700: #9e4c18;
+  --forge-pumpkin-800: #6e330d;
+  --forge-pumpkin-900: #421c05;
+  --forge-pumpkin-950: #1a0701;
 
-  --popover: #fffdf9;
-  --popover-foreground: #171512;
+  /* Charcoal */
+  --forge-charcoal-50: #f5f6f7;
+  --forge-charcoal-100: #eceef0;
+  --forge-charcoal-200: #d8dde0;
+  --forge-charcoal-300: #bcc4ca;
+  --forge-charcoal-400: #9ca8b0;
+  --forge-charcoal-500: #7d8d97;
+  --forge-charcoal-600: #5f727f;
+  --forge-charcoal-700: #435967;
+  --forge-charcoal-800: #233d4d;
+  --forge-charcoal-900: #1a2f3c;
+  --forge-charcoal-950: #0b1820;
 
-  /* Ember orange — primary actions */
-  --primary: #f15a24;
-  --primary-foreground: #180b05;
+  --forge-mist-50: #fbf8f6;
+  --forge-mist-100: #f5efec;
+  --forge-mist-200: #e6dfdb;
+  --forge-mist-300: #cdc7c5;
 
-  /* Warm neutral — secondary controls */
-  --secondary: #eeeae1;
-  --secondary-foreground: #211e19;
+  --forge-success-400: #40a47e;
+  --forge-success-500: #237356;
+  --forge-success-rgb: 35 115 86;
 
-  --muted: #f0ede6;
-  --muted-foreground: #706b62;
+  --forge-danger-300: #ebb5ad;
+  --forge-danger-500: #bd4238;
+  --forge-danger-rgb: 189 66 56;
 
-  /* Forge gold — highlights and selected states */
-  --accent: #f2b84a;
-  --accent-foreground: #1c1303;
+  --forge-pumpkin-a04: rgb(var(--forge-pumpkin-rgb) / 0.04);
+  --forge-pumpkin-a08: rgb(var(--forge-pumpkin-rgb) / 0.08);
+  --forge-pumpkin-a12: rgb(var(--forge-pumpkin-rgb) / 0.12);
+  --forge-pumpkin-a16: rgb(var(--forge-pumpkin-rgb) / 0.16);
+  --forge-pumpkin-a24: rgb(var(--forge-pumpkin-rgb) / 0.24);
+  --forge-pumpkin-a32: rgb(var(--forge-pumpkin-rgb) / 0.32);
 
-  --destructive: #c92a2a;
-  --destructive-foreground: #fffafa;
+  --forge-charcoal-a04: rgb(var(--forge-charcoal-rgb) / 0.04);
+  --forge-charcoal-a08: rgb(var(--forge-charcoal-rgb) / 0.08);
+  --forge-charcoal-a12: rgb(var(--forge-charcoal-rgb) / 0.12);
+  --forge-charcoal-a16: rgb(var(--forge-charcoal-rgb) / 0.16);
+  --forge-charcoal-a24: rgb(var(--forge-charcoal-rgb) / 0.24);
+  --forge-charcoal-a48: rgb(var(--forge-charcoal-rgb) / 0.48);
+  --forge-charcoal-a64: rgb(var(--forge-charcoal-rgb) / 0.64);
 
-  --border: #ded9cf;
-  --input: #ded9cf;
-  --ring: #f15a24;
+  --background: var(--forge-mist-50);
+  --foreground: var(--forge-charcoal-950);
+  --card: var(--color-white);
+  --card-foreground: var(--forge-charcoal-950);
+  --popover: var(--color-white);
+  --popover-foreground: var(--forge-charcoal-950);
+  --primary: var(--forge-pumpkin-500);
+  --primary-foreground: var(--forge-charcoal-950);
+  --secondary: var(--forge-charcoal-800);
+  --secondary-foreground: var(--forge-charcoal-50);
+  --muted: var(--forge-charcoal-100);
+  --muted-foreground: var(--forge-charcoal-700);
+  --accent: var(--forge-pumpkin-400);
+  --accent-foreground: var(--forge-pumpkin-800);
+  --destructive: var(--forge-danger-500);
+  --destructive-foreground: var(--color-white);
+  --success: var(--forge-success-500);
+  --success-foreground: var(--color-white);
+  --warning: var(--forge-pumpkin-500);
+  --warning-foreground: var(--forge-charcoal-950);
+  --info: var(--forge-charcoal-800);
+  --info-foreground: var(--forge-charcoal-50);
+  --border: var(--forge-charcoal-200);
+  --input: var(--forge-charcoal-200);
+  --ring: var(--forge-pumpkin-500);
 
-  /* Data visualisation */
-  --chart-1: #f15a24;
-  --chart-2: #d99a26;
-  --chart-3: #24211c;
-  --chart-4: #9c4a1a;
-  --chart-5: #8b8275;
+  --surface-canvas: var(--forge-mist-50);
+  --surface-raised: var(--color-white);
+  --surface-subtle: var(--forge-charcoal-50);
+  --surface-sunken: var(--forge-charcoal-100);
+  --surface-selected: var(--forge-pumpkin-100);
+  --surface-brand: var(--forge-pumpkin-500);
+  --surface-inverse: var(--forge-charcoal-950);
 
-  /* Dark branded sidebar */
-  --sidebar: #11110f;
-  --sidebar-foreground: #f6f1e7;
+  --text-accent: var(--forge-pumpkin-400);
+  --text-strong: var(--forge-charcoal-950);
+  --text-default: var(--forge-charcoal-900);
+  --text-muted: var(--forge-charcoal-700);
+  --text-disabled: var(--forge-charcoal-500);
+  --text-on-brand: var(--forge-charcoal-950);
+  --text-inverse: var(--forge-charcoal-50);
+  --text-link: var(--forge-pumpkin-700);
+  --text-link-hover: var(--forge-pumpkin-800);
 
-  --sidebar-primary: #f15a24;
-  --sidebar-primary-foreground: #180b05;
+  --border-subtle: var(--forge-charcoal-100);
+  --border-default: var(--forge-charcoal-200);
+  --border-strong: var(--forge-charcoal-400);
+  --separator: var(--forge-charcoal-200);
 
-  --sidebar-accent: #292620;
-  --sidebar-accent-foreground: #f2b84a;
+  --primary-hover: var(--forge-pumpkin-600);
+  --primary-active: var(--forge-pumpkin-600);
+  --primary-disabled: var(--forge-pumpkin-200);
+  --primary-disabled-foreground: var(--forge-charcoal-500);
+  --secondary-hover: var(--forge-charcoal-900);
+  --secondary-active: var(--forge-charcoal-950);
+  --secondary-disabled: var(--forge-charcoal-200);
+  --secondary-disabled-foreground: var(--forge-charcoal-500);
 
-  --sidebar-border: #302d27;
-  --sidebar-ring: #f2b84a;
+  --field-background: var(--color-white);
+  --field-foreground: var(--forge-charcoal-950);
+  --field-placeholder: var(--forge-charcoal-600);
+  --field-border: var(--forge-charcoal-200);
+  --field-border-hover: var(--forge-charcoal-400);
+  --field-border-focus: var(--forge-pumpkin-500);
 
-  /* Brand primitives */
-  --ember: #f15a24;
-  --ember-dark: #b83b12;
-  --ember-soft: #ffede5;
+  --focus-ring: var(--forge-pumpkin-a32);
+  --selection-background: var(--forge-pumpkin-200);
+  --selection-foreground: var(--forge-charcoal-950);
+  --scrim: var(--forge-charcoal-a64);
+  --shadow-color: var(--forge-charcoal-a16);
 
-  --gold: #f2b84a;
-  --gold-dark: #b97912;
-  --gold-soft: #fff3d2;
+  --success-soft: rgb(var(--forge-success-rgb) / 0.12);
+  --success-soft-foreground: var(--forge-success-500);
+  --success-border: rgb(var(--forge-success-rgb) / 0.32);
+  --warning-soft: var(--forge-pumpkin-a16);
+  --warning-soft-foreground: var(--forge-pumpkin-800);
+  --warning-border: var(--forge-pumpkin-a32);
+  --destructive-soft: rgb(var(--forge-danger-rgb) / 0.12);
+  --destructive-soft-foreground: var(--forge-danger-500);
+  --destructive-border: rgb(var(--forge-danger-rgb) / 0.32);
+  --info-soft: var(--forge-charcoal-a08);
+  --info-soft-foreground: var(--forge-charcoal-800);
+  --info-border: var(--forge-charcoal-a24);
 
-  --forge-black: #0d0d0c;
-  --forge-charcoal: #1b1a17;
-  --forge-cream: #f8f6f1;
+  --chart-1: var(--forge-pumpkin-500);
+  --chart-2: var(--forge-charcoal-800);
+  --chart-3: var(--forge-pumpkin-700);
+  --chart-4: var(--forge-charcoal-600);
+  --chart-5: var(--forge-pumpkin-300);
+  --chart-6: var(--forge-charcoal-400);
+  --chart-grid: var(--forge-charcoal-200);
+  --chart-axis: var(--forge-charcoal-700);
 
-  --steel: #929087;
-  --steel-light: #d7d3ca;
+  --sidebar: var(--forge-charcoal-50);
+  --sidebar-foreground: var(--forge-charcoal-950);
+  --sidebar-primary: var(--forge-pumpkin-500);
+  --sidebar-primary-foreground: var(--forge-charcoal-950);
+  --sidebar-accent: var(--forge-pumpkin-100);
+  --sidebar-accent-foreground: var(--forge-pumpkin-800);
+  --sidebar-border: var(--forge-charcoal-200);
+  --sidebar-ring: var(--forge-pumpkin-500);
+
+  --gradient-forge: linear-gradient(
+    135deg,
+    var(--forge-pumpkin-500) 0%,
+    var(--forge-pumpkin-600) 48%,
+    var(--forge-charcoal-800) 100%
+  );
+  --gradient-heat: linear-gradient(
+    135deg,
+    var(--forge-pumpkin-200) 0%,
+    var(--forge-pumpkin-500) 55%,
+    var(--forge-pumpkin-700) 100%
+  );
+  --gradient-charcoal: linear-gradient(
+    135deg,
+    var(--forge-charcoal-700) 0%,
+    var(--forge-charcoal-950) 100%
+  );
+
+  --ember: var(--forge-pumpkin-500);
+  --gold: var(--forge-pumpkin-300);
+  --forge-black: var(--forge-charcoal-950);
+  --steel: var(--forge-charcoal-400);
 }
 
 .dark {
-  /* ─────────────────────────────────────────────
-     THE FORGE — DARK MODE
-     Primary brand experience
-  ───────────────────────────────────────────── */
+  color-scheme: dark;
+  --background: var(--forge-charcoal-950);
+  --foreground: var(--forge-charcoal-50);
+  --card: var(--forge-charcoal-900);
+  --card-foreground: var(--forge-charcoal-50);
+  --popover: var(--forge-charcoal-900);
+  --popover-foreground: var(--forge-charcoal-50);
+  --primary: var(--forge-pumpkin-500);
+  --primary-foreground: var(--forge-charcoal-950);
+  --secondary: var(--forge-charcoal-800);
+  --secondary-foreground: var(--forge-charcoal-50);
+  --muted: var(--forge-charcoal-900);
+  --muted-foreground: var(--forge-charcoal-400);
+  --accent: var(--forge-pumpkin-400);
+  --accent-foreground: var(--forge-pumpkin-800);
+  --destructive: var(--forge-danger-500);
+  --destructive-foreground: var(--color-white);
+  --success: var(--forge-success-400);
+  --success-foreground: var(--forge-charcoal-950);
+  --warning: var(--forge-pumpkin-500);
+  --warning-foreground: var(--forge-charcoal-950);
+  --info: var(--forge-charcoal-400);
+  --info-foreground: var(--forge-charcoal-950);
+  --border: var(--forge-charcoal-800);
+  --input: var(--forge-charcoal-800);
+  --ring: var(--forge-pumpkin-500);
 
-  --background: #0d0d0c;
-  --foreground: #f5f1e8;
+  --surface-canvas: var(--forge-charcoal-950);
+  --surface-raised: var(--forge-charcoal-900);
+  --surface-subtle: var(--forge-charcoal-800);
+  --surface-sunken: var(--forge-charcoal-950);
+  --surface-selected: var(--forge-pumpkin-a16);
+  --surface-brand: var(--forge-pumpkin-500);
+  --surface-inverse: var(--forge-charcoal-50);
 
-  --card: #161512;
-  --card-foreground: #f5f1e8;
+  --text-strong: var(--forge-charcoal-50);
+  --text-default: var(--forge-charcoal-100);
+  --text-muted: var(--forge-charcoal-400);
+  --text-disabled: var(--forge-charcoal-600);
+  --text-on-brand: var(--forge-charcoal-950);
+  --text-inverse: var(--forge-charcoal-950);
+  --text-link: var(--forge-pumpkin-400);
+  --text-link-hover: var(--forge-pumpkin-300);
 
-  --popover: #191815;
-  --popover-foreground: #f5f1e8;
+  --border-subtle: var(--forge-charcoal-900);
+  --border-default: var(--forge-charcoal-800);
+  --border-strong: var(--forge-charcoal-600);
+  --separator: var(--forge-charcoal-800);
 
-  /* Brighter ember for dark surfaces */
-  --primary: #f36a2a;
-  --primary-foreground: #180b05;
+  --primary-hover: var(--forge-pumpkin-400);
+  --primary-active: var(--forge-pumpkin-300);
+  --primary-disabled: var(--forge-pumpkin-900);
+  --primary-disabled-foreground: var(--forge-charcoal-500);
+  --secondary-hover: var(--forge-charcoal-700);
+  --secondary-active: var(--forge-charcoal-600);
+  --secondary-disabled: var(--forge-charcoal-900);
+  --secondary-disabled-foreground: var(--forge-charcoal-600);
 
-  --secondary: #25231e;
-  --secondary-foreground: #f3eee4;
+  --field-background: var(--forge-charcoal-900);
+  --field-foreground: var(--forge-charcoal-50);
+  --field-placeholder: var(--forge-charcoal-400);
+  --field-border: var(--forge-charcoal-700);
+  --field-border-hover: var(--forge-charcoal-600);
+  --field-border-focus: var(--forge-pumpkin-500);
 
-  --muted: #1c1b18;
-  --muted-foreground: #aaa59b;
+  --focus-ring: var(--forge-pumpkin-a32);
+  --selection-background: var(--forge-pumpkin-a32);
+  --selection-foreground: var(--forge-charcoal-50);
+  --scrim: rgb(0 0 0 / 0.72);
+  --shadow-color: rgb(0 0 0 / 0.48);
 
-  /* Gold highlights */
-  --accent: #f2b84a;
-  --accent-foreground: #1c1303;
+  --success-soft: rgb(var(--forge-success-rgb) / 0.18);
+  --success-soft-foreground: var(--forge-success-400);
+  --success-border: rgb(var(--forge-success-rgb) / 0.42);
+  --warning-soft: var(--forge-pumpkin-a16);
+  --warning-soft-foreground: var(--forge-pumpkin-300);
+  --warning-border: var(--forge-pumpkin-a32);
+  --destructive-soft: rgb(var(--forge-danger-rgb) / 0.18);
+  --destructive-soft-foreground: var(--forge-danger-300);
+  --destructive-border: rgb(var(--forge-danger-rgb) / 0.42);
+  --info-soft: var(--forge-charcoal-a24);
+  --info-soft-foreground: var(--forge-charcoal-300);
+  --info-border: var(--forge-charcoal-a48);
 
-  --destructive: #e5484d;
-  --destructive-foreground: #fff7f7;
+  --chart-1: var(--forge-pumpkin-500);
+  --chart-2: var(--forge-charcoal-300);
+  --chart-3: var(--forge-pumpkin-300);
+  --chart-4: var(--forge-charcoal-500);
+  --chart-5: var(--forge-pumpkin-400);
+  --chart-6: var(--forge-charcoal-400);
+  --chart-grid: var(--forge-charcoal-800);
+  --chart-axis: var(--forge-charcoal-400);
 
-  --border: #302d27;
-  --input: #302d27;
-  --ring: #f36a2a;
-
-  /* Data visualisation */
-  --chart-1: #f36a2a;
-  --chart-2: #f2b84a;
-  --chart-3: #c7c1b6;
-  --chart-4: #d97706;
-  --chart-5: #b94420;
-
-  --sidebar: #090908;
-  --sidebar-foreground: #f5f1e8;
-
-  --sidebar-primary: #f36a2a;
-  --sidebar-primary-foreground: #180b05;
-
-  --sidebar-accent: #211f1b;
-  --sidebar-accent-foreground: #f2b84a;
-
-  --sidebar-border: #292721;
-  --sidebar-ring: #f2b84a;
-
-  /* Brand primitives */
-  --ember: #f36a2a;
-  --ember-dark: #b83b12;
-  --ember-soft: #3a1c10;
-
-  --gold: #f2b84a;
-  --gold-dark: #b97912;
-  --gold-soft: #352810;
-
-  --forge-black: #090908;
-  --forge-charcoal: #191815;
-  --forge-cream: #f5f1e8;
-
-  --steel: #9e9a92;
-  --steel-light: #c8c3b9;
+  --sidebar: var(--forge-charcoal-950);
+  --sidebar-foreground: var(--forge-charcoal-100);
+  --sidebar-primary: var(--forge-pumpkin-500);
+  --sidebar-primary-foreground: var(--forge-charcoal-950);
+  --sidebar-accent: var(--forge-pumpkin-a16);
+  --sidebar-accent-foreground: var(--forge-pumpkin-300);
+  --sidebar-border: var(--forge-charcoal-800);
+  --sidebar-ring: var(--forge-pumpkin-500);
 }
 
 .dashboard-light {
-  /* ─────────────────────────────────────────────
-     LIGHT DASHBOARD OVERRIDE
-  ───────────────────────────────────────────── */
+  color-scheme: light;
+  --background: var(--forge-mist-50);
+  --foreground: var(--forge-charcoal-950);
+  --card: var(--color-white);
+  --card-foreground: var(--forge-charcoal-950);
+  --popover: var(--color-white);
+  --popover-foreground: var(--forge-charcoal-950);
+  --primary: var(--forge-pumpkin-500);
+  --primary-foreground: var(--forge-charcoal-950);
+  --secondary: var(--forge-charcoal-800);
+  --secondary-foreground: var(--forge-charcoal-50);
+  --muted: var(--forge-charcoal-100);
+  --muted-foreground: var(--forge-charcoal-700);
+  --accent: var(--forge-pumpkin-100);
+  --accent-foreground: var(--forge-pumpkin-800);
+  --destructive: var(--forge-danger-500);
+  --destructive-foreground: var(--color-white);
+  --success: var(--forge-success-500);
+  --success-foreground: var(--color-white);
+  --warning: var(--forge-pumpkin-500);
+  --warning-foreground: var(--forge-charcoal-950);
+  --info: var(--forge-charcoal-800);
+  --info-foreground: var(--forge-charcoal-50);
+  --border: var(--forge-charcoal-200);
+  --input: var(--forge-charcoal-200);
+  --ring: var(--forge-pumpkin-500);
 
-  --background: #f8f6f1;
-  --foreground: #171512;
+  --surface-canvas: var(--forge-mist-50);
+  --surface-raised: var(--color-white);
+  --surface-subtle: var(--forge-charcoal-50);
+  --surface-sunken: var(--forge-charcoal-100);
+  --surface-selected: var(--forge-pumpkin-100);
+  --surface-brand: var(--forge-pumpkin-500);
+  --surface-inverse: var(--forge-charcoal-950);
 
-  --card: #fffdf9;
-  --card-foreground: #171512;
+  --text-strong: var(--forge-charcoal-950);
+  --text-default: var(--forge-charcoal-900);
+  --text-muted: var(--forge-charcoal-700);
+  --text-disabled: var(--forge-charcoal-500);
+  --text-on-brand: var(--forge-charcoal-950);
+  --text-inverse: var(--forge-charcoal-50);
+  --text-link: var(--forge-pumpkin-700);
+  --text-link-hover: var(--forge-pumpkin-800);
 
-  --popover: #fffdf9;
-  --popover-foreground: #171512;
+  --border-subtle: var(--forge-charcoal-100);
+  --border-default: var(--forge-charcoal-200);
+  --border-strong: var(--forge-charcoal-400);
+  --separator: var(--forge-charcoal-200);
 
-  --primary: #f15a24;
-  --primary-foreground: #180b05;
+  --primary-hover: var(--forge-pumpkin-600);
+  --primary-active: var(--forge-pumpkin-600);
+  --primary-disabled: var(--forge-pumpkin-200);
+  --primary-disabled-foreground: var(--forge-charcoal-500);
+  --secondary-hover: var(--forge-charcoal-900);
+  --secondary-active: var(--forge-charcoal-950);
+  --secondary-disabled: var(--forge-charcoal-200);
+  --secondary-disabled-foreground: var(--forge-charcoal-500);
 
-  --secondary: #eeeae1;
-  --secondary-foreground: #211e19;
+  --field-background: var(--color-white);
+  --field-foreground: var(--forge-charcoal-950);
+  --field-placeholder: var(--forge-charcoal-600);
+  --field-border: var(--forge-charcoal-200);
+  --field-border-hover: var(--forge-charcoal-400);
+  --field-border-focus: var(--forge-pumpkin-500);
 
-  --muted: #f0ede6;
-  --muted-foreground: #706b62;
+  --focus-ring: var(--forge-pumpkin-a32);
+  --selection-background: var(--forge-pumpkin-200);
+  --selection-foreground: var(--forge-charcoal-950);
+  --scrim: var(--forge-charcoal-a64);
+  --shadow-color: var(--forge-charcoal-a16);
 
-  --accent: #f2b84a;
-  --accent-foreground: #1c1303;
+  --success-soft: rgb(var(--forge-success-rgb) / 0.12);
+  --success-soft-foreground: var(--forge-success-500);
+  --success-border: rgb(var(--forge-success-rgb) / 0.32);
+  --warning-soft: var(--forge-pumpkin-a16);
+  --warning-soft-foreground: var(--forge-pumpkin-800);
+  --warning-border: var(--forge-pumpkin-a32);
+  --destructive-soft: rgb(var(--forge-danger-rgb) / 0.12);
+  --destructive-soft-foreground: var(--forge-danger-500);
+  --destructive-border: rgb(var(--forge-danger-rgb) / 0.32);
+  --info-soft: var(--forge-charcoal-a08);
+  --info-soft-foreground: var(--forge-charcoal-800);
+  --info-border: var(--forge-charcoal-a24);
 
-  --destructive: #c92a2a;
-  --destructive-foreground: #fffafa;
+  --chart-1: var(--forge-pumpkin-500);
+  --chart-2: var(--forge-charcoal-800);
+  --chart-3: var(--forge-pumpkin-700);
+  --chart-4: var(--forge-charcoal-600);
+  --chart-5: var(--forge-pumpkin-300);
+  --chart-6: var(--forge-charcoal-400);
+  --chart-grid: var(--forge-charcoal-200);
+  --chart-axis: var(--forge-charcoal-700);
 
-  --border: #ded9cf;
-  --input: #ded9cf;
-  --ring: #f15a24;
+  --sidebar: var(--forge-charcoal-50);
+  --sidebar-foreground: var(--forge-charcoal-950);
+  --sidebar-primary: var(--forge-pumpkin-500);
+  --sidebar-primary-foreground: var(--forge-charcoal-950);
+  --sidebar-accent: var(--forge-pumpkin-100);
+  --sidebar-accent-foreground: var(--forge-pumpkin-800);
+  --sidebar-border: var(--forge-charcoal-200);
+  --sidebar-ring: var(--forge-pumpkin-500);
+}
 
-  /* Retain a dark sidebar in the light dashboard */
-  --sidebar: #11110f;
-  --sidebar-foreground: #f6f1e7;
-
-  --sidebar-primary: #f15a24;
-  --sidebar-primary-foreground: #180b05;
-
-  --sidebar-accent: #292620;
-  --sidebar-accent-foreground: #f2b84a;
-
-  --sidebar-border: #302d27;
-  --sidebar-ring: #f2b84a;
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
 @theme inline {
@@ -221,6 +432,21 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-soft: var(--success-soft);
+  --color-success-soft-foreground: var(--success-soft-foreground);
+  --color-success-border: var(--success-border);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-soft-foreground: var(--warning-soft-foreground);
+  --color-warning-border: var(--warning-border);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-soft: var(--info-soft);
+  --color-info-soft-foreground: var(--info-soft-foreground);
+  --color-info-border: var(--info-border);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -230,6 +456,7 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
 
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -424,8 +651,8 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
   ::selection {
-    background: var(--ember);
-    color: #1a1305;
+    background: var(--selection-background);
+    color: var(--selection-foreground);
   }
 }
 

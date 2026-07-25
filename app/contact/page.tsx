@@ -51,7 +51,7 @@ export default async function ContactPage() {
                   </li>
                 </ol>
               </div>
-              <div className="border-border flex flex-col gap-3 border-t pt-6">
+              <div className="border-border/50 flex flex-col gap-3 border-t pt-6">
                 {details.map((d) => (
                   <div
                     key={d.label}

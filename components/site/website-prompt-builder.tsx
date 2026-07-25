@@ -174,7 +174,7 @@ export function WebsitePromptBuilder() {
   }
 
   return (
-    <section className="border-y border-border bg-secondary/25">
+    <section className="border-y border-border/50 bg-secondary/25">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
         <div className="mb-12 max-w-3xl">
           <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
@@ -191,7 +191,7 @@ export function WebsitePromptBuilder() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-          <div className="rounded-lg border border-border bg-card p-6 sm:p-8">
+          <div className="rounded-lg border border-border/50 bg-card p-6 sm:p-8">
             <div className="mb-8 flex items-center justify-between gap-4">
               <div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">

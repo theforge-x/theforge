@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 export function BrandMark({ className }: { className?: string }) {
   return (
     <Image
-      src="/logo_sq_anv.svg"
+      src="/logo.svg"
       alt=""
       aria-hidden="true"
       width={512}

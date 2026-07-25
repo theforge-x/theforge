@@ -77,7 +77,7 @@ export function AppShell({
         </Sidebar>
 
         <SidebarInset>
-          <header className="border-border bg-background/85 sticky top-0 z-30 flex h-14 shrink-0 items-center gap-3 border-b px-4 backdrop-blur-md">
+          <header className="border-border/50 bg-background/85 sticky top-0 z-30 flex h-14 shrink-0 items-center gap-3 border-b px-4 backdrop-blur-md">
             <SidebarTrigger />
             <HeaderTitle items={navItems} />
             <div className="ml-auto">

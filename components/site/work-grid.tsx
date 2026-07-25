@@ -53,7 +53,7 @@ export function WorkGrid({ caseStudies }: { caseStudies: CaseStudy[] }) {
           <Link
             key={c.slug}
             href={`/work/${c.slug}`}
-            className="border-border hover:border-accent/50 group flex flex-col overflow-hidden rounded-lg border transition-colors"
+            className="border-border/50 hover:border-accent/50 group flex flex-col overflow-hidden rounded-lg border transition-colors"
           >
             {c.featuredImage ? (
               <div className="relative aspect-video overflow-hidden bg-secondary">

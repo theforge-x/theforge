@@ -775,7 +775,7 @@ export function SalesOnboardingWorkspace() {
 
   return (
     <div className="flex flex-col gap-6">
-      <section className="overflow-hidden rounded-2xl border border-border bg-forge-black text-white">
+      <section className="overflow-hidden rounded-2xl border border-border/50 bg-forge-black text-white">
         <div className="relative p-6 sm:p-8">
           <div
             aria-hidden
@@ -968,7 +968,7 @@ export function SalesOnboardingWorkspace() {
               <CardTitle>Compliance gate</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="mb-5 rounded-lg border border-border bg-secondary/30 p-4 text-sm text-muted-foreground">
+              <div className="mb-5 rounded-lg border border-border/50 bg-secondary/30 p-4 text-sm text-muted-foreground">
                 Training unlocks after all required documents are signed.
                 Download/PDF generation can be connected to the document service
                 later; signing status is already tracked in this workspace.
@@ -979,7 +979,7 @@ export function SalesOnboardingWorkspace() {
                   return (
                     <div
                       key={document}
-                      className="flex items-center justify-between gap-4 rounded-lg border border-border p-4 transition-colors hover:border-primary/50"
+                      className="flex items-center justify-between gap-4 rounded-lg border border-border/50 p-4 transition-colors hover:border-primary/50"
                     >
                       <span className="flex items-center gap-3">
                         <FileSignature className="size-4 text-primary" />
@@ -1056,7 +1056,7 @@ export function SalesOnboardingWorkspace() {
                 {serviceUnits.map((unit) => (
                   <div
                     key={unit.name}
-                    className="flex items-start gap-3 rounded-lg border border-border p-4 hover:border-primary/50"
+                    className="flex items-start gap-3 rounded-lg border border-border/50 p-4 hover:border-primary/50"
                   >
                     <Checkbox
                       checked={state.selectedServices.includes(unit.name)}
@@ -1123,7 +1123,7 @@ export function SalesOnboardingWorkspace() {
                 {salesFrameworks.map((framework) => (
                   <div
                     key={framework.name}
-                    className="rounded-lg border border-border p-5"
+                    className="rounded-lg border border-border/50 p-5"
                   >
                     <div className="flex flex-wrap items-center justify-between gap-3">
                       <h3 className="font-display text-2xl">
@@ -1158,7 +1158,7 @@ export function SalesOnboardingWorkspace() {
                 {objections.map((item) => (
                   <div
                     key={item.objection}
-                    className="rounded-lg border border-border p-5"
+                    className="rounded-lg border border-border/50 p-5"
                   >
                     <Badge variant="outline">{item.objection}</Badge>
                     <h3 className="mt-4 text-sm font-semibold text-primary">
@@ -1183,7 +1183,7 @@ export function SalesOnboardingWorkspace() {
                 {leadWorkflows.map((workflow) => (
                   <div
                     key={workflow.name}
-                    className="rounded-lg border border-border p-5"
+                    className="rounded-lg border border-border/50 p-5"
                   >
                     <h3 className="font-semibold">{workflow.name}</h3>
                     <div className="mt-4 flex flex-wrap gap-2">
@@ -1229,7 +1229,7 @@ export function SalesOnboardingWorkspace() {
               {filteredScripts.map((script) => (
                 <div
                   key={`${script.type}-${script.title}`}
-                  className="rounded-lg border border-border p-5"
+                  className="rounded-lg border border-border/50 p-5"
                 >
                   <Badge variant="secondary">{script.type}</Badge>
                   <h3 className="mt-3 font-semibold">{script.title}</h3>
@@ -1304,7 +1304,7 @@ export function SalesOnboardingWorkspace() {
                 ].map((item) => (
                   <div
                     key={item}
-                    className="flex gap-3 rounded-lg border border-border p-4 text-sm"
+                    className="flex gap-3 rounded-lg border border-border/50 p-4 text-sm"
                   >
                     <Sparkles className="mt-0.5 size-4 shrink-0 text-primary" />
                     <span className="text-muted-foreground">{item}</span>
@@ -1343,7 +1343,7 @@ function MetricCard({
 
 function MiniStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-border bg-secondary/25 p-3">
+    <div className="rounded-lg border border-border/50 bg-secondary/25 p-3">
       <div className="text-muted-foreground text-xs">{label}</div>
       <div className="mt-1 text-sm font-semibold">{value}</div>
     </div>

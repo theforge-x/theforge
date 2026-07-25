@@ -34,6 +34,8 @@ export const pool =
   new Pool({
     connectionString,
     max: process.env.NODE_ENV === "production" ? 10 : 5,
+    connectionTimeoutMillis:
+      process.env.NODE_ENV === "production" ? 10000 : 3000,
   });
 
 if (process.env.NODE_ENV !== "production") globalForDb.pool = pool;

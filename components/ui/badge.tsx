@@ -12,10 +12,11 @@ const badgeVariants = cva(
         default: "border-transparent bg-primary text-primary-foreground",
         ember: "border-transparent bg-accent text-accent-foreground",
         secondary: "border-transparent bg-secondary text-secondary-foreground",
-        outline: "border-border text-foreground",
+        outline: "border-border/50 text-foreground",
         destructive:
           "border-transparent bg-destructive text-destructive-foreground",
-        success: "border-transparent bg-emerald-500/15 text-emerald-400",
+        success:
+          "border-success-border bg-success-soft text-success-soft-foreground",
       },
     },
     defaultVariants: {

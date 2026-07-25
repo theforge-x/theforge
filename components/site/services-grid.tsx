@@ -472,7 +472,7 @@ function CapabilityModal({
 
   return (
     <Dialog>
-      <article className="group flex h-full flex-col rounded-lg border border-border bg-card p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_60px_-38px_var(--primary)] motion-reduce:transform-none">
+      <article className="group flex h-full flex-col rounded-lg border border-border/50 bg-card p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_24px_60px_-38px_var(--primary)] motion-reduce:transform-none">
         <div className="flex items-start justify-between">
           <div className="flex size-11 items-center justify-center rounded-md bg-secondary transition-colors duration-300 group-hover:bg-primary/15">
             <Icon className="size-5 text-accent" />
@@ -485,7 +485,7 @@ function CapabilityModal({
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           {capability.description}
         </p>
-        <div className="mt-5 space-y-2 border-t border-border pt-5">
+        <div className="mt-5 space-y-2 border-t border-border/50 pt-5">
           {capability.services.map((service) => (
             <div key={service} className="flex gap-2 text-sm">
               <ChartNoAxesCombined className="mt-0.5 size-3.5 shrink-0 text-primary" />
@@ -558,7 +558,7 @@ function CapabilityModal({
                   {capability.services.map((service) => (
                     <span
                       key={service}
-                      className="rounded-full border border-border bg-secondary/60 px-3 py-1.5 text-xs"
+                      className="rounded-full border border-border/50 bg-secondary/60 px-3 py-1.5 text-xs"
                     >
                       {service}
                     </span>
@@ -567,7 +567,7 @@ function CapabilityModal({
               </div>
             </div>
 
-            <div className="mt-8 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-2">
+            <div className="mt-8 grid gap-px overflow-hidden rounded-xl border border-border/50 bg-border sm:grid-cols-2">
               <div className="bg-card p-5">
                 <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-primary">
                   Best fit
@@ -586,7 +586,7 @@ function CapabilityModal({
               </div>
             </div>
 
-            <div className="mt-8 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="mt-8 flex flex-col gap-4 border-t border-border/50 pt-6 sm:flex-row sm:items-center sm:justify-between">
               <p className="max-w-sm text-xs leading-5 text-muted-foreground">
                 Not sure this is the constraint? Start with a diagnostic growth
                 audit and we&apos;ll map the right system together.
@@ -606,7 +606,7 @@ function CapabilityModal({
 
 export function ServicesGrid() {
   return (
-    <section className="border-t border-border">
+    <section className="border-t border-border/50">
       <div className="mx-auto max-w-7xl px-6 py-28">
         <div className="mb-16 grid gap-6 lg:grid-cols-[1fr_.8fr] lg:items-end">
           <div>

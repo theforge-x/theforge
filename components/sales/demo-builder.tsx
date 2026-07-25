@@ -807,7 +807,7 @@ export function DemoBuilder({ demos }: { demos: Demo[] }) {
                   ) : null}
                 </div>
               </div>
-              <div className="border-border mt-4 flex flex-wrap gap-1 border-t pt-4">
+              <div className="border-border/50 mt-4 flex flex-wrap gap-1 border-t pt-4">
                 <Button size="sm" variant="ghost" asChild>
                   <a
                     href={`/demo/${demo.shareToken}`}
@@ -937,7 +937,7 @@ export function DemoBuilder({ demos }: { demos: Demo[] }) {
                     <button
                       type="button"
                       onClick={() => changeMode("builder")}
-                      className={`border-border rounded-lg border p-3 text-left transition hover:border-foreground ${
+                      className={`border-border/50 rounded-lg border p-3 text-left transition hover:border-foreground ${
                         mode === "builder"
                           ? "bg-secondary border-foreground"
                           : "bg-card"
@@ -952,7 +952,7 @@ export function DemoBuilder({ demos }: { demos: Demo[] }) {
                     <button
                       type="button"
                       onClick={() => changeMode("html")}
-                      className={`border-border rounded-lg border p-3 text-left transition hover:border-foreground ${
+                      className={`border-border/50 rounded-lg border p-3 text-left transition hover:border-foreground ${
                         mode === "html"
                           ? "bg-secondary border-foreground"
                           : "bg-card"
@@ -994,7 +994,7 @@ export function DemoBuilder({ demos }: { demos: Demo[] }) {
                             key={name}
                             type="button"
                             onClick={() => applyTemplate(name as TemplateKey)}
-                            className={`border-border rounded-lg border p-3 text-left transition hover:border-foreground ${
+                            className={`border-border/50 rounded-lg border p-3 text-left transition hover:border-foreground ${
                               editing.template === name
                                 ? "bg-secondary border-foreground"
                                 : "bg-card"
@@ -1171,7 +1171,7 @@ export function DemoBuilder({ demos }: { demos: Demo[] }) {
                             onDragStart={() => setDragging(index)}
                             onDragOver={(event) => event.preventDefault()}
                             onDrop={() => drop(index)}
-                            className="border-border bg-card grid grid-cols-[24px_1fr_32px] gap-2 rounded-lg border p-3"
+                            className="border-border/50 bg-card grid grid-cols-[24px_1fr_32px] gap-2 rounded-lg border p-3"
                           >
                             <GripVertical className="text-muted-foreground mt-2 size-4 cursor-grab" />
                             <div className="grid gap-2">
@@ -1297,7 +1297,7 @@ export function DemoBuilder({ demos }: { demos: Demo[] }) {
               </div>
 
               <div
-                className="border-border overflow-hidden rounded-xl border"
+                className="border-border/50 overflow-hidden rounded-xl border"
                 style={{ background: brand.background, fontFamily: brand.font }}
               >
                 <div className="bg-secondary/70 flex items-center gap-2 border-b px-4 py-2">

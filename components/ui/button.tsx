@@ -12,11 +12,11 @@ const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
         ember:
-          "bg-accent text-accent-foreground shadow-sm shadow-accent/20 hover:bg-accent/90",
+          "bg-primary text-primary-foreground shadow-sm shadow-primary/20 hover:bg-[var(--primary-hover)]",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
-          "border border-input bg-transparent hover:bg-secondary hover:text-secondary-foreground",
+          "border border-input/80 bg-transparent hover:bg-secondary/80 hover:text-secondary-foreground",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/70",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",

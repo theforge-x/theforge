@@ -30,7 +30,7 @@ export default async function BlogPage() {
             {posts.map((post) => (
               <article
                 key={post.id}
-                className="border-border bg-card overflow-hidden rounded-lg border"
+                className="border-border/50 bg-card overflow-hidden rounded-lg border"
               >
                 {post.featuredImage ? (
                   <div className="relative aspect-[16/9]">

@@ -28,7 +28,7 @@ export default async function BookPage() {
         />
 
         <section className="mx-auto max-w-5xl px-6 py-24">
-          <div className="mb-10 grid gap-6 border-b border-border pb-10 sm:grid-cols-3">
+          <div className="mb-10 grid gap-6 border-b border-border/50 pb-10 sm:grid-cols-3">
             <div>
               <div className="font-display text-2xl text-accent">01</div>
               <p className="mt-2 text-sm text-muted-foreground">

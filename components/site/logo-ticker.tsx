@@ -5,7 +5,7 @@ export function LogoTicker({ items = logos }: { items?: string[] }) {
   const doubled = [...displayItems, ...displayItems];
 
   return (
-    <section className="border-border bg-forge-black overflow-hidden border-y py-6">
+    <section className="border-border/50 bg-forge-black overflow-hidden border-y py-6">
       <div className="flex w-max animate-marquee items-center gap-12">
         {doubled.map((item, i) => (
           <span

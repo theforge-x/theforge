@@ -59,7 +59,7 @@ export function AppointmentForm({ duration }: { duration: number }) {
 
   if (complete)
     return (
-      <div className="border-border bg-card rounded-lg border p-10 text-center">
+      <div className="border-border/50 bg-card rounded-lg border p-10 text-center">
         <CalendarCheck className="text-primary mx-auto size-8" />
         <h3 className="font-display mt-4 text-2xl">Request received.</h3>
         <p className="text-muted-foreground mt-2 text-sm">
@@ -71,7 +71,7 @@ export function AppointmentForm({ duration }: { duration: number }) {
   return (
     <form
       onSubmit={submit}
-      className="border-border bg-card grid gap-5 rounded-lg border p-8 sm:grid-cols-2"
+      className="border-border/50 bg-card grid gap-5 rounded-lg border p-8 sm:grid-cols-2"
     >
       <div className="flex flex-col gap-2">
         <Label htmlFor="booking-name">Name</Label>

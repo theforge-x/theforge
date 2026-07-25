@@ -7,6 +7,7 @@ import { Navbar } from "@/components/site/navbar";
 import { PageHeader } from "@/components/site/page-header";
 import { WorkGrid } from "@/components/site/work-grid";
 import { getPublishedCaseStudies } from "@/lib/data-access";
+import { ICPFilter } from "@/components/site/icp-filter";
 
 export const metadata: Metadata = {
   title: "Work",
@@ -26,6 +27,7 @@ export default async function WorkPage() {
           description="Every engagement below started with the same audit process and ended with a documented, owned system."
         />
         <WorkGrid caseStudies={caseStudies} />
+        <ICPFilter />
         <ConstraintCTA />
       </main>
       <Footer />

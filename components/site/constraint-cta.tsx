@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function ConstraintCTA() {
   return (
-    <section className="relative overflow-hidden border-t border-border bg-primary text-primary-foreground">
+    <section className="relative overflow-hidden border-t border-border/50 bg-primary text-primary-foreground">
       <div
         aria-hidden
         className="animate-flicker pointer-events-none absolute inset-0 opacity-30"
