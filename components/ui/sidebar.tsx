@@ -106,7 +106,7 @@ function Sidebar({
         data-slot="sidebar"
         data-state={open ? "expanded" : "collapsed"}
         className={cn(
-          "bg-sidebar text-sidebar-foreground border-sidebar-border fixed inset-y-0 left-0 z-40 flex h-svh flex-col border-r transition-[width] duration-200",
+          "bg-sidebar text-sidebar-foreground border-sidebar-border/50 fixed inset-y-0 left-0 z-40 flex h-svh flex-col border-r transition-[width] duration-200",
           open ? "w-64" : "w-16",
           className,
         )}
@@ -166,7 +166,7 @@ function SidebarFooter({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="sidebar-footer"
       className={cn(
-        "mt-auto flex flex-col items-stretch gap-2 border-t border-sidebar-border p-4 group-data-[state=collapsed]/sidebar:p-3",
+        "mt-auto flex flex-col items-stretch gap-2 border-t border-sidebar-border/50 p-4 group-data-[state=collapsed]/sidebar:p-3",
         className,
       )}
       {...props}
