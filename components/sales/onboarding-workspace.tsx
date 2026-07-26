@@ -1190,7 +1190,7 @@ export function SalesOnboardingWorkspace() {
                       {workflow.steps.map((step, index) => (
                         <span
                           key={`${workflow.name}-${step}`}
-                          className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-3 py-1 text-xs"
+                          className="inline-flex items-center gap-2 rounded-full border border-border/50 bg-secondary/30 px-3 py-1 text-xs"
                         >
                           <span className="font-mono text-primary">
                             {index + 1}

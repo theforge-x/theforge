@@ -74,7 +74,7 @@ function ChartTooltipContent({
   return (
     <div
       className={cn(
-        "bg-popover text-popover-foreground grid min-w-[9rem] gap-1.5 rounded-lg border border-border px-3 py-2 text-xs shadow-md",
+        "bg-popover text-popover-foreground grid min-w-[9rem] gap-1.5 rounded-lg border border-border/50 px-3 py-2 text-xs shadow-md",
         className,
       )}
     >
