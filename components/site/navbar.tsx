@@ -162,7 +162,7 @@ export function Navbar() {
             </Button>
             <Button size={scrolled ? "sm" : "default"} asChild>
               <Link href="/book">
-                Book a growth audit
+                Growth Constraint Map
                 <ArrowUpRight className="size-4" />
               </Link>
             </Button>
@@ -287,7 +287,7 @@ export function Navbar() {
                   </Button>
                   <Button asChild>
                     <Link href="/book" tabIndex={mobileOpen ? 0 : -1}>
-                      Book a growth audit
+                      Growth Constraint Map
                       <ArrowUpRight className="size-4" />
                     </Link>
                   </Button>

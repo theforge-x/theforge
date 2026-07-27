@@ -10,7 +10,8 @@ import { getStudioSettings } from "@/lib/data-access";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Book a growth audit or get in touch with The Forge.",
+  description:
+    "Contact theForge about a Growth Constraint Map, Revenue System Sprint, or ongoing revenue-system optimization.",
 };
 
 export default async function ContactPage() {
@@ -20,7 +21,11 @@ export default async function ContactPage() {
     { icon: Mail, label: settings.publicEmail },
     { icon: Phone, label: settings.phone },
     { icon: Clock, label: "Replies within 1 business day" },
-    { icon: MapPin, label: "Remote-first, working across US & UK time zones" },
+    {
+      icon: MapPin,
+      label:
+        "A HubX company: Lagos-founded, globally delivered across US & UK working hours",
+    },
   ];
   return (
     <>
@@ -28,8 +33,8 @@ export default async function ContactPage() {
       <main>
         <PageHeader
           eyebrow="Contact"
-          title="Tell us where growth stalled."
-          description="Tell us what you are working through, and we will help identify the most useful next conversation."
+          title="Tell us where revenue is leaking."
+          description="Share what is breaking between demand, follow-up, pipeline and revenue. We will point you toward the right diagnostic or implementation path."
         />
 
         <section className="mx-auto max-w-5xl px-6 py-24">

@@ -6,6 +6,18 @@ import { db } from "@/lib/db";
 import { availabilityRules, blockedDates } from "@/lib/db/schema";
 
 const time = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/);
+const timezone = z
+  .string()
+  .min(1)
+  .max(80)
+  .refine((value) => {
+    try {
+      new Intl.DateTimeFormat("en-US", { timeZone: value }).format(new Date());
+      return true;
+    } catch {
+      return false;
+    }
+  }, "Enter a valid timezone, for example Africa/Lagos");
 const rule = z
   .object({
     id: z.string().optional(),
@@ -13,7 +25,7 @@ const rule = z
     weekday: z.coerce.number().int().min(0).max(6),
     startTime: time,
     endTime: time,
-    timezone: z.string().min(1).max(80),
+    timezone,
     slotInterval: z.coerce.number().int().min(15).max(240),
     active: z.boolean(),
   })

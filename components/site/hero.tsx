@@ -19,27 +19,27 @@ export function Hero() {
       <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
         <div className="font-mono-eyebrow border-border/40 text-muted-foreground mb-8 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] uppercase">
           <Flame className="text-primary size-3" />
-          Technology for inevitable growth
+          Revenue systems for founder-led service firms
         </div>
 
         <h1 className="font-display animate-ignite bg-[linear-gradient(90deg,var(--gold)_0%,var(--ember)_55%,var(--gold)_100%)] bg-[length:220%_100%] bg-clip-text text-[13vw] leading-[0.95] text-transparent sm:text-6xl md:text-7xl lg:text-8xl">
-          WE FORGE SYSTEMS
-          <br />
-          THAT COMPOUND GROWTH.
+          TURN REFERRAL-LED GROWTH INTO A MEASURABLE REVENUE SYSTEM.
         </h1>
 
         <p className="text-muted-foreground mt-8 max-w-3xl text-balance text-base leading-relaxed sm:text-lg">
-          We turn technology — digital assets, intelligent workflows, CRM, AI analytics — into lasting enterprise value. Cut the friction. Surface the signal. Replace guesswork with a system engineered for scalable, sustained growth.
+          theForge connects your positioning, website, CRM, automation and sales
+          follow-up into one growth engine. Built in 6-10 weeks, measured
+          against commercial outcomes, and fully owned by your team.
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
           <Button size="lg" variant="ember" asChild>
             <Link href="/book">
-              Book a Growth Audit <ArrowUpRight className="size-4" />
+              Get your Growth Constraint Map <ArrowUpRight className="size-4" />
             </Link>
           </Button>
           <Button size="lg" variant="outline" asChild>
-            <Link href="/services">Explore our services</Link>
+            <Link href="/work">See verified client results</Link>
           </Button>
         </div>
 
@@ -50,7 +50,7 @@ export function Hero() {
               20+
             </dd>
             <dd className="text-muted-foreground mt-1 text-xs">
-              clients onboarded
+              client relationships
             </dd>
           </div>
           <div>
@@ -59,7 +59,7 @@ export function Hero() {
               120+
             </dd>
             <dd className="text-muted-foreground mt-1 text-xs">
-              projects forged
+              systems and assets built
             </dd>
           </div>
           <div>
@@ -68,7 +68,7 @@ export function Hero() {
               $1.2M+
             </dd>
             <dd className="text-muted-foreground mt-1 text-xs">
-              added to client revenue
+              reported client revenue influence
             </dd>
           </div>
           <div>
@@ -77,7 +77,7 @@ export function Hero() {
               10
             </dd>
             <dd className="text-muted-foreground mt-1 text-xs">
-              avg. weeks to breakthrough
+              week sprint window
             </dd>
           </div>
         </dl>

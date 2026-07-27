@@ -8,9 +8,9 @@ import { PageHeader } from "@/components/site/page-header";
 import { getStudioSettings } from "@/lib/data-access";
 
 export const metadata: Metadata = {
-  title: "Book a Growth Audit",
+  title: "Book a Growth Constraint Map",
   description:
-    "Choose a time for a growth audit with The Forge and request your appointment.",
+    "Choose a time to discuss a Growth Constraint Map with theForge.",
 };
 
 export default async function BookPage() {
@@ -22,9 +22,9 @@ export default async function BookPage() {
       <Navbar />
       <main>
         <PageHeader
-          eyebrow="Book a growth audit"
+          eyebrow="Book a Growth Constraint Map"
           title="Choose a time that works."
-          description="Request a focused conversation about what is stalling growth. Once approved, your meeting link will be shared with you."
+          description="Request a focused conversation about where revenue is leaking between demand, follow-up, pipeline and reporting."
         />
 
         <section className="mx-auto max-w-5xl px-6 py-24">
