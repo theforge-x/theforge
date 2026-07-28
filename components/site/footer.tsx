@@ -7,9 +7,9 @@ const columns = [
   {
     heading: "Services",
     links: [
-      { href: "/services#audit", label: "Growth Audit" },
-      { href: "/services#build", label: "Growth System Build" },
-      { href: "/services#partner", label: "Temper Partner" },
+      { href: "/services#audit", label: "Growth Constraint Map" },
+      { href: "/services#build", label: "Revenue System Sprint" },
+      { href: "/services#partner", label: "Temper Growth Partner" },
     ],
   },
   {
@@ -23,9 +23,15 @@ const columns = [
   },
   {
     heading: "Access",
+    links: [{ href: "/login", label: "Client Portal" }],
+  },
+  {
+    heading: "Legal",
     links: [
-      { href: "/login", label: "Client Portal" },
-      { href: "/admin", label: "Admin" },
+      { href: "/privacy", label: "Privacy" },
+      { href: "/terms", label: "Terms" },
+      { href: "/data-processing", label: "Data & AI" },
+      { href: "/accessibility", label: "Accessibility" },
     ],
   },
 ];
@@ -36,7 +42,7 @@ export async function Footer() {
   return (
     <footer className="border-border/50 border-t">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_repeat(4,1fr)]">
           <div className="flex flex-col gap-4">
             <Link href="/" className="flex items-center gap-2.5">
               <BrandMark className="size-7" />
@@ -45,9 +51,9 @@ export async function Footer() {
               </span>
             </Link>
             <p className="text-muted-foreground max-w-xs text-sm leading-relaxed">
-              A growth systems studio. We diagnose the structural constraint
-              stalling growth, forge the acquisition and retention systems to
-              fix it, then temper the result until it compounds on its own.
+              theForge Revenue Systems is a Lagos-founded, globally delivered
+              HubX company for founder-led service firms that have outgrown
+              referrals and disconnected tools.
             </p>
           </div>
 

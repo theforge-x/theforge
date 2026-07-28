@@ -1,21 +1,21 @@
 import { Check, X } from "lucide-react";
 
 const fitFor = [
-  "You generate $100K–$10M in revenue, but hit a clear growth ceiling.",
-  "You are single-channel dependent—and aware of the structural risk.",
+  "You run a founder-led service firm with high-consideration, high-value sales.",
+  "You have outgrown referrals but still depend on them for too much pipeline.",
+  "You already have a website, leads and tools, but they do not work together.",
   "You seek fully documented, team-owned systems rather than a black box agency.",
-  "You are ready to commit to a 1–10 week architectural build, not a superficial hack.",
-  "You scale operations faster than internal infrastructure can sustain.",
-  "You are ready to replace founder-led guesswork with repeatable, data-backed processes."
+  "You are ready to commit to a 6-10 week system build, not a superficial refresh.",
+  "You want positioning, website, CRM, follow-up and reporting connected.",
 ];
 
 const notFor = [
-  "You seek isolated tactics instead of a scalable, end-to-end system.",
+  "You want isolated tactics instead of a measurable revenue system.",
   "You are pre-revenue or still validating initial product-market fit.",
   "You look to completely outsource strategic thinking and walk away.",
-  "You expect magic in less than a week, not giving systems room to be built right.",
+  "You expect magic in less than a week.",
   "You are unwilling to challenge core assumptions or give up internal micromanagement.",
-  "You search for low-budget experiments rather than high-leverage infrastructure."
+  "You are shopping for the lowest-cost website or marketing vendor.",
 ];
 
 export function ICPFilter() {
@@ -27,8 +27,13 @@ export function ICPFilter() {
             Who this is for
           </div>
           <h2 className="font-display text-4xl sm:text-5xl">
-            We're deliberately not for everyone.
+            Built for a specific buyer moment.
           </h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+            The best fit is not “we need more marketing.” It is “we have demand,
+            tools and follow-up activity, but no reliable system for turning
+            that activity into revenue.”
+          </p>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -70,9 +75,9 @@ export function ICPFilter() {
         </div>
 
         <p className="border-accent mt-8 max-w-2xl border-l-2 pl-5 text-sm leading-relaxed text-foreground">
-          This diagnostic process yields transformative clarity, but only for
-          leaders willing to evaluate their operations without ego or defense.
-          If that aligns with your mindset, let’s connect.
+          The economic buyer is usually the founder, CEO, managing partner, COO
+          or head of growth responsible for revenue, delivery quality and
+          operating discipline.
         </p>
       </div>
     </section>

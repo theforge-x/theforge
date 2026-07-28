@@ -11,7 +11,7 @@ import { TeamMemberCard } from "@/components/site/team-member-card";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet the team behind theForge and discover how we build growth systems that compound.",
+    "Meet the senior-led team behind theForge Revenue Systems and how we build accountable revenue systems for founder-led service firms.",
 };
 
 const values = [
@@ -41,6 +41,17 @@ const values = [
   },
 ];
 
+const deliveryStandards = [
+  "One senior engagement owner from diagnosis through handover.",
+  "A named delivery pod that does not disappear after the sales call.",
+  "A KPI baseline agreed before implementation begins.",
+  "One weekly commercial scorecard during active delivery.",
+  "Recorded walkthroughs of every major system.",
+  "Client ownership of accounts, code, data and documentation.",
+  "Fixed acceptance criteria and documented operating procedures.",
+  "A 30- or 60-day post-launch stabilization period when the build needs it.",
+];
+
 const team = [
   {
     name: "Kelechi Egbuta",
@@ -49,6 +60,7 @@ const team = [
     strength: "Turning ambiguity into systems",
     summary:
       "Kelechi sees the whole machine. He connects positioning, product, technology and revenue into one operating system—then finds the single constraint keeping it from moving. His standard is simple: strategy should survive contact with reality, and every bold idea should eventually become something a team can run, measure and own.",
+    credential: "Senior engagement owner for diagnosis and system architecture",
   },
   {
     name: "John Christopher",
@@ -57,6 +69,7 @@ const team = [
     strength: "Making value unmistakable",
     summary:
       "John turns conversations into clarity and relationships into momentum. He is at his best where commercial instinct meets genuine curiosity—listening beyond the brief, uncovering the real buying problem and building partnerships that make both sides stronger. For John, a great sale is never pressure; it is a well-designed decision.",
+    credential: "Partnerships, qualification and commercial alignment",
   },
   {
     name: "Marvelous Miracle",
@@ -65,6 +78,7 @@ const team = [
     strength: "Giving strategy a pulse",
     summary:
       "Marvelous gives complex ideas a form people can feel immediately. She leads with taste, but never decoration for decoration's sake: every word, frame and interaction has a job to do. Her work turns sharp strategy into distinctive brands and digital experiences that earn attention, build trust and stay remembered.",
+    credential: "Positioning, conversion experience and creative direction",
   },
 ];
 
@@ -74,24 +88,28 @@ const extendedTeam = [
     role: "Brand & Content Strategist",
     image: "/about/john-christopher-3d.webp",
     bio: "Praise turns positioning into a point of view people can recognize, trust and remember. He shapes the stories, editorial systems and content that give every growth move a clear voice.",
+    credential: "Narrative, content systems and messaging support",
   },
   {
     name: "Caleb Onyenaturuchi",
     role: "Project Operations Lead",
     image: "/about/marvelous-miracle-3d.webp",
     bio: "Caleb keeps ambitious work moving with calm precision. He connects people, priorities and timelines so the right work gets done well and every handoff feels intentional.",
+    credential: "Delivery coordination, timelines and operating cadence",
   },
   {
     name: "Chioma Favour",
     role: "Client Success Manager",
     image: "/about/kelechi-egbuta-3d.webp",
     bio: "Chioma makes sure the work creates momentum beyond launch. She translates client goals into clear next steps, protects the partnership and keeps outcomes in view.",
+    credential: "Client communication, adoption and post-launch momentum",
   },
   {
     name: "Joshua Prince",
     role: "Marketing & Conversion Lead",
     image: "/about/john-christopher-3d.webp",
     bio: "Joshua bridges attention and action. He finds the friction in the customer journey and turns sharper messaging, journeys and experiments into measurable movement.",
+    credential: "Conversion journeys, experiments and pipeline activation",
   },
 ];
 
@@ -129,8 +147,8 @@ export default function AboutPage() {
       <main className="overflow-hidden">
         <PageHeader
           eyebrow="About"
-          title="Growth agencies sell tactics. We build systems."
-          description="theForge was started after watching too many good businesses stall—not from a lack of effort, but from a growth engine that was never actually engineered."
+          title="A senior-led revenue-systems studio."
+          description="theForge was started after watching good service companies outgrow referrals, add more tools, and still lose revenue in the handoffs between marketing, sales and operations."
         />
 
         <section className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
@@ -139,32 +157,63 @@ export default function AboutPage() {
               The belief behind the build
             </div>
             <h2 className="max-w-xl font-display text-4xl leading-[1.05] tracking-tight sm:text-5xl">
-              Growth should become an asset, not a monthly emergency.
+              Growth should become an owned operating asset, not a monthly
+              emergency.
             </h2>
           </div>
 
           <div className="space-y-7 text-lg leading-8 text-muted-foreground">
             <p>
-              Most growth work is a bet on one channel and a hope that it keeps
-              working. It does, until it doesn&apos;t—an algorithm shifts, a
-              referral source dries up or a competitor changes the economics.
-              The business that built a system survives that day. The business
-              that built a tactic starts over.
+              Most founder-led service companies do not have a demand problem
+              alone. They have a handoff problem. The website, CRM, follow-up,
+              reporting and sales conversations all exist, but they do not work
+              as one revenue system.
             </p>
             <p>
               That is why our work starts before the deliverable. We study the
               offer, the audience, the buying journey, the handoffs and the
               numbers. A website may be part of the answer; so might a sharper
-              narrative, a better sales process, an automated workflow or an AI
-              layer that gives a small team extraordinary leverage.
+              narrative, CRM cleanup, routing logic, sales stages, automated
+              follow-up or a dashboard that gives leadership a shared view of
+              the pipeline.
             </p>
             <p>
               We work with a deliberately small number of clients. Every
-              engagement begins with a diagnostic audit and ends with something
-              useful: a clearer decision, a stronger system and a team more
-              capable than when we arrived. No borrowed playbook. No black box.
-              No dependency disguised as a retainer.
+              engagement begins with diagnosis and ends with something useful: a
+              clearer decision, a stronger system and a team more capable than
+              when we arrived. Lagos-founded. Globally delivered. Senior-led
+              across US and UK working hours. theForge is a HubX company, with
+              HubX registered in London, United Kingdom.
             </p>
+          </div>
+        </section>
+
+        <section className="border-y border-border/50 bg-secondary/20">
+          <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+            <div>
+              <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
+                Delivery standard
+              </div>
+              <h2 className="font-display text-4xl tracking-tight sm:text-5xl">
+                Small team is the premium feature.
+              </h2>
+              <p className="mt-5 text-sm leading-6 text-muted-foreground">
+                No hand-offs into a black box. The senior people who diagnose
+                the constraint remain accountable for the system that gets
+                implemented.
+              </p>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {deliveryStandards.map((standard) => (
+                <div
+                  key={standard}
+                  className="rounded-lg border border-border/60 bg-card p-5 text-sm leading-6 text-muted-foreground"
+                >
+                  {standard}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -247,6 +296,9 @@ export default function AboutPage() {
                     </h3>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                       {member.bio}
+                    </p>
+                    <p className="mt-4 border-t border-border/50 pt-4 text-xs leading-5 text-muted-foreground">
+                      {member.credential}
                     </p>
                   </div>
                 </article>

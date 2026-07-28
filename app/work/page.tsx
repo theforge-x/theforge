@@ -3,15 +3,16 @@ import { connection } from "next/server";
 
 import { ConstraintCTA } from "@/components/site/constraint-cta";
 import { Footer } from "@/components/site/footer";
+import { ICPFilter } from "@/components/site/icp-filter";
 import { Navbar } from "@/components/site/navbar";
 import { PageHeader } from "@/components/site/page-header";
 import { WorkGrid } from "@/components/site/work-grid";
 import { getPublishedCaseStudies } from "@/lib/data-access";
-import { ICPFilter } from "@/components/site/icp-filter";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Case studies from businesses we've built growth systems for.",
+  description:
+    "Case studies showing how theForge connects positioning, website, CRM, automation, follow-up and reporting.",
 };
 
 export default async function WorkPage() {
@@ -23,8 +24,8 @@ export default async function WorkPage() {
       <main>
         <PageHeader
           eyebrow="Work"
-          title="Proof, filed by discipline."
-          description="Every engagement below started with the same audit process and ended with a documented, owned system."
+          title="Client systems, not isolated deliverables."
+          description="Each case shows a specific business constraint, the operating system built around it and the result or ownership improvement reported."
         />
         <WorkGrid caseStudies={caseStudies} />
         <ICPFilter />

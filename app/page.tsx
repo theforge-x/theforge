@@ -4,6 +4,7 @@ import { CTASection } from "@/components/site/cta-section";
 import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
 import { ICPFilter } from "@/components/site/icp-filter";
+import { IndustriesWeServe } from "@/components/site/industries-we-serve";
 import { InsightsPreview } from "@/components/site/insights-preview";
 import { LogoTicker } from "@/components/site/logo-ticker";
 import { Navbar } from "@/components/site/navbar";
@@ -39,11 +40,12 @@ export default async function Home() {
       <main>
         <Hero />
         <LogoTicker items={clientNames} />
+        <IndustriesWeServe />
         <ProcessSection />
         <ServicesGrid />
         <CaseStudiesGrid limit={4} />
-        <PricingTiers />
         <PredictableGrowthSection />
+        <PricingTiers />
         <InsightsPreview />
         <ICPFilter />
         <Testimonials />

@@ -18,30 +18,38 @@ export function LoginForm({ nextPath }: { nextPath?: string }) {
     event.preventDefault();
     setPending(true);
     setError(null);
-    const data = new FormData(event.currentTarget);
-    const result = await authClient.signIn.email({
-      email: String(data.get("email")),
-      password: String(data.get("password")),
-      rememberMe: data.get("remember") === "on",
-    });
-    if (result.error) {
-      setError(result.error.message ?? "Unable to sign in");
-      setPending(false);
-      return;
-    }
+    try {
+      const data = new FormData(event.currentTarget);
+      const result = await authClient.signIn.email({
+        email: String(data.get("email")),
+        password: String(data.get("password")),
+        rememberMe: data.get("remember") === "on",
+      });
+      if (result.error) {
+        setError(result.error.message ?? "Unable to sign in");
+        return;
+      }
 
-    const session = await authClient.getSession();
-    const role = session.data?.user.role ?? "client";
-    const safeNext = nextPath?.startsWith("/") ? nextPath : undefined;
-    const destination =
-      safeNext ??
-      (role.split(",").includes("admin")
-        ? "/admin"
-        : role.split(",").includes("sales")
-          ? "/sales"
-          : "/portal");
-    router.replace(destination);
-    router.refresh();
+      const session = await authClient.getSession();
+      const role = session.data?.user.role ?? "client";
+      const safeNext =
+        nextPath?.startsWith("/") && !nextPath.startsWith("//")
+          ? nextPath
+          : undefined;
+      const destination =
+        safeNext ??
+        (role.split(",").includes("admin")
+          ? "/admin"
+          : role.split(",").includes("sales")
+            ? "/sales"
+            : "/portal");
+      router.replace(destination);
+      router.refresh();
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Unable to sign in");
+    } finally {
+      setPending(false);
+    }
   }
 
   return (

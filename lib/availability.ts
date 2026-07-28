@@ -3,6 +3,8 @@ import { getStudioSettings } from "@/lib/data-access";
 import { db } from "@/lib/db";
 import { appointments, availabilityRules, blockedDates } from "@/lib/db/schema";
 
+export type AvailabilitySlot = { startsAt: string; timezone: string };
+
 function partsInZone(date: Date, timeZone: string) {
   const parts = new Intl.DateTimeFormat("en-CA", {
     timeZone,
@@ -45,6 +47,19 @@ function localToUtc(
   return new Date(guess);
 }
 
+function getLocalDateForOffset(dayOffset: number, timeZone: string) {
+  const today = partsInZone(new Date(), timeZone);
+  const target = localToUtc(
+    today.year,
+    today.month,
+    today.day + dayOffset,
+    12,
+    0,
+    timeZone,
+  );
+  return partsInZone(target, timeZone);
+}
+
 export async function listAvailableSlots(days = 30) {
   const [rules, blocks, bookings, settings] = await Promise.all([
     db.select().from(availabilityRules),
@@ -60,13 +75,17 @@ export async function listAvailableSlots(days = 30) {
       ),
     getStudioSettings(),
   ]);
-  const slots: { startsAt: string; timezone: string }[] = [];
+  const slots: AvailabilitySlot[] = [];
   const now = Date.now() + 60 * 60 * 1000;
-  for (let dayOffset = 0; dayOffset < days; dayOffset++) {
-    const date = new Date();
-    date.setUTCDate(date.getUTCDate() + dayOffset);
-    for (const rule of rules.filter((item) => item.active)) {
-      const local = partsInZone(date, rule.timezone);
+  const activeRules = rules.filter((item) => item.active);
+  for (const rule of activeRules) {
+    for (let dayOffset = 0; dayOffset < days; dayOffset++) {
+      let local: Record<string, number>;
+      try {
+        local = getLocalDateForOffset(dayOffset, rule.timezone);
+      } catch {
+        continue;
+      }
       const weekday = new Date(
         Date.UTC(local.year, local.month - 1, local.day),
       ).getUTCDay();

@@ -309,6 +309,57 @@ export async function getPublishedPosts() {
 }
 
 export async function getPublishedCaseStudies(): Promise<CaseStudy[]> {
+  const metricBySlug: Record<string, CaseStudy["metric"]> = {
+    "onyx-legal-referral-rebuild": {
+      label: "Qualified intake",
+      value: "+64%",
+    },
+    "onyx-corporate-client-retention-system": {
+      label: "Repeat-instruction rate",
+      value: "+31%",
+    },
+    "fabrica-multi-channel-bid-pipeline": {
+      label: "Qualified bid pipeline",
+      value: "+118%",
+    },
+    "fabrica-estimating-follow-up-workflow": {
+      label: "Median bid cycle",
+      value: "-9 days",
+    },
+    "lumen-patient-retention-system": {
+      label: "Recall recovery",
+      value: "+43%",
+    },
+    "lumen-recall-referral-loop": {
+      label: "Referral-ready patients",
+      value: "+52%",
+    },
+    "marrow-wholesale-acquisition-engine": {
+      label: "Wholesale accounts",
+      value: "+37",
+    },
+    "marrow-margin-aware-partner-system": {
+      label: "Gross margin",
+      value: "+8.4 pts",
+    },
+    "josren-fashion-commerce-intelligence": {
+      label: "Collection conversion",
+      value: "+27%",
+    },
+    "josren-collection-launch-system": {
+      label: "Launch sell-through",
+      value: "+34%",
+    },
+    "right-mind-homes-enquiry-admissions-system": {
+      label: "First response time",
+      value: "-71%",
+    },
+    "right-mind-homes-family-journey": {
+      label: "Family update completion",
+      value: "+46%",
+    },
+  };
+
   try {
     const rows = await db
       .select({
@@ -337,7 +388,7 @@ export async function getPublishedCaseStudies(): Promise<CaseStudy[]> {
         industry,
         summary: post.excerpt,
         featuredImage: post.featuredImage,
-        metric: {
+        metric: metricBySlug[post.slug] ?? {
           label: "Project progress",
           value: `${project.progress}%`,
         },

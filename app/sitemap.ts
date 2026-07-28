@@ -1,11 +1,9 @@
 import type { MetadataRoute } from "next";
 
 import { getPublishedCaseStudies, getPublishedPosts } from "@/lib/data-access";
+import { getSiteUrl } from "@/lib/site-url";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_APP_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 const publicRoutes = [
   "/",
@@ -15,6 +13,10 @@ const publicRoutes = [
   "/blog",
   "/contact",
   "/book",
+  "/privacy",
+  "/terms",
+  "/data-processing",
+  "/accessibility",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

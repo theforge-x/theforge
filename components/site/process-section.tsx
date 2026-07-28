@@ -1,27 +1,29 @@
 const phases = [
   {
     number: "01",
-    name: "Diagnose the ore",
-    duration: "30-minute audit",
+    name: "Growth Constraint Map",
+    duration: "1-2 week diagnostic",
     description:
-      "We map every constraint across acquisition, conversion, retention, and pricing. Not a general review — a ranked diagnosis with an estimated growth impact attached to each finding.",
-    output: "A written growth audit with a prioritized action plan.",
+      "We identify where revenue is leaking across positioning, lead response, follow-up, CRM data, pipeline stages and reporting.",
+    output:
+      "System map, KPI baseline, prioritized roadmap and implementation proposal.",
   },
   {
     number: "02",
-    name: "Forge the system",
+    name: "Revenue System Sprint",
     duration: "6–10 week build",
     description:
-      "We engineer the fix for every constraint the audit surfaced: multi-channel acquisition, offer repositioning, pricing restructure, retention model, referral framework. Nothing templated.",
-    output: "A live, documented growth system running in your business.",
+      "We run the Forge Build inside the sprint, combining only the modules needed: digital products, experience and brand, demand, AI automation, revenue operations, and platform advisory.",
+    output:
+      "One functioning revenue system your team can run, measure and improve.",
   },
   {
     number: "03",
-    name: "Temper & compound",
-    duration: "Ongoing partnership",
+    name: "Temper Growth Partner",
+    duration: "Ongoing optimization",
     description:
-      "Systems drift without maintenance. Monthly strategy sessions, channel review, and new-build iteration keep the system compounding as you scale past each new ceiling.",
-    output: "A growth partner, not a report you read once.",
+      "We improve conversion rate, speed to lead, lead-to-opportunity rate, sales-cycle length, win rate, retention and referrals.",
+    output: "A commercial scorecard and senior team accountable for momentum.",
   },
 ];
 
@@ -33,11 +35,12 @@ export function ProcessSection() {
           How it's forged
         </div>
         <h2 className="font-display text-4xl sm:text-5xl">
-          Three passes through the fire.
+          Three products. One connected revenue system.
         </h2>
         <p className="text-muted-foreground mt-4 text-base leading-relaxed">
-          Growth isn't engineered in one sitting. Ore gets diagnosed, forged
-          into shape, then tempered until it holds under load.
+          The buyer does not buy isolated web design, SEO, automation or CRM
+          consulting. The six build capabilities sit inside the Revenue System
+          Sprint, which sits between diagnosis and ongoing optimization.
         </p>
       </div>
 

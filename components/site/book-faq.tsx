@@ -7,17 +7,17 @@ import {
 
 const questions = [
   {
-    question: "What is a growth audit?",
+    question: "What is a Growth Constraint Map?",
     answer:
-      "A growth audit is a focused review of the systems behind acquisition, conversion, retention, and revenue. We look for the constraint with the greatest impact rather than jumping straight to a preferred service.",
+      "A Growth Constraint Map is a focused review of the systems behind acquisition, conversion, follow-up, pipeline and revenue. We look for the constraint with the greatest impact rather than jumping straight to a preferred service.",
   },
   {
-    question: "Who is the audit for?",
+    question: "Who is it for?",
     answer:
       "It is designed for founders and growth leaders who have a real offer and some market signal, but feel that growth is slower, less predictable, or more dependent on heroics than it should be.",
   },
   {
-    question: "What happens during the 30-minute session?",
+    question: "What happens during the first session?",
     answer:
       "We ask targeted questions about your goals, offer, audience, customer journey, channels, handoffs, and current numbers. We use the time to locate the most consequential constraint and discuss what could address it.",
   },
@@ -34,10 +34,10 @@ const questions = [
   {
     question: "Will I receive a written action plan?",
     answer:
-      "Yes. You will leave with a ranked view of the issues discussed and practical next actions. The level of detail depends on the complexity of the situation and the information available in the session.",
+      "The full paid diagnostic includes a system map, KPI baseline, prioritized roadmap and implementation proposal. The initial booking conversation confirms fit and the right next step.",
   },
   {
-    question: "Is the audit a sales call?",
+    question: "Is this a sales call?",
     answer:
       "It is a working session first. If we see a problem we can help solve, we may explain what a next engagement could look like. There is no obligation to continue with us.",
   },
@@ -49,7 +49,7 @@ const questions = [
   {
     question: "What if I only need one focused project?",
     answer:
-      "The audit can still help determine whether a focused project is the right intervention. We can recommend a website, product, campaign, automation, or other scoped build when that is the clearest solution.",
+      "The diagnostic can still help determine whether a focused project is the right intervention. We can recommend a website, CRM, automation, follow-up or reporting build when that is the clearest solution.",
   },
   {
     question: "What happens after I request a time?",
@@ -64,19 +64,22 @@ export function BookFaq() {
       <div className="mx-auto grid max-w-5xl gap-10 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="max-w-md">
           <div className="font-mono-eyebrow text-accent text-[11px] uppercase">
-            About the growth audit
+            About the diagnostic
           </div>
           <h2 className="font-display mt-3 text-3xl sm:text-4xl">
             Come prepared to find the constraint.
           </h2>
           <p className="text-muted-foreground mt-4 text-sm leading-relaxed">
-            The audit is a focused working session—not a generic discovery call.
-            These answers explain what to expect and how to make the time
-            useful.
+            The Growth Constraint Map starts with a focused fit conversation,
+            not a generic agency pitch. These answers explain what to expect.
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="border-border/50 border-t">
+        <Accordion
+          type="single"
+          collapsible
+          className="border-border/50 border-t"
+        >
           {questions.map((item, index) => (
             <AccordionItem key={item.question} value={`question-${index + 1}`}>
               <AccordionTrigger className="py-5 text-base">

@@ -70,8 +70,13 @@ export async function CaseStudiesGrid({ limit }: { limit?: number }) {
                       </Badge>
                     ))}
                   </div>
-                  <div className="font-display text-accent text-xl">
-                    {c.metric.value}
+                  <div className="text-right">
+                    <div className="font-display text-accent text-xl">
+                      {c.metric.value}
+                    </div>
+                    <div className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                      {c.metric.label}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -6,10 +6,11 @@ import { admin } from "better-auth/plugins";
 import { accessControl, authRoles } from "@/lib/auth/permissions";
 import { db } from "@/lib/db";
 import { schema } from "@/lib/db/schema";
+import { getSiteUrl } from "@/lib/site-url";
 
 export const auth = betterAuth({
   appName: "theForge",
-  baseURL: process.env.BETTER_AUTH_URL,
+  baseURL: getSiteUrl(),
   secret: process.env.BETTER_AUTH_SECRET,
   database: drizzleAdapter(db, {
     provider: "pg",

@@ -1,8 +1,10 @@
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Mono, Manrope } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -24,24 +26,21 @@ const bric = Bricolage_Grotesque({
   display: "swap",
 });
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_APP_URL ??
-  process.env.BETTER_AUTH_URL ??
-  "http://localhost:3000";
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: "theForge",
-  authors: [{ name: "theForge" }],
-  creator: "theForge",
-  publisher: "theForge",
+  authors: [{ name: "theForge Revenue Systems" }],
+  creator: "theForge Revenue Systems",
+  publisher: "theForge Revenue Systems",
   keywords: [
-    "growth systems",
-    "growth strategy",
-    "digital product studio",
-    "AI automation",
-    "revenue operations",
-    "conversion optimization",
+    "revenue systems studio",
+    "growth systems consulting",
+    "CRM implementation and automation",
+    "website to CRM conversion systems",
+    "referral to pipeline systems",
+    "lead follow-up automation",
   ],
   robots: {
     index: true,
@@ -57,24 +56,24 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "theForge",
-    title: "theForge · Growth Systems Studio",
+    siteName: "theForge Revenue Systems",
+    title: "theForge Revenue Systems · Revenue Systems Studio",
     description:
-      "Diagnose the constraint stalling your growth, build the system to fix it, and create an engine that compounds.",
+      "Revenue systems for founder-led service firms that have outgrown referrals and disconnected marketing.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "theForge · Growth Systems Studio",
+    title: "theForge Revenue Systems · Revenue Systems Studio",
     description:
-      "Diagnose the constraint stalling your growth, build the system to fix it, and create an engine that compounds.",
+      "Revenue systems for founder-led service firms that have outgrown referrals and disconnected marketing.",
   },
   icons: { icon: "/logo.svg" },
   title: {
-    default: "theForge · Growth Systems Studio",
+    default: "theForge Revenue Systems · Revenue Systems Studio",
     template: "%s · theForge",
   },
   description:
-    "theForge is a growth systems studio. We diagnose the constraint stalling your growth, build the acquisition, offer, and retention systems to fix it, then run the retainer that compounds it.",
+    "theForge is a HubX company that builds revenue systems for founder-led service firms that have outgrown referrals. We connect positioning, website, CRM, automation and follow-up into one measurable growth engine.",
 };
 
 export default function RootLayout({
@@ -101,6 +100,7 @@ export default function RootLayout({
           <Toaster position="bottom-right" />
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

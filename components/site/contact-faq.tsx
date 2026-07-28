@@ -9,9 +9,9 @@ import {
 
 const questions = [
   {
-    question: "What happens during a growth audit?",
+    question: "What happens during a Growth Constraint Map?",
     answer:
-      "We use the session to map the systems behind your acquisition, conversion, retention, and revenue, then identify the constraint with the greatest impact. You leave with a ranked, practical action plan.",
+      "We map the systems behind acquisition, conversion, follow-up, pipeline and revenue, then identify the constraint with the greatest impact. The paid diagnostic produces a system map, KPI baseline and prioritized roadmap.",
   },
   {
     question: "Do I need to prepare anything?",
@@ -21,17 +21,17 @@ const questions = [
   {
     question: "What kinds of businesses do you work with?",
     answer:
-      "We work best with ambitious teams that have a real offer and some market signal, but need a stronger system to reach their next stage. If we are not the right fit, we will say so plainly.",
+      "We work best with founder-led service firms that have a real offer, high-consideration sales and enough demand to expose leaks between marketing, sales and operations.",
   },
   {
     question: "Can you help with one focused project?",
     answer:
-      "Yes. We can solve a focused product, website, automation, marketing, or revenue problem when that is the clearest constraint. We can also connect several capabilities into a broader growth system.",
+      "Yes, when the focused project is the right intervention. We can scope a website, CRM, automation, follow-up or reporting build as part of a connected revenue system.",
   },
   {
     question: "Do you work with teams outside your time zone?",
     answer:
-      "Yes. The Forge is remote-first and works across US and UK time zones, with a documented, asynchronous process that keeps projects moving between live sessions.",
+      "Yes. theForge is Lagos-founded and globally delivered across US and UK working hours, with a documented process that keeps projects moving between live sessions.",
   },
   {
     question: "What should I include in my message?",
@@ -41,12 +41,12 @@ const questions = [
   {
     question: "What happens after I send an enquiry?",
     answer:
-      "We review your note and reply within one business day. We may ask a clarifying question or recommend a conversation based on whether you need strategy, design, engineering, marketing, automation, or a connected system.",
+      "We review your note and reply within one business day. We may ask a clarifying question or recommend a fit conversation based on whether you need diagnosis, implementation or ongoing optimization.",
   },
   {
-    question: "Do I have to book a growth audit?",
+    question: "Do I have to book a diagnostic?",
     answer:
-      "No. The contact form is for a broad range of reasons, including a focused project, a partnership conversation, or a question about how we work. We will recommend an audit only when it is the most useful next step.",
+      "No. The contact form also works for a focused project, a partnership conversation or a question about how we work. We will recommend a Growth Constraint Map only when it is the most useful next step.",
   },
   {
     question: "Can you help if I know the project but not the solution?",
@@ -56,7 +56,7 @@ const questions = [
   {
     question: "Can you scope a focused project?",
     answer:
-      "Yes. We can scope a focused website, product, brand, campaign, automation, AI workflow, or revenue improvement when that is the clearest problem to solve.",
+      "Yes. We can scope a focused website, CRM, automation, reporting or revenue improvement when that is the clearest problem to solve.",
   },
   {
     question: "What happens if we are not the right fit?",
@@ -87,7 +87,11 @@ export function ContactFaq() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="border-border/50 border-t">
+        <Accordion
+          type="single"
+          collapsible
+          className="border-border/50 border-t"
+        >
           {questions.map((item, index) => (
             <AccordionItem key={item.question} value={`question-${index + 1}`}>
               <AccordionTrigger className="py-5 text-base">
