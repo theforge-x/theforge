@@ -29,11 +29,11 @@ const tiers = [
     price: "$8K-$35K",
     period: "6-10 week build",
     description:
-      "A focused build that connects positioning, conversion experience, CRM, routing, automation, follow-up and reporting.",
+      "A focused Forge Build sprint that connects the modules needed to turn demand into a measurable revenue system.",
     features: [
-      "Positioning and offer architecture",
-      "Website or landing experience",
-      "CRM, automation and sales stages",
+      "Digital products and conversion experience",
+      "Experience, brand, demand and growth modules",
+      "AI automation, RevOps and platform advisory",
       "Dashboard, SOPs, training and handover",
     ],
     cta: "Discuss a sprint",

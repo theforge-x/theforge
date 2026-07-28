@@ -13,7 +13,7 @@ const phases = [
     name: "Revenue System Sprint",
     duration: "6–10 week build",
     description:
-      "We connect the offer, website or landing experience, CRM, routing, automation, sales stages, reporting dashboard and operating procedures.",
+      "We run the Forge Build inside the sprint, combining only the modules needed: digital products, experience and brand, demand, AI automation, revenue operations, and platform advisory.",
     output:
       "One functioning revenue system your team can run, measure and improve.",
   },
@@ -39,8 +39,8 @@ export function ProcessSection() {
         </h2>
         <p className="text-muted-foreground mt-4 text-base leading-relaxed">
           The buyer does not buy isolated web design, SEO, automation or CRM
-          consulting. They buy the operating system that turns demand into
-          revenue.
+          consulting. The six build capabilities sit inside the Revenue System
+          Sprint, which sits between diagnosis and ongoing optimization.
         </p>
       </div>
 
