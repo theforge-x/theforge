@@ -20,7 +20,8 @@ export function ConstraintCTA() {
             Bring us the constraint
           </div>
           <h2 className="mt-4 font-display text-4xl tracking-tight sm:text-5xl">
-            Let&apos;s build the system that makes the next stage possible.
+            No hand-offs into a black box. The senior people who diagnose the
+            constraint stay accountable for the system.
           </h2>
         </div>
         <Button variant="secondary" size="lg" asChild className="shrink-0">

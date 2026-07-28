@@ -1,13 +1,10 @@
 import Stripe from "stripe";
+import { getSiteUrl } from "@/lib/site-url";
 
 export type BillingProvider = "stripe" | "paystack";
 
 export function getAppUrl() {
-  return (
-    process.env.NEXT_PUBLIC_APP_URL ??
-    process.env.BETTER_AUTH_URL ??
-    "http://localhost:3000"
-  ).replace(/\/$/, "");
+  return getSiteUrl();
 }
 
 export function getStripe() {

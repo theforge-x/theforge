@@ -26,8 +26,9 @@ export async function InsightsPreview({ limit = 3 }: { limit?: number }) {
               Thinking for the next move.
             </h2>
             <p className="text-muted-foreground mt-4 max-w-xl leading-relaxed">
-              Practical ideas on digital products, growth systems, automation
-              and the decisions that make momentum compound.
+              Problem-led thinking on referrals, lead leakage, speed to lead,
+              CRM stages, intake conversion and the operating decisions that
+              turn demand into revenue.
             </p>
           </div>
           <Link

@@ -6,6 +6,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
@@ -17,6 +18,13 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
+const serviceCategories = [
+  ["constraint-map", "Growth Constraint Map"],
+  ["revenue-system-sprint", "Revenue System Sprint"],
+  ["temper-growth-partner", "Temper Growth Partner"],
+  ["not-sure", "Not sure yet"],
+] as const;
+
 export function ContactForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -25,7 +33,9 @@ export function ContactForm() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const data = Object.fromEntries(new FormData(e.currentTarget));
+      const formData = new FormData(e.currentTarget);
+      const data = Object.fromEntries(formData);
+      data.service = formData.getAll("service").join(", ");
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -96,28 +106,25 @@ export function ContactForm() {
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="service">Service Category</Label>
-          <Select name="service">
-            <SelectTrigger id="service" className="w-full">
-              <SelectValue placeholder="Pick a category" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="web-development">Web development</SelectItem>
-              <SelectItem value="mobile-app">Mobile app development</SelectItem>
-              <SelectItem value="design-brand">UI/UX & branding</SelectItem>
-              <SelectItem value="growth-marketing">
-                SEO & growth marketing
-              </SelectItem>
-              <SelectItem value="automation-ai">
-                Automation & AI solutions
-              </SelectItem>
-              <SelectItem value="strategy-consulting">
-                Strategy & consulting
-              </SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        <fieldset className="flex flex-col gap-2">
+          <legend className="text-sm font-medium">Engagement interest</legend>
+          <div className="border-input grid gap-2 rounded-md border p-3 sm:grid-cols-2">
+            {serviceCategories.map(([value, label]) => (
+              <label
+                key={value}
+                htmlFor={`service-${value}`}
+                className="text-muted-foreground flex items-center gap-2 text-sm"
+              >
+                <Checkbox
+                  id={`service-${value}`}
+                  name="service"
+                  value={value}
+                />
+                {label}
+              </label>
+            ))}
+          </div>
+        </fieldset>
         <div className="flex flex-col gap-2">
           <Label htmlFor="budget">Estimated budget</Label>
           <Select name="budget">
@@ -125,12 +132,16 @@ export function ContactForm() {
               <SelectValue placeholder="Select a range" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="lt10k">Under $10K</SelectItem>
-              <SelectItem value="10k-100k">$10K – $100K</SelectItem>
-              <SelectItem value="100k-1m">$100K – $1M</SelectItem>
-              <SelectItem value="1m-plus">$1M+</SelectItem>
+              <SelectItem value="diagnostic">$1.5K-$3K diagnostic</SelectItem>
+              <SelectItem value="focused-build">$8K-$15K sprint</SelectItem>
+              <SelectItem value="larger-build">$15K-$35K build</SelectItem>
+              <SelectItem value="partner">$2.5K-$7.5K monthly</SelectItem>
+              <SelectItem value="not-sure">Not sure yet</SelectItem>
             </SelectContent>
           </Select>
+          <p className="text-muted-foreground text-xs">
+            It helps us shape a right-sized recommendation before we speak.
+          </p>
         </div>
       </div>
 
@@ -141,7 +152,7 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
-          placeholder="Tell us what's going on — one channel underperforming, retention leaking, pricing that hasn't kept up, or something else entirely."
+          placeholder="Tell us where demand, follow-up, CRM, sales process or reporting is breaking down."
         />
       </div>
 
@@ -158,7 +169,7 @@ export function ContactForm() {
           </>
         ) : (
           <>
-            Off to theForge <ArrowUpRight className="size-4" />
+            Send the constraint <ArrowUpRight className="size-4" />
           </>
         )}
       </Button>

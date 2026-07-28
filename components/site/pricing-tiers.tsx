@@ -7,53 +7,53 @@ import { cn } from "@/lib/utils";
 const tiers = [
   {
     id: "audit",
-    name: "Spark Audit",
-    subtitle: "The diagnostic entry point",
-    price: "From $0",
-    period: "30-minute audit",
+    name: "Growth Constraint Map",
+    subtitle: "Paid diagnostic",
+    price: "$1.5K-$3K",
+    period: "1-2 weeks",
     description:
-      "A deep-dive diagnostic session designed to map every bottleneck across your growth architecture. You walk away with a prioritized, high-yield action plan built for immediate execution.",
+      "A structured diagnostic that finds where revenue is leaking and defines the highest-leverage 90-day intervention.",
     features: [
-      "Full growth-constraint diagnostic",
-      "Acquisition & conversion gap analysis",
-      "Retention and referral infrastructure review",
-      "Ranked action plan with impact estimate",
+      "Revenue leak and handoff analysis",
+      "Lead response, CRM and data review",
+      "KPI baseline and measurement plan",
+      "Prioritized roadmap and build proposal",
     ],
-    cta: "Book the audit",
+    cta: "Book the diagnostic",
     featured: false,
   },
   {
     id: "build",
-    name: "Forge Build",
-    subtitle: "The complete growth transformation",
-    price: "From $499",
-    period: "2–10 week build",
+    name: "Revenue System Sprint",
+    subtitle: "Fixed-scope implementation",
+    price: "$8K-$35K",
+    period: "6-10 week build",
     description:
-      "From acquisition mechanics and offer architecture to pricing, retention, and referral loops—every bottleneck identified during our audit receives a purpose-built, engineered solution.",
+      "A focused build that connects positioning, conversion experience, CRM, routing, automation, follow-up and reporting.",
     features: [
-      "Multi-channel acquisition system, built",
-      "Offer repositioning & pricing restructure",
-      "Retention model & referral framework",
-      "Full documentation and handover",
+      "Positioning and offer architecture",
+      "Website or landing experience",
+      "CRM, automation and sales stages",
+      "Dashboard, SOPs, training and handover",
     ],
-    cta: "Enquire about a build",
+    cta: "Discuss a sprint",
     featured: true,
   },
   {
     id: "partner",
-    name: "Temper Partner",
-    subtitle: "Monthly growth partnership",
-    price: "From $99/mo",
+    name: "Temper Growth Partner",
+    subtitle: "Continuous optimization",
+    price: "$2.5K-$7.5K/mo",
     period: "ongoing",
     description:
-      "With your systems live, we focus on continuous compounding—unlocking new growth channels, refining performance through iteration, and providing priority support.",
+      "An accountable optimization engagement for teams that want their revenue system measured, improved and extended.",
     features: [
-      "Monthly growth architecture review",
-      "New channel development",
-      "Priority access throughout the month",
-      "Quarterly structural performance audit",
+      "Weekly commercial scorecard",
+      "Conversion and speed-to-lead improvement",
+      "Pipeline, win-rate and retention experiments",
+      "30- or 60-day stabilization options",
     ],
-    cta: "Talk to a strategist",
+    cta: "Plan optimization",
     featured: false,
   },
 ];
@@ -66,8 +66,13 @@ export function PricingTiers() {
           The right entry point
         </div>
         <h2 className="font-display text-4xl sm:text-5xl">
-          Start where you are.
+          Pricing that matches the problem.
         </h2>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          Ranges are starting points for US and UK-facing engagements. Some or
+          all of the diagnostic fee can be credited toward implementation when
+          the fit is clear.
+        </p>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">

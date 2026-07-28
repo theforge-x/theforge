@@ -11,7 +11,7 @@ import { getPublishedPosts } from "@/lib/data-access";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Practical thinking on digital products, growth systems, automation, and AI.",
+    "Problem-led thinking on revenue systems, referrals, CRM, lead follow-up and founder-led service growth.",
 };
 export default async function BlogPage() {
   await connection();
@@ -22,8 +22,8 @@ export default async function BlogPage() {
       <main>
         <PageHeader
           eyebrow="Insights"
-          title="Ideas built for application."
-          description="Field notes on designing, building, and compounding better growth systems."
+          title="Problem-led field notes."
+          description="Practical thinking on referrals, lead leakage, speed to lead, CRM stages, intake conversion and the operating decisions that turn demand into revenue."
         />
         <section className="mx-auto max-w-7xl px-6 py-24">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

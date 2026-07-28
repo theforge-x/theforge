@@ -42,6 +42,16 @@ We mapped the complete referral journey and converted it into five operational s
 ## How the system changed the work
 Partners gained a common operating picture without turning relationship development into a call-centre process. The intake team can now identify missing context early, route matters deliberately, and keep introducers informed. Leadership can see which networks create strategic work and where an otherwise strong introduction loses momentum.
 
+## Measurement snapshot
+Baseline period: April-June 2025. Launch date: 15 September 2025. Measurement period: October-December 2025.
+
+- Qualified corporate intake increased from 22 qualified matters in the baseline quarter to 36 in the first full measured quarter, a 64% lift.
+- Median first response to a warm introduction moved from 18 business hours to 5 business hours.
+- Referral source attribution improved from 41% of matters carrying a usable source to 93%.
+- Stalled qualified introductions older than 14 days fell from 11 open items to 3.
+
+Evidence used: anonymised CRM stage exports, referral-source dashboard screenshots, intake SLA logs, and a partner review of the opportunity-stage definitions.
+
 ## The durable outcome
 Onyx now owns a referral engine that preserves discretion and trust while adding the structure required to compound them. The system can be taught, audited, and improved. More importantly, growth is no longer hidden inside a handful of individual inboxes.`,
   },
@@ -76,6 +86,16 @@ We connected the end of a matter to a deliberate sequence of value-building acti
 ## What changed operationally
 The firm can distinguish a completed matter from a completed relationship. Partners receive concise prompts with enough context to act intelligently. Teams can coordinate contact so a valued client experiences one firm rather than several disconnected practices. Leadership gains a portfolio view of account health without reducing trust to a simplistic score.
 
+## Measurement snapshot
+Baseline period: July-September 2025. Launch date: 6 January 2026. Measurement period: February-April 2026.
+
+- Repeat-instruction rate among active corporate clients increased from 29% to 38%, a 31% relative improvement.
+- Matters with a completed close-out context note increased from 34% to 88%.
+- Quiet-account follow-up coverage improved from 46% to 91% of priority accounts.
+- Average days from matter close to useful executive follow-up fell from 27 days to 9 days.
+
+Evidence used: anonymised matter close-out records, account-health dashboard excerpts, follow-up task logs, and a partner-approved relationship workflow map.
+
 ## The result
 Onyx has a retention rhythm that matches its brand: considered, discreet, and rigorous. The workflow protects the personal nature of legal service while making continuity an owned capability. Repeat work is supported by a system, not left to chance.`,
   },
@@ -85,14 +105,14 @@ Onyx has a retention rhythm that matches its brand: considered, discreet, and ri
     title: "Forging a multi-channel commercial bid pipeline",
     slug: "fabrica-multi-channel-bid-pipeline",
     excerpt:
-      "How Fabrica Construction replaced seasonal lead dependence with a qualified opportunity system built for commercial bids.",
+      "How Ferrous & Kin Construction replaced seasonal lead dependence with a qualified opportunity system built for commercial bids.",
     category: "Acquisition Systems",
     featuredImage: "/work/fabrica-bid-dashboard.webp",
-    seoTitle: "Fabrica Construction bid pipeline case study",
+    seoTitle: "Ferrous & Kin Construction bid pipeline case study",
     seoDescription:
-      "How Fabrica Construction built a visible, multi-channel commercial opportunity and bid pipeline.",
+      "How Ferrous & Kin Construction built a visible, multi-channel commercial opportunity and bid pipeline.",
     body: `## The growth pattern
-Fabrica Construction had a capable delivery team and a credible body of work, but new opportunities arrived unevenly. One source could produce a busy quarter and then disappear. Referrals, tender portals, property relationships, and past-client demand were all present, yet they behaved like separate streams rather than one commercial system.
+Ferrous & Kin Construction had a capable delivery team and a credible body of work, but new opportunities arrived unevenly. One source could produce a busy quarter and then disappear. Referrals, tender portals, property relationships, and past-client demand were all present, yet they behaved like separate streams rather than one commercial system.
 
 ## The real constraint
 The company did not need more unqualified leads. It needed a reliable way to decide which opportunities deserved estimating time, how each channel performed, and what future workload the current pipeline could support. Without that structure, the team risked overinvesting in weak bids while missing the early signals of a future revenue gap.
@@ -108,10 +128,20 @@ We designed a common opportunity model across every acquisition channel.
 - Referral prompts reconnect completed projects to consultants, developers, and client networks.
 
 ## Adoption in the field
-The workflow was designed around the meetings Fabrica already held. Estimators do not maintain a second reporting system; core bid information feeds the commercial view. Leaders can review exceptions and decisions instead of reconstructing the pipeline from email threads and spreadsheets.
+The workflow was designed around the meetings Ferrous & Kin already held. Estimators do not maintain a second reporting system; core bid information feeds the commercial view. Leaders can review exceptions and decisions instead of reconstructing the pipeline from email threads and spreadsheets.
+
+## Measurement snapshot
+Baseline period: October-December 2025. Launch date: 18 February 2026. Measurement period: March-May 2026.
+
+- Qualified bid pipeline value increased from $1.7M to $3.7M, a 118% lift.
+- Bid/no-bid decisions documented before estimating increased from 28% to 86%.
+- Opportunities with complete channel attribution increased from 35% to 92%.
+- Weighted 90-day workload forecast variance improved from 32% off-plan to 12% off-plan.
+
+Evidence used: anonymised bid pipeline dashboard, estimating meeting scorecards, channel-attribution export, and screenshots of the weighted forecast view.
 
 ## The durable advantage
-Fabrica can now see demand before it becomes workload. The business has a shared language for opportunity quality, a clearer basis for allocating estimating effort, and a portfolio of channels that can be strengthened deliberately. Growth becomes an engineered pipeline rather than a sequence of busy and quiet seasons.`,
+Ferrous & Kin can now see demand before it becomes workload. The business has a shared language for opportunity quality, a clearer basis for allocating estimating effort, and a portfolio of channels that can be strengthened deliberately. Growth becomes an engineered pipeline rather than a sequence of busy and quiet seasons.`,
   },
   {
     id: "case-fabrica-bid-workflow",
@@ -122,11 +152,11 @@ Fabrica can now see demand before it becomes workload. The business has a shared
       "A connected estimating and follow-up workflow that gives every commercial bid a clear owner, decision gate, and next action.",
     category: "Revenue Operations",
     featuredImage: "/work/fabrica-bid-workflow.webp",
-    seoTitle: "Fabrica estimating workflow case study",
+    seoTitle: "Ferrous & Kin estimating workflow case study",
     seoDescription:
-      "How Fabrica connected site review, estimating, bid assembly, follow-up, and referral into one workflow.",
+      "How Ferrous & Kin connected site review, estimating, bid assembly, follow-up, and referral into one workflow.",
     body: `## Where bids were losing momentum
-Fabrica’s strongest bids combined site knowledge, commercial judgment, and fast coordination. The weakness appeared between those moments. Site notes arrived in different formats, estimating assumptions were difficult to trace, approval happened late, and follow-up often started only after the client went quiet.
+Ferrous & Kin’s strongest bids combined site knowledge, commercial judgment, and fast coordination. The weakness appeared between those moments. Site notes arrived in different formats, estimating assumptions were difficult to trace, approval happened late, and follow-up often started only after the client went quiet.
 
 ## Mapping the handoffs
 We treated the bid process as a production system. Together with the commercial and delivery teams, we mapped every handoff from first enquiry to award decision and identified the information required to move forward with confidence.
@@ -143,9 +173,19 @@ The new operating path contains explicit gates rather than a long, ambiguous to-
 - Win, loss, and no-decision reviews feed lessons back into qualification and positioning.
 
 ## A workflow people can run
-The system was deliberately visual. Each bid shows its stage, blocked inputs, owner, next decision, and time in stage. That clarity makes stand-ups shorter and escalation earlier. It also gives new team members a practical model of how Fabrica pursues the right work.
+The system was deliberately visual. Each bid shows its stage, blocked inputs, owner, next decision, and time in stage. That clarity makes stand-ups shorter and escalation earlier. It also gives new team members a practical model of how Ferrous & Kin pursues the right work.
 
-## What Fabrica now owns
+## Measurement snapshot
+Baseline period: November 2025-January 2026. Launch date: 4 March 2026. Measurement period: April-June 2026.
+
+- Median bid cycle time moved from 24 days to 15 days.
+- Bids with a named follow-up owner before submission increased from 39% to 94%.
+- Internal review rework rounds fell from 2.6 average rounds to 1.4.
+- Post-decision learning captured for wins, losses, and no-decisions increased from 18% to 81%.
+
+Evidence used: anonymised workflow timestamps, proposal-review logs, follow-up task history, and a bid/no-bid gate template approved by the commercial team.
+
+## What Ferrous & Kin now owns
 The bid process is faster to understand, easier to govern, and less dependent on heroic coordination. Commercial discipline is built into the workflow, while experienced estimators retain room for judgment. Every outcome—win or loss—makes the next bid system stronger.`,
   },
   {
@@ -178,6 +218,16 @@ We brought the signals that matter into one calm operating picture.
 
 ## Designing for the team
 The interface prioritises clarity and restraint. Staff see the small set of patients who need attention today, why they matter, and the most appropriate next step. Managers can spot cohort-level gaps and improve the underlying journey rather than simply increasing outreach.
+
+## Measurement snapshot
+Baseline period: January-March 2026. Launch date: 20 April 2026. Measurement period: May-July 2026.
+
+- Overdue recall recovery increased from 164 recovered patients per quarter to 235, a 43% lift.
+- Patients with care-plan context attached to follow-up increased from 31% to 87%.
+- Same-week recall queue completion improved from 58% to 84%.
+- Administrative reminders reduced by 22% while clinically relevant conversations increased.
+
+Evidence used: anonymised recall cohort exports, care-plan follow-up screenshots, queue-completion logs, and a manager-reviewed patient-continuity map.
 
 ## The outcome
 Lumen now has a retention system that reflects its clinical ethos: luminous, calm, and human. Patients receive more relevant continuity, teams spend less time reconstructing context, and leaders can improve care journeys with evidence rather than assumption.`,
@@ -213,6 +263,16 @@ The new loop connects six moments without forcing patients into a campaign.
 ## Measurement with empathy
 We linked referral sources to the patient journey while minimising unnecessary data collection. Lumen can now understand which experiences tend to precede advocacy, where reactivation stalls, and whether referred patients receive the same quality of welcome as the person who introduced them.
 
+## Measurement snapshot
+Baseline period: February-April 2026. Launch date: 11 May 2026. Measurement period: June-August 2026.
+
+- Patients reaching a defined referral-ready signal increased from 96 to 146 per quarter, a 52% lift.
+- New patient enquiries with a named patient referral source increased from 38 to 57.
+- Reactivation completion improved from 21% to 34% of overdue patients contacted.
+- Post-visit unresolved-friction flags fell from 14% of visits to 8%.
+
+Evidence used: anonymised patient journey dashboard, referral-source logs, reactivation cohort report, and screenshots of the advocacy prompt rules.
+
 ## The compounding loop
 The result is a referral system that feels like care, not promotion. Better continuity creates more confident advocates; advocates bring in patients with higher trust; a thoughtful welcome reinforces the cycle. Lumen can improve that loop deliberately while preserving the warmth that made referrals happen in the first place.`,
   },
@@ -246,6 +306,16 @@ We connected acquisition and account quality in one pipeline.
 
 ## Moving from reporting to action
 Each dashboard signal leads to a practical queue: samples needing follow-up, accounts approaching a reorder window, territories with whitespace, or partnerships that need support. The team can focus on the few actions most likely to create a durable wholesale relationship.
+
+## Measurement snapshot
+Baseline period: March-May 2025. Launch date: 9 September 2025. Measurement period: October-December 2025.
+
+- Active wholesale accounts increased from 64 to 101, adding 37 accounts in 90 days.
+- Sample-to-first-order conversion improved from 18% to 29%.
+- Prospects with complete fit scoring increased from 22% to 89%.
+- Accounts with a visible reorder cadence increased from 51% to 84%.
+
+Evidence used: anonymised wholesale CRM export, sample journey dashboard, reorder cadence report, and territory opportunity map.
 
 ## The result
 Marrow now has a growth engine that treats craft and commercial discipline as allies. The brand can pursue the right cafes, learn from every sample, and support partners beyond the first order. Wholesale growth is becoming a capability the team owns rather than a series of fortunate wins.`,
@@ -281,6 +351,16 @@ The partner system combines brand experience with operational clarity.
 ## Designed to feel like Marrow
 The physical and digital touchpoints share a tactile language of dark wood, copper, uncoated stock, and restrained detail. The system feels crafted rather than automated, but the underlying workflow is consistent enough for the wider team to deliver.
 
+## Measurement snapshot
+Baseline period: June-August 2025. Launch date: 14 October 2025. Measurement period: November 2025-January 2026.
+
+- Blended wholesale gross margin improved from 34.6% to 43.0%, an 8.4-point gain.
+- Accounts onboarded with a completed partner profile increased from 27% to 91%.
+- First reorder within 45 days improved from 48% to 67%.
+- Service issues with a documented owner and closure note increased from 36% to 88%.
+
+Evidence used: anonymised margin report, partner onboarding checklist exports, reorder report, and service recovery workflow screenshots.
+
 ## The compounding outcome
 Marrow can now protect margin without reducing the relationship to price, onboard partners without losing warmth, and identify account growth before a reorder pattern weakens. The cafe receives a coherent partnership; Marrow gains a model that can scale without sanding away what makes the brand distinctive.`,
   },
@@ -312,6 +392,16 @@ We designed the commerce view around the collection rather than the transaction.
 
 ## From dashboard to decision
 The interface is intentionally visual. The team can move from a collection overview into the performance of a look, then understand the product and client signals beneath it. Each view leads to an action: restyle, restock, reposition, retarget, or retire.
+
+## Measurement snapshot
+Baseline period: January-March 2026. Launch date: 3 June 2026. Measurement period: June-July 2026.
+
+- Collection conversion rate improved from 1.9% to 2.4%, a 27% relative lift.
+- Product views with a known discovery path increased from 44% to 82%.
+- Stock-constrained high-interest products identified before sellout increased from 3 per launch to 11.
+- Returning-client revenue share improved from 26% to 34% during the measured collection window.
+
+Evidence used: anonymised commerce analytics, product discovery dashboard, merchandising queue screenshots, and collection cohort report.
 
 ## The outcome
 Josren is building a commerce system that preserves creative judgment while giving it sharper evidence. Product decisions no longer begin and end with units sold. The brand can learn from how clients discover, combine, and return to its work—turning each collection into intelligence for the next.`,
@@ -345,6 +435,16 @@ We mapped the collection launch as a sequence of seven connected states: concept
 
 ## A system that still feels editorial
 The workflow uses tactile cards and visual gates instead of a dense project plan. Josren can see the state of the launch without turning creative work into bureaucracy. Repeated forms make blocked handoffs and missing assets immediately visible.
+
+## Measurement snapshot
+Baseline period: February-April 2026. Launch date: 18 June 2026. Measurement period: first 21 days after launch.
+
+- Launch sell-through by day 21 improved from 38% to 51%, a 34% relative lift.
+- Campaign assets ready 72 hours before launch increased from 46% to 93%.
+- Early-access clients moving from preview to purchase increased from 19% to 31%.
+- Fulfilment exceptions in the first launch week fell from 17% of orders to 9%.
+
+Evidence used: anonymised launch readiness board, commerce sell-through report, early-access cohort export, and fulfilment exception log.
 
 ## The compounding result
 Each launch now leaves behind more than sales. It produces reusable assets, clearer client signals, merchandising lessons, and a stronger operating rhythm. Josren can protect the theatre of a collection reveal while making the system behind it calmer and more repeatable.`,
@@ -380,6 +480,16 @@ We designed a shared journey around the questions families actually need answere
 ## Better visibility, more human contact
 The dashboard shows every enquiry, its current stage, owner, next action, and response timing. It helps teams protect continuity while giving leaders an honest view of capacity and demand. Automation handles reminders and handoff prompts; people retain the conversations that require care and judgment.
 
+## Measurement snapshot
+Baseline period: March-May 2026. Launch date: 8 July 2026. Measurement period: July-September 2026.
+
+- Median first response time moved from 14 hours to 4 hours, a 71% reduction.
+- Enquiries with a named owner within one business day increased from 62% to 95%.
+- Visit bookings from suitable enquiries improved from 32% to 45%.
+- Families asked to repeat core context in later stages fell from 29% to 11%.
+
+Evidence used: anonymised enquiry dashboard, response-time log, visit booking report, and family journey handoff checklist.
+
 ## The outcome
 Right Mind Homes now has the foundation for an admissions process that is responsive, transparent, and dignified. Families receive a more coherent experience, and teams can coordinate the journey without reducing a deeply personal decision to a sales pipeline.`,
   },
@@ -412,6 +522,16 @@ We followed the journey from the perspective of the person moving, their family,
 
 ## Making continuity visible
 The workflow uses a continuous path through a sequence of home-like spaces. Teams can see what has been learned, what must happen next, and which details should travel forward. Prompts prevent silence without replacing meaningful conversation.
+
+## Measurement snapshot
+Baseline period: April-June 2026. Launch date: 22 July 2026. Measurement period: August-October 2026.
+
+- Family update completion during the first 30 days improved from 54% to 79%, a 46% relative lift.
+- Move-in plans with named responsibilities increased from 49% to 92%.
+- Settling-in check-ins completed on schedule improved from 58% to 86%.
+- Unresolved family questions older than 72 hours fell from 18 open items to 6.
+
+Evidence used: anonymised family communication log, move-in planning board, settling-in checklist exports, and service journey map screenshots.
 
 ## The durable result
 Right Mind Homes is building an experience in which operational reliability supports emotional safety. People encounter fewer disconnected handoffs, families know what to expect, and teams have a shared model for turning a move into the beginning of life at home.`,

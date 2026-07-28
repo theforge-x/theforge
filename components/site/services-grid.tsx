@@ -5,12 +5,13 @@ import {
   Bot,
   ChartNoAxesCombined,
   Check,
+  ClipboardCheck,
   Cloud,
   Code2,
   Megaphone,
-  Palette,
   Settings2,
   Sparkles,
+  Waypoints,
 } from "lucide-react";
 import Link from "next/link";
 import type { ComponentType } from "react";
@@ -49,157 +50,82 @@ type Capability = {
 
 const groups: Capability[] = [
   {
-    icon: Code2,
-    name: "Digital products",
-    kicker: "Strategy → interface → infrastructure",
+    icon: ClipboardCheck,
+    name: "Growth Constraint Map",
+    kicker: "Diagnose → baseline → prioritize",
     description:
-      "Fast, durable customer experiences built around a measurable business outcome.",
+      "A paid diagnostic that shows where revenue is leaking and what to fix first.",
     overview:
-      "We turn a commercial idea into a product people can understand, trust and use. Product strategy, experience design and engineering stay in one room, so the thing we ship is as viable as it is polished.",
-    visual: "product",
-    services: [
-      "Custom Web Development",
-      "Mobile App Development",
-      "E-commerce Solutions",
-      "API Development & Integrations",
-      "Maintenance & Support",
-    ],
-    outcomes: [
-      "A faster path from concept to a production-ready release",
-      "A modular foundation that can evolve without a rebuild",
-      "Clear product analytics tied to real customer behaviour",
-    ],
-    idealFor:
-      "Teams launching a new digital product, modernising a fragile platform or turning a high-friction customer journey into a competitive advantage.",
-    approach:
-      "We prototype the riskiest assumptions first, establish the product system, then ship in measured releases with quality, performance and ownership built in.",
-  },
-  {
-    icon: Palette,
-    name: "Experience & brand",
-    kicker: "Position → express → convert",
-    description:
-      "Clear positioning and interfaces that make complex offers easier to understand and buy.",
-    overview:
-      "A strong brand is not a coat of paint. It is a decision system that makes every message, screen and interaction feel unmistakably yours. We build the strategy and the expression together.",
-    visual: "brand",
-    services: [
-      "UI/UX Design",
-      "Brand Strategy & Identity",
-      "Product Strategy",
-      "Conversion Design",
-    ],
-    outcomes: [
-      "A sharper position customers can repeat and remember",
-      "A flexible visual and verbal system for every touchpoint",
-      "Journeys designed to reduce doubt and move decisions forward",
-    ],
-    idealFor:
-      "Businesses whose offer has outgrown its identity, products that feel harder to use than they should, or teams preparing for a high-stakes launch or repositioning.",
-    approach:
-      "We find the central idea, pressure-test it with real audience context and translate it into a reusable system—from narrative and identity to the decisive moments in the interface.",
-  },
-  {
-    icon: Megaphone,
-    name: "Demand & growth",
-    kicker: "Attention → intent → revenue",
-    description:
-      "An acquisition system that connects discoverability, campaigns, leads, and revenue.",
-    overview:
-      "We build demand engines, not channel dependencies. Search, campaigns, content and sales activation work from one commercial thesis and share one measurement model.",
-    visual: "demand",
-    services: [
-      "Search Engine Optimization (SEO)",
-      "Search Engine Marketing (SEM)",
-      "Digital Marketing",
-      "Lead Generation",
-      "Sales Enablement",
-      "Growth Strategy",
-    ],
-    outcomes: [
-      "A balanced acquisition portfolio instead of one fragile channel",
-      "Campaigns built around buying signals, not vanity engagement",
-      "A visible line between marketing activity and commercial impact",
-    ],
-    idealFor:
-      "Teams with inconsistent pipeline, rising acquisition costs, unclear attribution or a strong offer that is still too dependent on referrals and founder-led selling.",
-    approach:
-      "We diagnose the demand constraint, define the signal and message, then run a disciplined test-and-learn system that compounds what works and retires what does not.",
-  },
-  {
-    icon: Bot,
-    name: "AI & automation",
-    kicker: "Observe → decide → assist",
-    description:
-      "Practical automation for high-friction work—designed with human control and useful reporting.",
-    overview:
-      "We apply AI where it creates leverage, not theatre. The goal is a dependable operating advantage: less repetitive work, faster decisions and better service without surrendering human judgment.",
-    visual: "ai",
-    services: [
-      "AI Solutions & Integrations",
-      "AI Agents & Chatbots",
-      "Marketing Automation",
-      "Business Process Automation",
-    ],
-    outcomes: [
-      "High-volume work handled consistently and around the clock",
-      "Faster access to the knowledge buried across your business",
-      "Human approvals, audit trails and escalation designed from day one",
-    ],
-    idealFor:
-      "Teams losing hours to repetitive coordination, fragmented knowledge, slow response times or manual processes that have become the ceiling on growth.",
-    approach:
-      "We map the workflow before choosing the model, design the guardrails and human handoffs, then integrate the automation into the tools your team already uses.",
-  },
-  {
-    icon: Settings2,
-    name: "Revenue operations",
-    kicker: "Signal → handoff → decision",
-    description:
-      "A connected operating layer for customer data, workflows, handoffs, and decisions.",
-    overview:
-      "Revenue leaks in the spaces between teams. We connect the data, stages, ownership and automation so marketing, sales and customer success can operate from one version of the truth.",
+      "Before a service firm buys another website, campaign or CRM setup, it needs to know which constraint is actually limiting revenue. The Growth Constraint Map gives founders and operators a clear view of the leaks between positioning, demand, sales follow-up and reporting.",
     visual: "revenue",
     services: [
-      "CRM Implementation",
-      "Analytics & Reporting",
-      "Customer Journey Automation",
-      "Data & Systems Audits",
+      "Revenue leak analysis",
+      "Lead-response and follow-up review",
+      "Positioning and conversion audit",
+      "CRM and pipeline inspection",
+      "90-day intervention roadmap",
     ],
     outcomes: [
-      "A CRM the team trusts because it reflects how they really sell",
-      "Cleaner handoffs and fewer opportunities lost between stages",
-      "Live visibility into pipeline quality, velocity and next actions",
+      "A system map showing where opportunities are lost",
+      "A KPI baseline agreed before implementation",
+      "A prioritized build plan with expected commercial impact",
     ],
     idealFor:
-      "Growing teams managing revenue in spreadsheets, fighting unreliable reporting, or watching good leads disappear between marketing, sales and delivery.",
+      "Founder-led service firms that have leads, referrals and tools in motion, but cannot clearly see where demand turns into revenue or where it leaks.",
     approach:
-      "We audit the current motion, define the revenue architecture and implement the minimum useful operating layer before adding automation and advanced reporting.",
+      "We review the offer, website, CRM, handoffs, follow-up, reporting and sales stages, then return a ranked diagnosis and implementation proposal.",
   },
   {
-    icon: Cloud,
-    name: "Platforms & advisory",
-    kicker: "Assess → architect → enable",
+    icon: Waypoints,
+    name: "Revenue System Sprint",
+    kicker: "Position → connect → hand over",
     description:
-      "Technical foundations and senior guidance for teams navigating growth or change.",
+      "A fixed-scope 6-10 week implementation that connects marketing, sales and operations.",
     overview:
-      "When the next decision carries technical weight, we bring senior product and engineering judgment to the table. We help teams modernise responsibly and build foundations that keep future options open.",
-    visual: "platform",
+      "The buyer purchases one functioning revenue system, not a menu of disconnected services. We connect the message, conversion experience, CRM, lead routing, automation, follow-up, dashboard and operating procedures so the client owns the machine after launch.",
+    visual: "product",
     services: [
-      "Cloud Solutions",
-      "Technical Consulting",
-      "Architecture & Modernization",
-      "Fractional Product Leadership",
+      "Positioning and offer design",
+      "Conversion website or landing experience",
+      "CRM configuration and sales stages",
+      "Lead routing and follow-up automation",
+      "Reporting dashboard, SOPs and training",
     ],
     outcomes: [
-      "A pragmatic technical roadmap aligned to business priorities",
-      "More resilient infrastructure without unnecessary complexity",
-      "Stronger internal decisions, documentation and delivery confidence",
+      "Faster response to qualified enquiries",
+      "Cleaner handoffs from website to CRM to sales",
+      "A documented system your team can operate without us",
     ],
     idealFor:
-      "Leaders facing architecture debt, scaling pressure, a major migration or a product roadmap that needs experienced technical direction without a full-time executive hire.",
+      "Service companies with high-value deals, long consideration cycles and too much revenue dependent on founder memory, spreadsheets or disconnected tools.",
     approach:
-      "We establish the decision context, make trade-offs explicit and work alongside your team—from architecture and sequencing through implementation standards and knowledge transfer.",
+      "We agree acceptance criteria before the build, implement the minimum complete system, record walkthroughs and stabilize the workflow after launch.",
+  },
+  {
+    icon: ChartNoAxesCombined,
+    name: "Temper Growth Partner",
+    kicker: "Measure → improve → compound",
+    description:
+      "Ongoing optimization for teams that want their revenue system to keep improving.",
+    overview:
+      "Once the system is live, the work shifts from launch to commercial improvement. We keep a weekly scorecard, find the next constraint and tune conversion, speed to lead, lead quality, win rate, retention and referrals.",
+    visual: "demand",
+    services: [
+      "Commercial scorecard reviews",
+      "Conversion-rate improvements",
+      "Speed-to-lead and pipeline experiments",
+      "Referral and retention loops",
+      "Reporting, training and system governance",
+    ],
+    outcomes: [
+      "Clear visibility into what is improving or slipping",
+      "A senior team accountable beyond the launch",
+      "A compounding operating rhythm instead of a vague retainer",
+    ],
+    idealFor:
+      "Teams with a live revenue system that need sustained measurement, sharper follow-up and controlled experiments tied to revenue outcomes.",
+    approach:
+      "We keep the measurement model honest, run focused improvements and document the operating changes your internal team needs to sustain.",
   },
 ];
 
@@ -517,7 +443,7 @@ function CapabilityModal({
                   <Icon className="size-5 text-primary" />
                 </div>
                 <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
-                  Capability 0{index + 1}
+                  Product 0{index + 1}
                 </span>
               </div>
               <DialogTitle className="font-display text-3xl leading-tight tracking-tight sm:text-4xl">
@@ -588,12 +514,13 @@ function CapabilityModal({
 
             <div className="mt-8 flex flex-col gap-4 border-t border-border/50 pt-6 sm:flex-row sm:items-center sm:justify-between">
               <p className="max-w-sm text-xs leading-5 text-muted-foreground">
-                Not sure this is the constraint? Start with a diagnostic growth
-                audit and we&apos;ll map the right system together.
+                Not sure which product fits? Start with a Growth Constraint Map
+                and we&apos;ll identify the highest-leverage intervention before
+                proposing a build.
               </p>
               <Button asChild className="shrink-0">
                 <Link href="/contact">
-                  Discuss this capability <ArrowRight className="size-4" />
+                  Discuss this product <ArrowRight className="size-4" />
                 </Link>
               </Button>
             </div>
@@ -611,16 +538,16 @@ export function ServicesGrid() {
         <div className="mb-16 grid gap-6 lg:grid-cols-[1fr_.8fr] lg:items-end">
           <div>
             <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
-              Capabilities
+              Productized outcomes
             </div>
             <h2 className="font-display text-4xl sm:text-5xl">
-              Specialists where it matters. One system where it counts.
+              Diagnose the leak. Build the system. Improve the scorecard.
             </h2>
           </div>
           <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Engage one capability to solve a focused problem, or combine them
-            into a connected growth platform. Every recommendation starts with
-            the constraint—not a predetermined package.
+            theForge packages strategy, website, CRM, automation, follow-up and
+            reporting into business outcomes. Every engagement starts with the
+            commercial constraint, not a service menu.
           </p>
         </div>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
