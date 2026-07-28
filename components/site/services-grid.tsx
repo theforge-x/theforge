@@ -48,6 +48,49 @@ type Capability = {
   approach: string;
 };
 
+const buildModules: Array<{
+  icon: ComponentType<{ className?: string }>;
+  name: string;
+  description: string;
+}> = [
+  {
+    icon: Code2,
+    name: "Digital products",
+    description:
+      "Websites, portals, product interfaces and integrations that become the visible surface of the revenue system.",
+  },
+  {
+    icon: Sparkles,
+    name: "Experience & brand",
+    description:
+      "Positioning, messaging, identity and conversion experience that make the offer easier to understand and buy.",
+  },
+  {
+    icon: Megaphone,
+    name: "Demand & growth",
+    description:
+      "Campaign, search, content and acquisition mechanics connected to pipeline quality rather than isolated channel activity.",
+  },
+  {
+    icon: Bot,
+    name: "AI & automation",
+    description:
+      "Routing, reminders, follow-up, workflow assistance and AI-supported processes with human review and clear ownership.",
+  },
+  {
+    icon: Settings2,
+    name: "Revenue operations",
+    description:
+      "CRM stages, lead ownership, handoffs, dashboards and reporting structures that make revenue visible and governable.",
+  },
+  {
+    icon: Cloud,
+    name: "Platforms & advisory",
+    description:
+      "Technical architecture, platform decisions and senior guidance needed to keep the system durable after launch.",
+  },
+];
+
 const groups: Capability[] = [
   {
     icon: ClipboardCheck,
@@ -82,14 +125,15 @@ const groups: Capability[] = [
     description:
       "A fixed-scope 6-10 week implementation that connects marketing, sales and operations.",
     overview:
-      "The buyer purchases one functioning revenue system, not a menu of disconnected services. We connect the message, conversion experience, CRM, lead routing, automation, follow-up, dashboard and operating procedures so the client owns the machine after launch.",
+      "The buyer purchases one functioning revenue system, not a menu of disconnected services. The six broad Forge Build modules—digital products, experience and brand, demand and growth, AI and automation, revenue operations, and platforms and advisory—are selected only when they are needed to deliver the sprint outcome.",
     visual: "product",
     services: [
-      "Positioning and offer design",
-      "Conversion website or landing experience",
-      "CRM configuration and sales stages",
-      "Lead routing and follow-up automation",
-      "Reporting dashboard, SOPs and training",
+      "Digital products",
+      "Experience & brand",
+      "Demand & growth",
+      "AI & automation",
+      "Revenue operations",
+      "Platforms & advisory",
     ],
     outcomes: [
       "Faster response to qualified enquiries",
@@ -99,7 +143,7 @@ const groups: Capability[] = [
     idealFor:
       "Service companies with high-value deals, long consideration cycles and too much revenue dependent on founder memory, spreadsheets or disconnected tools.",
     approach:
-      "We agree acceptance criteria before the build, implement the minimum complete system, record walkthroughs and stabilize the workflow after launch.",
+      "We agree acceptance criteria before the build, select the Forge Build modules needed for the sprint, implement the minimum complete system, record walkthroughs and stabilize the workflow after launch.",
   },
   {
     icon: ChartNoAxesCombined,
@@ -424,7 +468,7 @@ function CapabilityModal({
             type="button"
             className="mt-auto flex items-center gap-2 pt-6 text-sm font-semibold text-primary outline-none transition-[gap,color] hover:gap-3 focus-visible:underline"
           >
-            Explore capability <ArrowRight className="size-4" />
+            Explore service <ArrowRight className="size-4" />
           </button>
         </DialogTrigger>
       </article>
@@ -478,7 +522,7 @@ function CapabilityModal({
               </div>
               <div>
                 <h4 className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                  What we can build
+                  What this can include
                 </h4>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {capability.services.map((service) => (
@@ -558,6 +602,37 @@ export function ServicesGrid() {
               index={index}
             />
           ))}
+        </div>
+
+        <div className="mt-20 border-t border-border/50 pt-16">
+          <div className="mb-10 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <div className="font-mono-eyebrow mb-3 text-[11px] uppercase text-accent">
+                Forge Build modules
+              </div>
+              <h3 className="font-display text-3xl sm:text-4xl">
+                The six broad capabilities sit inside the Revenue System Sprint.
+              </h3>
+            </div>
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              These are not separate public service lines. They are the build
+              disciplines we combine after the Growth Constraint Map identifies
+              the right intervention. The Sprint is the container; the modules
+              are the parts selected to make the revenue system work.
+            </p>
+          </div>
+
+          <div className="grid gap-px overflow-hidden rounded-lg border border-border/60 bg-border/60 sm:grid-cols-2 lg:grid-cols-3">
+            {buildModules.map((module) => (
+              <div key={module.name} className="bg-card p-6">
+                <module.icon className="size-5 text-accent" />
+                <h4 className="mt-6 text-base font-semibold">{module.name}</h4>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {module.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
