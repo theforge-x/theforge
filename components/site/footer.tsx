@@ -85,7 +85,7 @@ export async function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={social.label}
-                  className="text-muted-foreground hover:text-foreground inline-flex size-9 items-center justify-center rounded-full border border-border/60 transition-colors"
+                  className="text-muted-foreground hover:text-foreground hover:bg-secondary inline-flex size-9 items-center justify-center rounded-full border border-border/60 transition-colors"
                 >
                   <svg
                     aria-hidden="true"
