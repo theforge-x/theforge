@@ -1,4 +1,8 @@
+'use client'
+
 import type * as React from "react";
+import { useEffect, useRef } from "react";
+
 
 const EMBERS = [
   { left: "6%", size: 3, duration: 9, delay: 0, drift: 30 },
@@ -14,7 +18,6 @@ const EMBERS = [
   { left: "92%", size: 3, duration: 10.6, delay: 0.9, drift: 20 },
   { left: "18%", size: 2, duration: 13, delay: 4.2, drift: -30 },
 ];
-
 export function EmberField({ className }: { className?: string }) {
   return (
     <div
@@ -47,4 +50,84 @@ export function EmberField({ className }: { className?: string }) {
       ))}
     </div>
   );
+}
+
+export function EmberCanvas() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      resize();
+
+      const particles: Array<{
+        x: number;
+        y: number;
+        vx: number;
+        vy: number;
+        size: number;
+        alpha: number;
+        decay: number;
+        hue: number;
+      }> = [];
+
+      const spawn = () => {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: canvas.height + 20,
+          vx: (Math.random() - 0.5) * 0.9,
+          vy: -(Math.random() * 2.2 + 0.8),
+          size: Math.random() * 3 + 0.8,
+          alpha: Math.random() * 0.65 + 0.2,
+          decay: Math.random() * 0.010 + 0.006,
+          hue: Math.random() > 0.45 ? 22 : 38,
+        });
+      };
+
+      let frame: number;
+      const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (Math.random() < 0.10) spawn();
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.alpha -= p.decay;
+          if (p.alpha <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${p.hue},100%,60%,${p.alpha})`;
+          ctx.fill();
+        }
+        frame = requestAnimationFrame(draw);
+      };
+      draw();
+
+      window.addEventListener("resize", resize);
+      return () => {
+        cancelAnimationFrame(frame);
+        window.removeEventListener("resize", resize);
+      };
+    }, []);
+
+  return (
+    <>
+      {/* Ember canvas */}
+      <canvas
+        ref={canvasRef}
+        className="absolute bottom-0 inset-0 pointer-events-none"
+        style={{ opacity: 0.55 }}
+      />
+    </>
+  )
 }

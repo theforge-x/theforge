@@ -59,13 +59,13 @@ export const metadata: Metadata = {
     siteName: "theForge Revenue Systems",
     title: "theForge Revenue Systems · Revenue Systems Studio",
     description:
-      "Revenue systems for founder-led service firms that have outgrown referrals and disconnected marketing.",
+      "Revenue systems for founder-led firms that have outgrown referrals and disconnected marketing.",
   },
   twitter: {
     card: "summary_large_image",
     title: "theForge Revenue Systems · Revenue Systems Studio",
     description:
-      "Revenue systems for founder-led service firms that have outgrown referrals and disconnected marketing.",
+      "Revenue systems for founder-led firms that have outgrown referrals and disconnected marketing.",
   },
   icons: { icon: "/logo.svg" },
   title: {
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     template: "%s · theForge",
   },
   description:
-    "theForge is a HubX company that builds revenue systems for founder-led service firms that have outgrown referrals. We connect positioning, website, CRM, automation and follow-up into one measurable growth engine.",
+    "theForge is a HubX company that builds revenue systems for founder-led firms that have outgrown referrals. We connect positioning, website, CRM, automation and follow-up into one measurable growth engine.",
 };
 
 export default function RootLayout({

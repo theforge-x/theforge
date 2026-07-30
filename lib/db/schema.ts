@@ -154,6 +154,32 @@ export const quoteStatus = pgEnum("quote_status", [
   "accepted",
   "declined",
 ]);
+export const osEngagementStatus = pgEnum("os_engagement_status", [
+  "unassessed",
+  "diagnosed",
+  "scoped",
+  "pod_ready",
+  "forging",
+  "client_review",
+  "tempering",
+  "proven",
+]);
+export const osDealStage = pgEnum("os_deal_stage", [
+  "target",
+  "contacted",
+  "fit_conversation",
+  "diagnostic",
+  "proposal",
+  "closed_won",
+  "closed_lost",
+  "pod_finalized",
+  "kickoff",
+]);
+export const osDealType = pgEnum("os_deal_type", [
+  "new_business",
+  "renewal",
+  "expansion",
+]);
 
 export const clients = pgTable("clients", {
   id: text("id").primaryKey(),
@@ -503,6 +529,293 @@ export const webhookEvents = pgTable(
   ],
 );
 
+export const osWorkspaceRoles = pgTable(
+  "os_workspace_roles",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    workspaceId: text("workspace_id").default("theforge-internal").notNull(),
+    name: text("name").notNull(),
+    description: text("description").default("").notNull(),
+    active: boolean("active").default(true).notNull(),
+    ...timestamps,
+  },
+  (table) => [
+    uniqueIndex("os_workspace_roles_workspace_name_idx").on(
+      table.workspaceId,
+      table.name,
+    ),
+    index("os_workspace_roles_workspace_idx").on(table.workspaceId),
+  ],
+);
+
+export const osRolePermissions = pgTable(
+  "os_role_permissions",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    roleId: text("role_id")
+      .notNull()
+      .references(() => osWorkspaceRoles.id, { onDelete: "cascade" }),
+    module: text("module").notNull(),
+    action: text("action").notNull(),
+    scope: text("scope").default("none").notNull(),
+    ...timestamps,
+  },
+  (table) => [
+    uniqueIndex("os_role_permissions_role_rule_idx").on(
+      table.roleId,
+      table.module,
+      table.action,
+    ),
+    index("os_role_permissions_role_idx").on(table.roleId),
+  ],
+);
+
+export const osEngagements = pgTable(
+  "os_engagements",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    workspaceId: text("workspace_id").default("theforge-internal").notNull(),
+    clientName: text("client_name").notNull(),
+    title: text("title").notNull(),
+    status: osEngagementStatus("status").default("unassessed").notNull(),
+    currentDealId: text("current_deal_id"),
+    currentProjectId: text("current_project_id"),
+    ...timestamps,
+  },
+  (table) => [
+    index("os_engagements_workspace_idx").on(table.workspaceId),
+    index("os_engagements_status_idx").on(table.status),
+  ],
+);
+
+export const osDeals = pgTable(
+  "os_deals",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    workspaceId: text("workspace_id").default("theforge-internal").notNull(),
+    engagementId: text("engagement_id")
+      .notNull()
+      .references(() => osEngagements.id, { onDelete: "cascade" }),
+    ownerId: text("owner_id").references(() => user.id, {
+      onDelete: "set null",
+    }),
+    ownerName: text("owner_name").default("Sales").notNull(),
+    clientName: text("client_name").notNull(),
+    contactName: text("contact_name").default("").notNull(),
+    type: osDealType("type").default("new_business").notNull(),
+    source: text("source").default("").notNull(),
+    valueCents: integer("value_cents").default(0).notNull(),
+    stage: osDealStage("stage").default("target").notNull(),
+    nextStep: text("next_step").default("").notNull(),
+    decisionMaker: text("decision_maker").default("").notNull(),
+    sponsor: text("sponsor").default("").notNull(),
+    fitNotes: text("fit_notes").default("").notNull(),
+    dependencies: text("dependencies").default("").notNull(),
+    risks: text("risks").default("").notNull(),
+    acceptanceCriteria: text("acceptance_criteria").default("").notNull(),
+    sowGenerated: boolean("sow_generated").default(false).notNull(),
+    podCapacityChecked: boolean("pod_capacity_checked")
+      .default(false)
+      .notNull(),
+    projectCreated: boolean("project_created").default(false).notNull(),
+    lostReason: text("lost_reason").default("").notNull(),
+    stageEnteredAt: timestamp("stage_entered_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    ...timestamps,
+  },
+  (table) => [
+    index("os_deals_workspace_idx").on(table.workspaceId),
+    index("os_deals_engagement_idx").on(table.engagementId),
+    index("os_deals_owner_idx").on(table.ownerId),
+    index("os_deals_stage_idx").on(table.stage),
+  ],
+);
+
+export const osDiagnostics = pgTable(
+  "os_diagnostics",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    dealId: text("deal_id")
+      .notNull()
+      .references(() => osDeals.id, { onDelete: "cascade" }),
+    businessContext: text("business_context").default("").notNull(),
+    desiredResult: text("desired_result").default("").notNull(),
+    currentSystems: text("current_systems").default("").notNull(),
+    knownConstraints: text("known_constraints").default("").notNull(),
+    budgetRange: text("budget_range").default("").notNull(),
+    timeline: text("timeline").default("").notNull(),
+    decisionMakers: text("decision_makers").default("").notNull(),
+    existingAccessAndDependencies: text("existing_access_and_dependencies")
+      .default("")
+      .notNull(),
+    successMeasures: text("success_measures").default("").notNull(),
+    constraintMap: jsonb("constraint_map").default(sql`'[]'::jsonb`).notNull(),
+    completedAt: timestamp("completed_at", { withTimezone: true }),
+    ...timestamps,
+  },
+  (table) => [
+    uniqueIndex("os_diagnostics_deal_idx").on(table.dealId),
+    index("os_diagnostics_completed_idx").on(table.completedAt),
+  ],
+);
+
+export const osScopeLines = pgTable(
+  "os_scope_lines",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    dealId: text("deal_id")
+      .notNull()
+      .references(() => osDeals.id, { onDelete: "cascade" }),
+    moduleId: text("module_id").notNull(),
+    moduleName: text("module_name").notNull(),
+    quantity: integer("quantity").default(1).notNull(),
+    priceCents: integer("price_cents").default(0).notNull(),
+    projectedCostCents: integer("projected_cost_cents").default(0).notNull(),
+    notes: text("notes").default("").notNull(),
+    ...timestamps,
+  },
+  (table) => [index("os_scope_lines_deal_idx").on(table.dealId)],
+);
+
+export const osSpecialists = pgTable(
+  "os_specialists",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    workspaceId: text("workspace_id").default("theforge-internal").notNull(),
+    linkedUserId: text("linked_user_id").references(() => user.id, {
+      onDelete: "set null",
+    }),
+    name: text("name").notNull(),
+    type: text("type").default("specialist").notNull(),
+    skills: jsonb("skills").default(sql`'[]'::jsonb`).notNull(),
+    rateCard: text("rate_card").default("").notNull(),
+    availability: text("availability").default("").notNull(),
+    location: text("location").default("").notNull(),
+    timezone: text("timezone").default("Africa/Lagos").notNull(),
+    contractOnFile: boolean("contract_on_file").default(false).notNull(),
+    ndaOnFile: boolean("nda_on_file").default(false).notNull(),
+    portfolioEvidence: text("portfolio_evidence").default("").notNull(),
+    performanceScorecard: jsonb("performance_scorecard")
+      .default(sql`'{}'::jsonb`)
+      .notNull(),
+    partnerOrganization: text("partner_organization").default("").notNull(),
+    active: boolean("active").default(true).notNull(),
+    ...timestamps,
+  },
+  (table) => [
+    index("os_specialists_workspace_idx").on(table.workspaceId),
+    index("os_specialists_linked_user_idx").on(table.linkedUserId),
+  ],
+);
+
+export const osPodAssignments = pgTable(
+  "os_pod_assignments",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    workspaceId: text("workspace_id").default("theforge-internal").notNull(),
+    engagementId: text("engagement_id")
+      .notNull()
+      .references(() => osEngagements.id, { onDelete: "cascade" }),
+    dealId: text("deal_id").references(() => osDeals.id, {
+      onDelete: "cascade",
+    }),
+    specialistId: text("specialist_id").references(() => osSpecialists.id, {
+      onDelete: "set null",
+    }),
+    internalUserId: text("internal_user_id").references(() => user.id, {
+      onDelete: "set null",
+    }),
+    memberName: text("member_name").notNull(),
+    role: text("role").notNull(),
+    capacityPercent: integer("capacity_percent").default(20).notNull(),
+    primaryAssignment: boolean("primary_assignment").default(false).notNull(),
+    backupAssignment: boolean("backup_assignment").default(false).notNull(),
+    contractChecked: boolean("contract_checked").default(false).notNull(),
+    ndaChecked: boolean("nda_checked").default(false).notNull(),
+    ...timestamps,
+  },
+  (table) => [
+    index("os_pod_assignments_workspace_idx").on(table.workspaceId),
+    index("os_pod_assignments_engagement_idx").on(table.engagementId),
+    index("os_pod_assignments_deal_idx").on(table.dealId),
+  ],
+);
+
+export const osHandoffRecords = pgTable(
+  "os_handoff_records",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    engagementId: text("engagement_id")
+      .notNull()
+      .references(() => osEngagements.id, { onDelete: "cascade" }),
+    checklistCompletedAt: timestamp("checklist_completed_at", {
+      withTimezone: true,
+    }),
+    clientSignoffBy: text("client_signoff_by").default("").notNull(),
+    clientSignoffAt: timestamp("client_signoff_at", { withTimezone: true }),
+    systemsInventory: jsonb("systems_inventory")
+      .default(sql`'[]'::jsonb`)
+      .notNull(),
+    stabilizationEndsAt: timestamp("stabilization_ends_at", {
+      withTimezone: true,
+    }),
+    ...timestamps,
+  },
+  (table) => [
+    index("os_handoff_records_engagement_idx").on(table.engagementId),
+  ],
+);
+
+export const osEvidence = pgTable(
+  "os_evidence",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    engagementId: text("engagement_id")
+      .notNull()
+      .references(() => osEngagements.id, { onDelete: "cascade" }),
+    baselineMetrics: jsonb("baseline_metrics")
+      .default(sql`'{}'::jsonb`)
+      .notNull(),
+    targetMetrics: jsonb("target_metrics").default(sql`'{}'::jsonb`).notNull(),
+    resultMetrics: jsonb("result_metrics").default(sql`'{}'::jsonb`).notNull(),
+    measurementPeriod: text("measurement_period").default("").notNull(),
+    testimonial: text("testimonial").default("").notNull(),
+    caseStudyExport: text("case_study_export").default("").notNull(),
+    referralLogged: boolean("referral_logged").default(false).notNull(),
+    publishedAt: timestamp("published_at", { withTimezone: true }),
+    ...timestamps,
+  },
+  (table) => [index("os_evidence_engagement_idx").on(table.engagementId)],
+);
+
+export const osActivityLog = pgTable(
+  "os_activity_log",
+  {
+    id: text("id").primaryKey().default(sql`gen_random_uuid()::text`),
+    workspaceId: text("workspace_id").default("theforge-internal").notNull(),
+    actorId: text("actor_id").references(() => user.id, {
+      onDelete: "set null",
+    }),
+    actorName: text("actor_name").default("System").notNull(),
+    action: text("action").notNull(),
+    targetEntity: text("target_entity").notNull(),
+    targetId: text("target_id").default("").notNull(),
+    targetLabel: text("target_label").default("").notNull(),
+    detail: text("detail").default("").notNull(),
+    before: jsonb("before").default(sql`'{}'::jsonb`).notNull(),
+    after: jsonb("after").default(sql`'{}'::jsonb`).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    index("os_activity_log_workspace_idx").on(table.workspaceId),
+    index("os_activity_log_actor_idx").on(table.actorId),
+    index("os_activity_log_target_idx").on(table.targetEntity, table.targetId),
+  ],
+);
+
 export const userRelations = relations(user, ({ many }) => ({
   sessions: many(session),
   accounts: many(account),
@@ -585,6 +898,17 @@ export const schema = {
   monthlyMetrics,
   payments,
   webhookEvents,
+  osWorkspaceRoles,
+  osRolePermissions,
+  osEngagements,
+  osDeals,
+  osDiagnostics,
+  osScopeLines,
+  osSpecialists,
+  osPodAssignments,
+  osHandoffRecords,
+  osEvidence,
+  osActivityLog,
   userRelations,
   sessionRelations,
   accountRelations,

@@ -14,7 +14,7 @@ const sections = [
   {
     title: "Who We Are",
     body: [
-      "theForge is a HubX company. HubX is registered in London, United Kingdom. theForge operates as a revenue-systems studio for founder-led service firms and handles data only where it helps us respond, diagnose, deliver, secure or improve the systems we build.",
+      "theForge is a HubX company. HubX is registered in London, United Kingdom. theForge operates as a revenue-systems studio for founder-led firms and handles data only where it helps us respond, diagnose, deliver, secure or improve the systems we build.",
       "Our default posture is simple: client systems should be owned by the client, access should be purposeful, and measurement should make decisions clearer without turning people into data points.",
     ],
   },
