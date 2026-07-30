@@ -114,7 +114,7 @@ const groups: Capability[] = [
       "A prioritized build plan with expected commercial impact",
     ],
     idealFor:
-      "Founder-led service firms that have leads, referrals and tools in motion, but cannot clearly see where demand turns into revenue or where it leaks.",
+      "Founder-led firms that have leads, referrals and tools in motion, but cannot clearly see where demand turns into revenue or where it leaks.",
     approach:
       "We review the offer, website, CRM, handoffs, follow-up, reporting and sales stages, then return a ranked diagnosis and implementation proposal.",
   },

@@ -1,6 +1,6 @@
 import { ArrowUpRight, Flame } from "lucide-react";
 import Link from "next/link";
-import { EmberField } from "@/components/site/ember-field";
+import { EmberCanvas } from "@/components/site/ember-field";
 import { Button } from "@/components/ui/button";
 
 export function Hero() {
@@ -14,16 +14,15 @@ export function Hero() {
             "radial-gradient(60% 50% at 50% 0%, color-mix(in oklab, var(--accent) 22%, transparent) 0%, transparent 70%)",
         }}
       />
-      <EmberField />
 
       <div className="relative mx-auto flex max-w-5xl flex-col items-center px-6 text-center">
         <div className="font-mono-eyebrow border-border/40 text-muted-foreground mb-8 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[11px] uppercase">
-          <Flame className="text-primary size-3" />
-          Revenue systems for founder-led service firms
+          <Flame className="text-accent size-3" />
+          Revenue systems for founder-led firms
         </div>
 
-        <h1 className="font-display animate-ignite bg-[linear-gradient(90deg,var(--gold)_0%,var(--ember)_55%,var(--gold)_100%)] bg-[length:220%_100%] bg-clip-text text-[13vw] leading-[0.95] text-transparent sm:text-6xl md:text-7xl lg:text-8xl">
-          TURN REFERRAL-LED GROWTH INTO A MEASURABLE REVENUE SYSTEM.
+        <h1 className="font-display uppercase animate-ignite bg-[linear-gradient(90deg,var(--gold)_0%,var(--ember)_55%,var(--gold)_100%)] bg-[length:220%_100%] bg-clip-text text-[13vw] leading-[0.95] text-transparent sm:text-6xl md:text-7xl lg:text-8xl">
+          Turn referrals to predictable revenue.
         </h1>
 
         <p className="text-muted-foreground mt-8 max-w-3xl text-balance text-base leading-relaxed sm:text-lg">
@@ -82,6 +81,7 @@ export function Hero() {
           </div>
         </dl>
       </div>
+      <EmberCanvas />
     </section>
   );
 }

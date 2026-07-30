@@ -21,7 +21,7 @@ const questions = [
   {
     question: "What kinds of businesses do you work with?",
     answer:
-      "We work best with founder-led service firms that have a real offer, high-consideration sales and enough demand to expose leaks between marketing, sales and operations.",
+      "We work best with founder-led firms that have a real offer, high-consideration sales and enough demand to expose leaks between marketing, sales and operations.",
   },
   {
     question: "Can you help with one focused project?",

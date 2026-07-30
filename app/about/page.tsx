@@ -11,7 +11,7 @@ import { TeamMemberCard } from "@/components/site/team-member-card";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Meet the senior-led team behind theForge Revenue Systems and how we build accountable revenue systems for founder-led service firms.",
+    "Meet the senior-led team behind theForge Revenue Systems and how we build accountable revenue systems for founder-led firms.",
 };
 
 const values = [

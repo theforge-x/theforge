@@ -12,6 +12,7 @@ import {
   Settings,
   ShieldCheck,
   Users,
+  Workflow,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -31,6 +32,7 @@ export const portalNav: NavItem[] = [
 
 export const adminNav: NavItem[] = [
   { title: "Dashboard", href: "/admin", icon: <LayoutDashboard /> },
+  { title: "theForge OS", href: "/os", icon: <Workflow /> },
   { title: "Clients", href: "/admin/clients", icon: <Users /> },
   { title: "Enquiries", href: "/admin/enquiries", icon: <MessagesSquare /> },
   {
@@ -47,6 +49,7 @@ export const adminNav: NavItem[] = [
 
 export const salesNav: NavItem[] = [
   { title: "Sales dashboard", href: "/sales", icon: <LayoutDashboard /> },
+  { title: "theForge OS", href: "/os", icon: <Workflow /> },
   {
     title: "Certification",
     href: "/sales/onboarding",
