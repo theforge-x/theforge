@@ -1,9 +1,10 @@
 # theForge
 
 theForge is a full-stack growth studio application with a conversion-focused
-public marketing site, an authenticated client portal, and a role-protected
-admin workspace. The public site includes growth-audit booking, broad contact
-enquiries, case studies, field notes, and an interactive website prompt builder.
+public marketing site, an authenticated client portal, role-protected admin and
+sales workspaces, and the internal theForge OS. The public site includes
+Growth Constraint Map booking, broad contact enquiries, case studies, field
+notes, careers content, and an interactive website prompt builder.
 
 ## Stack
 
@@ -69,6 +70,7 @@ Open [http://localhost:3000](http://localhost:3000).
 | `PAYSTACK_SECRET_KEY` | Server-side Paystack API and webhook signing key |
 | `ZOOM_ACCOUNT_ID`, `ZOOM_CLIENT_ID`, `ZOOM_CLIENT_SECRET` | Zoom Server-to-Server OAuth credentials used when an admin approves an appointment |
 | `BOOTSTRAP_*` | One-time initial admin/client names, emails, and passwords |
+| `FEATURE_FORGE_OS_ADMIN_ONLY` | Keeps theForge OS restricted to administrators when unset or set to `true`; set to `false` to allow sales access |
 
 Never expose provider secret keys through `NEXT_PUBLIC_*` variables.
 
@@ -81,7 +83,8 @@ The public marketing site includes:
 - recent published blog posts displayed on the homepage and linked to `/blog/[slug]`;
 - team, values, and studio-history sections on `/about`;
 - a broad enquiry flow at `/contact` with service categories, fit guidance, and FAQs; and
-- a dedicated growth-audit booking flow at `/book` with audit-specific preparation guidance and FAQs.
+- a dedicated Growth Constraint Map booking flow at `/book` with calendar scheduling, diagnostic expectations, preparation guidance, and FAQs; and
+- a `/careers` page for the commission-based Growth Advisor role and its Senior Growth Advisor progression path.
 
 The contact form does not automatically promise a growth audit. General enquiries are reviewed and routed to the most useful next conversation, while `/book` is reserved for growth-audit requests.
 
@@ -89,7 +92,7 @@ The contact form does not automatically promise a growth audit. General enquirie
 
 The root metadata defines the site URL, title template, descriptions, Open Graph and Twitter cards, keywords, and crawler directives. The App Router exposes:
 
-- `/robots.txt`, which allows public pages and blocks private application, API, sales, proposal, and demo routes;
+- `/robots.txt`, which allows public pages and blocks private application, API, sales, theForge OS, proposal, and demo routes;
 - `/sitemap.xml`, which includes the public marketing routes plus published blog posts and case studies; and
 - article and case-study metadata generated from their SEO title, description, and featured image fields.
 
@@ -103,7 +106,7 @@ disabled; an authenticated administrator creates accounts from
 
 - `proxy.ts` performs an optimistic cookie check for `/admin/*`, `/sales/*`,
   and `/portal/*` requests.
-- Both protected layouts validate the complete server-side session and role.
+- Protected layouts validate the complete server-side session and role. The internal theForge OS is admin-only by default; `FEATURE_FORGE_OS_ADMIN_ONLY=false` can temporarily enable it for sales users, while route and server-action authorization enforce the same flag.
 - Admins can create users, assign `admin`, `sales`, or `client` roles, and map
   client users to a workspace. Sales representatives only see their own CRM
   records, quotes, and demos; administrators can see the complete pipeline.
@@ -181,12 +184,13 @@ processed transactionally so retries do not fulfill an invoice twice.
 
 | Area | Routes |
 | --- | --- |
-| Marketing | `/`, `/services`, `/work`, `/about`, `/contact`, `/book`, `/blog`, `/blog/[slug]`, `/work/[slug]` |
+| Marketing | `/`, `/services`, `/work`, `/about`, `/contact`, `/book`, `/careers`, `/blog`, `/blog/[slug]`, `/work/[slug]` |
 | SEO | `/robots.txt`, `/sitemap.xml` |
 | Authentication | `/login`, `/api/auth/[...all]` |
 | Client | `/portal`, `/portal/projects`, `/portal/reports`, `/portal/invoices`, `/portal/settings` |
 | Admin | `/admin`, `/admin/clients`, `/admin/clients/[id]`, `/admin/enquiries`, `/admin/appointments`, `/admin/users`, `/admin/projects`, `/admin/content`, `/admin/settings` |
 | Sales | `/sales`, `/sales/leads`, `/sales/quotes`, `/sales/demos` |
+| Internal OS | `/os` (administrator-only by default; controlled by `FEATURE_FORGE_OS_ADMIN_ONLY`) |
 | Shared sales assets | `/proposal/[token]`, `/demo/[token]` |
 | Billing API | `/api/billing/checkout`, `/api/billing/stripe/webhook`, `/api/billing/paystack/webhook`, `/api/billing/paystack/callback` |
 

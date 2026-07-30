@@ -13,6 +13,7 @@ const publicRoutes = [
   "/blog",
   "/contact",
   "/book",
+  "/careers",
   "/privacy",
   "/terms",
   "/data-processing",
