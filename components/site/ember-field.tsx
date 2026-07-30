@@ -1,8 +1,7 @@
-'use client'
+"use client";
 
 import type * as React from "react";
 import { useEffect, useRef } from "react";
-
 
 const EMBERS = [
   { left: "6%", size: 3, duration: 9, delay: 0, drift: 30 },
@@ -56,78 +55,89 @@ export function EmberCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return;
+    const canvas = canvasRef.current;
+    const parent = canvas?.parentElement;
+    if (!canvas || !parent) return;
 
-      const resize = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      };
-      resize();
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-      const particles: Array<{
-        x: number;
-        y: number;
-        vx: number;
-        vy: number;
-        size: number;
-        alpha: number;
-        decay: number;
-        hue: number;
-      }> = [];
+    let width = 0;
+    let height = 0;
+    let pixelRatio = 1;
 
-      const spawn = () => {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: canvas.height + 20,
-          vx: (Math.random() - 0.5) * 0.9,
-          vy: -(Math.random() * 2.2 + 0.8),
-          size: Math.random() * 3 + 0.8,
-          alpha: Math.random() * 0.65 + 0.2,
-          decay: Math.random() * 0.010 + 0.006,
-          hue: Math.random() > 0.45 ? 22 : 38,
-        });
-      };
+    const resize = () => {
+      const bounds = parent.getBoundingClientRect();
+      width = bounds.width;
+      height = bounds.height;
+      pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
-      let frame: number;
-      const draw = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (Math.random() < 0.10) spawn();
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.alpha -= p.decay;
-          if (p.alpha <= 0) {
-            particles.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `hsla(${p.hue},100%,60%,${p.alpha})`;
-          ctx.fill();
+      canvas.width = Math.round(width * pixelRatio);
+      canvas.height = Math.round(height * pixelRatio);
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    };
+    resize();
+
+    const particles: Array<{
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      size: number;
+      alpha: number;
+      decay: number;
+      hue: number;
+    }> = [];
+
+    const spawn = () => {
+      particles.push({
+        x: Math.random() * width,
+        y: height + 10,
+        vx: (Math.random() - 0.5) * 0.9,
+        vy: -(Math.random() * 2.2 + 0.8),
+        size: Math.random() * 3 + 0.8,
+        alpha: Math.random() * 0.65 + 0.2,
+        decay: Math.random() * 0.002 + 0.002,
+        hue: Math.random() > 0.45 ? 22 : 38,
+      });
+    };
+
+    let frame: number;
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height);
+      if (Math.random() < 0.9) spawn();
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.alpha -= p.decay;
+        if (p.alpha <= 0) {
+          particles.splice(i, 1);
+          continue;
         }
-        frame = requestAnimationFrame(draw);
-      };
-      draw();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 3);
+        ctx.fillStyle = `hsla(${p.hue},100%,60%,${p.alpha})`;
+        ctx.fill();
+      }
+      frame = requestAnimationFrame(draw);
+    };
+    draw();
 
-      window.addEventListener("resize", resize);
-      return () => {
-        cancelAnimationFrame(frame);
-        window.removeEventListener("resize", resize);
-      };
-    }, []);
+    const observer = new ResizeObserver(resize);
+    observer.observe(parent);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <>
-      {/* Ember canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute bottom-0 inset-0 pointer-events-none"
-        style={{ opacity: 0.55 }}
-      />
-    </>
-  )
+    <canvas
+      ref={canvasRef}
+      className="pointer-events-none absolute inset-0 size-full"
+      style={{ opacity: 0.6 }}
+    />
+  );
 }

@@ -27,8 +27,8 @@ export function Hero() {
 
         <p className="text-muted-foreground mt-8 max-w-3xl text-balance text-base leading-relaxed sm:text-lg">
           theForge connects your positioning, website, CRM, automation and sales
-          follow-up into one growth engine. Built in 6-10 weeks, measured
-          against commercial outcomes, and fully owned by your team.
+          follow-up into one growth engine. Built in less than 10 weeks, measured
+          against tangible commercial outcomes, and fully owned by your team.
         </p>
 
         <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">

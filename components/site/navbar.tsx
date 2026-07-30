@@ -100,7 +100,7 @@ export function Navbar() {
           className={cn(
             "pointer-events-auto relative mx-auto flex items-center transition-[max-width,height,padding,background-color,border-color,border-radius,box-shadow,backdrop-filter] duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none",
             scrolled
-              ? "h-14 max-w-[70rem] rounded-full border border-border/60 bg-background/80 px-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[18px] backdrop-saturate-[1.8]"
+              ? "h-14 max-w-[70rem] rounded-full border border-border/20 bg-background/80 px-3 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[18px] backdrop-saturate-[1.8]"
               : "h-[72px] max-w-full border border-transparent bg-transparent px-8",
           )}
         >
@@ -187,7 +187,7 @@ export function Navbar() {
               "pointer-events-auto mx-auto transition-[margin,background-color,border-color,border-radius,box-shadow,backdrop-filter] duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] motion-reduce:transition-none",
               scrolled && "mx-3",
               scrolled || mobileOpen
-                ? "border-x border-t border-border/60 bg-background/90 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[18px] backdrop-saturate-[1.8]"
+                ? "border-x border-t border-border/20 bg-background/90 shadow-[0_12px_40px_rgba(0,0,0,0.18)] backdrop-blur-[18px] backdrop-saturate-[1.8]"
                 : "border-x border-t border-transparent bg-transparent",
               mobileOpen ? "rounded-t-[1.5rem]" : "rounded-full border-b",
             )}
@@ -251,7 +251,7 @@ export function Navbar() {
             )}
           >
             <div className="min-h-0 overflow-hidden">
-              <div className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto rounded-b-[1.5rem] border-x border-b border-border/60 bg-background/90 px-3 pb-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-[18px] backdrop-saturate-[1.8]">
+              <div className="max-h-[calc(100dvh-5.5rem)] overflow-y-auto rounded-b-[1.5rem] border-x border-b border-border/20 bg-background/90 px-3 pb-4 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-[18px] backdrop-saturate-[1.8]">
                 <div className="border-t border-border/50 pt-2">
                   {links.map((link, index) => {
                     const active = isActive(link.href);

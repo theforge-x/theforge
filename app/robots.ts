@@ -14,6 +14,7 @@ export default function robots(): MetadataRoute.Robots {
         "/admin/",
         "/portal/",
         "/sales/",
+        "/os",
         "/login",
         "/proposal/",
         "/demo/",
