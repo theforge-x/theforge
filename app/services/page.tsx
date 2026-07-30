@@ -12,7 +12,7 @@ import { ServicesGrid } from "@/components/site/services-grid";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Growth Constraint Map, Revenue System Sprint, and Temper Growth Partner engagements for founder-led service firms.",
+    "Growth Constraint Map, Revenue System Sprint, and Temper Growth Partner engagements for founder-led firms.",
 };
 
 export default function ServicesPage() {

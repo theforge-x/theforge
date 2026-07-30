@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 export function CTASection() {
   return (
     <section className="grain-overlay bg-forge-black relative overflow-hidden">
-      <EmberField />
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-full opacity-60"
@@ -29,6 +28,7 @@ export function CTASection() {
           </Link>
         </Button>
       </div>
+      <EmberField />
     </section>
   );
 }

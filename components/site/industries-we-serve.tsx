@@ -59,7 +59,7 @@ const industries: Array<{
 
 export function IndustriesWeServe() {
   return (
-    <section className="border-border/50 border-t">
+    <section className="border-border/50 border-b">
       <div className="mx-auto max-w-7xl px-6 py-24 sm:py-28">
         <div className="mb-12 max-w-2xl">
           <div className="font-mono-eyebrow text-accent mb-3 text-[11px] uppercase">
